@@ -69,27 +69,48 @@ let make = (
   ~className="",
   ~variant=Variant.Default,
   ~size=Size.Default,
+  ~id=?,
+  ~tabIndex=?,
   ~nativeButton=?,
   ~disabled=?,
   ~style=?,
   ~children=?,
   ~onClick=?,
+  ~onKeyDown=?,
+  ~onBlur=?,
+  ~onFocus=?,
+  ~onMouseEnter=?,
+  ~onMouseLeave=?,
+  ~ref=?,
   ~type_=?,
   ~ariaLabel=?,
   ~ariaDisabled=?,
   ~dataSidebar=?,
+  ~dataDay=?,
+  ~dataSelectedSingle=?,
+  ~dataRangeStart=?,
+  ~dataRangeEnd=?,
+  ~dataRangeMiddle=?,
   ~render=?,
-  ~dataSlot="button",
+  ~dataSlot=?,
 ) => {
   let resolvedClassName = twMerge(`${buttonVariants(~variant, ~size)} ${className}`)
   <BaseUi.Button
-    dataSlot
+    dataSlot={dataSlot->Option.getOr("button")}
     className=resolvedClassName
+    ?id
+    tabIndex=?{switch tabIndex { | Some(v) => Some(v) | None => Some(0) }}
     ?nativeButton
     ?disabled
     ?style
     ?children
     ?onClick
+    ?onKeyDown
+    ?onBlur
+    ?onFocus
+    ?onMouseEnter
+    ?onMouseLeave
+    ?ref
     type_=?{switch (type_, nativeButton, render) {
     | (None, None, None) => Some("button")
     | _ => type_
@@ -97,6 +118,11 @@ let make = (
     ?ariaLabel
     ?ariaDisabled
     ?dataSidebar
+    ?dataDay
+    ?dataSelectedSingle
+    ?dataRangeStart
+    ?dataRangeEnd
+    ?dataRangeMiddle
     ?render
   />
 }

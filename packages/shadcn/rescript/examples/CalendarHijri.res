@@ -15,7 +15,7 @@ module NextFontGoogle = {
   external vazirmatn: (~subsets: array<string>) => t = "Vazirmatn"
 }
 
-let vazirmatn = NextFontGoogle.vazirmatn(~subsets=[|"arabic"|])
+let vazirmatn = NextFontGoogle.vazirmatn(~subsets=["arabic"])
 
 module PersianDayPicker = {
   @react.component @module("react-day-picker/persian")
@@ -140,12 +140,12 @@ module HijriCalendar = {
         formatMonthDropdown: formatters.formatMonthDropdown->Option.getOr(date =>
           date->Date.toLocaleDateStringWithLocaleAndOptions("default", {month: #short})
         ),
-        formatCaption: formatters.formatCaption,
-        formatDay: formatters.formatDay,
-        formatWeekdayName: formatters.formatWeekdayName,
-        formatWeekNumber: formatters.formatWeekNumber,
-        formatYearDropdown: formatters.formatYearDropdown,
-        formatMonthCaption: formatters.formatMonthCaption,
+        formatCaption: ?formatters.formatCaption,
+        formatDay: ?formatters.formatDay,
+        formatWeekdayName: ?formatters.formatWeekdayName,
+        formatWeekNumber: ?formatters.formatWeekNumber,
+        formatYearDropdown: ?formatters.formatYearDropdown,
+        formatMonthCaption: ?formatters.formatMonthCaption,
       }}
       classNames={{
         root: classNames.root->Option.getOr(twMerge(`w-fit ${defaultClassNames.root}`)),

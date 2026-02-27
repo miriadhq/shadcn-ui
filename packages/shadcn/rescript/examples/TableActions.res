@@ -15,7 +15,7 @@ let make = () =>
         <Table.Cell className="text-right">
           <DropdownMenu>
             <DropdownMenu.Trigger
-              render={<Button variant=Button.Variant.Ghost size=Button.Size.Icon className="size-8" />}
+              render={<Button variant=Button.Variant.Ghost size=Button.Size.Icon className="size-8" dataSlot="dropdown-menu-trigger" />}
             >
               <Icons.MoreHorizontal />
               <span className="sr-only"> {"Open menu"->React.string} </span>
@@ -37,7 +37,7 @@ let make = () =>
         <Table.Cell className="text-right">
           <DropdownMenu>
             <DropdownMenu.Trigger
-              render={<Button variant=Button.Variant.Ghost size=Button.Size.Icon className="size-8" />}
+              render={<Button variant=Button.Variant.Ghost size=Button.Size.Icon className="size-8" dataSlot="dropdown-menu-trigger" />}
             >
               <Icons.MoreHorizontal />
               <span className="sr-only"> {"Open menu"->React.string} </span>
@@ -59,7 +59,7 @@ let make = () =>
         <Table.Cell className="text-right">
           <DropdownMenu>
             <DropdownMenu.Trigger
-              render={<Button variant=Button.Variant.Ghost size=Button.Size.Icon className="size-8" />}
+              render={<Button variant=Button.Variant.Ghost size=Button.Size.Icon className="size-8" dataSlot="dropdown-menu-trigger" />}
             >
               <Icons.MoreHorizontal />
               <span className="sr-only"> {"Open menu"->React.string} </span>

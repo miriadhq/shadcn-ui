@@ -6,16 +6,17 @@ external formatDate: (Date.t, string) => string = "format"
 @react.component
 let make = () => {
   let (date, setDate) = React.useState(() => None)
-  let (open, setOpen) = React.useState(() => false)
+  let (isOpen, setOpen) = React.useState(() => false)
 
   <Field className="mx-auto w-72">
-    <Popover open_=open onOpenChange={(nextOpen, _) => setOpen(_ => nextOpen)}>
+    <Popover open_=isOpen onOpenChange={(nextOpen, _) => setOpen(_ => nextOpen)}>
       <Field.Label htmlFor="date-picker-with-dropdowns-desktop"> {"Date"->React.string} </Field.Label>
       <Popover.Trigger
         render={<Button
           variant=Button.Variant.Outline
           id="date-picker-with-dropdowns-desktop"
           className="justify-start px-2.5 font-normal"
+          dataSlot="popover-trigger"
         />}
       >
         <Icons.ChevronDown className="ml-auto" />

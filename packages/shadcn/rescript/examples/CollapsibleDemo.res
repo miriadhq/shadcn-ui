@@ -17,6 +17,7 @@ let make = () => {
           size=Button.Size.Icon
           className="size-8"
           ariaDisabled={false}
+          dataSlot="collapsible-trigger"
         />}
       >
         <Icons.ChevronsUpDown />

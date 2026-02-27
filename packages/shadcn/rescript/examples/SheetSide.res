@@ -39,7 +39,7 @@ let make = () =>
           </div>
           <Sheet.Footer>
             <Button type_="submit"> {"Save changes"->React.string} </Button>
-            <Sheet.Close render={<Button variant=Button.Variant.Outline />}>
+            <Sheet.Close render={<Button variant=Button.Variant.Outline dataSlot="sheet-close" />}>
               {"Cancel"->React.string}
             </Sheet.Close>
           </Sheet.Footer>

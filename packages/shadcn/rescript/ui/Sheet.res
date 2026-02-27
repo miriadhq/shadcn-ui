@@ -175,7 +175,7 @@ module Content = {
         {showCloseButton
           ? <BaseUi.Dialog.Close
               dataSlot="sheet-close"
-              render={<Button variant=Ghost size=IconSm className="absolute top-3 right-3" />}
+              render={<Button variant=Ghost size=IconSm className="absolute top-3 right-3" dataSlot="sheet-close" />}
             >
               <Icons.X />
               <span className="sr-only"> {"Close"->React.string} </span>

@@ -1,7 +1,7 @@
 @react.component
 let make = () =>
   <Dialog>
-    <Dialog.Trigger render={<Button variant=Button.Variant.Outline />}>
+    <Dialog.Trigger render={<Button variant=Button.Variant.Outline dataSlot="dialog-trigger" />}>
       {"Share"->React.string}
     </Dialog.Trigger>
     <Dialog.Content className="sm:max-w-md">
@@ -14,7 +14,7 @@ let make = () =>
       <div className="flex items-center gap-2">
         <div className="grid flex-1 gap-2">
           <Label htmlFor="link" className="sr-only"> {"Link"->React.string} </Label>
-          <Input id="link" defaultValue="https://ui.shadcn.com/docs/installation" readOnly />
+          <Input id="link" defaultValue="https://ui.shadcn.com/docs/installation" readOnly=true />
         </div>
       </div>
       <Dialog.Footer className="sm:justify-start">

@@ -20,6 +20,7 @@ let make = () => {
         <DropdownMenu.Trigger
           render={<Button
             variant=Button.Variant.Outline
+            dataSlot="dropdown-menu-trigger"
             size=Button.Size.Icon
             ariaLabel="More Options"
           />}

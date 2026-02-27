@@ -54,7 +54,7 @@ let make = () => {
 
   if isDesktop {
     <Dialog open_ onOpenChange={(nextOpen, _) => setOpen(_ => nextOpen)}>
-      <Dialog.Trigger render={<Button variant=Button.Variant.Outline />}>
+      <Dialog.Trigger render={<Button variant=Button.Variant.Outline dataSlot="dialog-trigger" />}>
         {"Edit Profile"->React.string}
       </Dialog.Trigger>
       <Dialog.Content className="sm:max-w-[425px]">

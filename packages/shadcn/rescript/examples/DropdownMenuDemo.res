@@ -3,7 +3,7 @@
 @react.component
 let make = () =>
   <DropdownMenu>
-    <DropdownMenu.Trigger render={<Button variant=Button.Variant.Outline />}>
+    <DropdownMenu.Trigger render={<Button variant=Button.Variant.Outline dataSlot="dropdown-menu-trigger" />}>
       {"Open"->React.string}
     </DropdownMenu.Trigger>
     <DropdownMenu.Content className="w-40" align=BaseUi.Types.Align.Start>
