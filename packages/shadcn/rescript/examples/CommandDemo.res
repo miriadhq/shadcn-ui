@@ -1,3 +1,5 @@
+@@directive("'use client'")
+
 @react.component
 let make = () =>
   <Command className="max-w-sm rounded-lg border">

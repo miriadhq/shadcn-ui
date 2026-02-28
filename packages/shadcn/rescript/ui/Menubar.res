@@ -12,9 +12,10 @@ module Variant = {
 }
 
 @react.component
-let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+let make = (~className="", ~children=?, ~id=?, ~dir=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
   <BaseUi.Menubar
     ?id
+    ?dir
     ?style
     ?onClick
     ?onKeyDown
@@ -117,6 +118,8 @@ module Content = {
     ~className="",
     ~children=?,
     ~id=?,
+    ~dir=?,
+    ~dataLang=?,
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
@@ -131,6 +134,8 @@ module Content = {
       >
         <BaseUi.Menu.Popup
           ?id
+          ?dir
+          ?dataLang
           ?style
           ?onClick
           ?onKeyDown
@@ -354,6 +359,8 @@ module SubContent = {
     ~className="",
     ~children=?,
     ~id=?,
+    ~dir=?,
+    ~dataLang=?,
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
@@ -368,6 +375,8 @@ module SubContent = {
       >
         <BaseUi.Menu.Popup
           ?id
+          ?dir
+          ?dataLang
           ?style
           ?onClick
           ?onKeyDown

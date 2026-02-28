@@ -7,6 +7,7 @@ let make = (
   ~className=?,
   ~children=?,
   ~id=?,
+  ~dir=?,
   ~open_=?,
   ~defaultOpen=?,
   ~onOpenChange=?,
@@ -17,6 +18,7 @@ let make = (
     ?className
     ?children
     ?id
+    ?dir
     ?open_
     ?defaultOpen
     ?onOpenChange

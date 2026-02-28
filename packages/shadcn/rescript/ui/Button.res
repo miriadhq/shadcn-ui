@@ -97,6 +97,8 @@ let make = (
   ~ariaExpanded=?,
   ~ariaHaspopup=?,
   ~dataState=?,
+  ~dataEmpty=?,
+  ~dir=?,
 ) => {
   let resolvedClassName = twMerge(`${buttonVariants(~variant, ~size)} ${className}`)
   <BaseUi.Button
@@ -131,6 +133,8 @@ let make = (
     ?dataRangeStart
     ?dataRangeEnd
     ?dataRangeMiddle
+    ?dataEmpty
+    ?dir
     ?render
   />
 }

@@ -112,6 +112,8 @@ module Content = {
     ~className="",
     ~children=React.null,
     ~id=?,
+    ~dir=?,
+    ~dataLang=?,
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
@@ -122,6 +124,8 @@ module Content = {
       <Overlay />
       <BaseUi.Dialog.Popup
         ?id
+        ?dir
+        ?dataLang
         ?style
         ?onClick
         ?onKeyDown

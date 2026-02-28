@@ -54,6 +54,7 @@ module Content = {
     ~className="",
     ~children=?,
     ~id=?,
+    ~dir=?,
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
@@ -66,6 +67,7 @@ module Content = {
       <BaseUi.Popover.Positioner align alignOffset side sideOffset className="isolate z-50">
         <BaseUi.Popover.Popup
           ?id
+          ?dir
           ?style
           ?onClick
           ?onKeyDown

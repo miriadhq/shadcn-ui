@@ -9,7 +9,10 @@
       "WebFetch(domain:github.com)",
       "Bash(python3:*)",
       "Bash(grep:*)",
-      "Bash(pnpm rescript:*)"
+      "Bash(pnpm rescript:*)",
+      "Bash(pnpm:*)",
+      "Bash(echo === Charts ===:*)",
+      "Bash(do:*)"
     ],
     "deny": []
   }

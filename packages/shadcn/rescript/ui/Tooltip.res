@@ -68,6 +68,7 @@ module Content = {
     ~className="",
     ~children=React.null,
     ~id=?,
+    ~dir=?,
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
@@ -80,6 +81,7 @@ module Content = {
       <BaseUi.Tooltip.Positioner align alignOffset side sideOffset className="isolate z-50">
         <BaseUi.Tooltip.Popup
           ?id
+          ?dir
           ?style
           ?onClick
           ?onKeyDown

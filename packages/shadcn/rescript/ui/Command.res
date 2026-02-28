@@ -49,6 +49,7 @@ let make = (
   ~value=?,
   ~defaultValue=?,
   ~onValueChange=?,
+  ~dir=?,
 ) =>
   <CommandPrimitive
     ?id
@@ -58,6 +59,7 @@ let make = (
     ?value
     ?defaultValue
     ?onValueChange
+    ?dir
     dataSlot="command"
     className={`bg-popover text-popover-foreground flex size-full flex-col overflow-hidden rounded-xl! p-1 ${className}`}
    ?children />
@@ -122,6 +124,7 @@ module Input = {
     ~onClick=?,
     ~onKeyDown=?,
     ~placeholder=?,
+    ~dir=?,
   ) => {
     <div dataSlot="command-input-wrapper" className="p-1 pb-0">
       <InputGroup
@@ -136,6 +139,7 @@ module Input = {
           ?onClick
           ?onKeyDown
           ?placeholder
+          ?dir
           ?children
           dataSlot="command-input"
           className={`w-full text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50 ${className}`}

@@ -60,6 +60,7 @@ module Item = {
     ~tabIndex=?,
     ~role=?,
     ~ariaLabel=?,
+    ~ariaInvalid=?,
     ~dir=?,
     ~style=?,
   ) =>
@@ -77,6 +78,7 @@ module Item = {
       ?tabIndex
       ?role
       ?ariaLabel
+      ?ariaInvalid
       ?dir
       ?style
       dataSlot="radio-group-item"

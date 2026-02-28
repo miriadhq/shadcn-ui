@@ -75,14 +75,24 @@ module Legend = {
 
 module Group = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~dir=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~dataSlot="field-group",
+  ) =>
     <div
       ?id
+      ?dir
       ?children
       ?style
       ?onClick
       ?onKeyDown
-      dataSlot="field-group"
+      dataSlot
       className={twMerge(
         `group/field-group @container/field-group flex w-full flex-col gap-5 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4 ${className}`,
       )}

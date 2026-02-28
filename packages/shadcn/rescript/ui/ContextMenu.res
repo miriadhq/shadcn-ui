@@ -70,6 +70,8 @@ module Content = {
     ~alignOffset=4.,
     ~side=Side.Right,
     ~sideOffset=0.,
+    ~dir=?,
+    ~dataLang=?,
   ) => {
     <BaseUi.ContextMenu.Portal>
       <BaseUi.ContextMenu.Positioner
@@ -81,6 +83,8 @@ module Content = {
           ?onClick
           ?onKeyDown
           ?children
+          ?dir
+          ?dataLang
           dataSlot
           className={`data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 bg-popover text-popover-foreground data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2 cn-menu-target z-50 max-h-(--available-height) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg p-1 shadow-md ring-1 duration-100 outline-none ${className}`}
         />
@@ -277,6 +281,8 @@ module SubContent = {
     ~alignOffset=4.,
     ~side=Side.Right,
     ~sideOffset=0.,
+    ~dir=?,
+    ~dataLang=?,
   ) =>
     <Content
       ?children
@@ -284,6 +290,8 @@ module SubContent = {
       ?style
       ?onClick
       ?onKeyDown
+      ?dir
+      ?dataLang
       align
       alignOffset
       side

@@ -81,6 +81,7 @@ let make = (
   ~className="",
   ~children=?,
   ~id=?,
+  ~dir=?,
   ~style=?,
   ~onClick=?,
   ~onMouseEnter=?,
@@ -167,6 +168,7 @@ let make = (
   <Provider value={providerValue}>
     <div
       ?id
+      ?dir
       ?style
       ?onClick
       ?onMouseEnter

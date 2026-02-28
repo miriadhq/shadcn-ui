@@ -19,8 +19,10 @@ let make = (
   ~type_=?,
   ~ariaLabel=?,
   ~maxLength=?,
+  ~step=?,
   ~tabIndex=?,
   ~spellCheck=?,
+  ~ariaInvalid=?,
   ~style=?,
   ~render=?,
 ) =>
@@ -39,7 +41,9 @@ let make = (
     ?onKeyDown
     ?type_
     ?ariaLabel
+    ?ariaInvalid
     ?maxLength
+    ?step
     ?tabIndex
     ?spellCheck
     ?style

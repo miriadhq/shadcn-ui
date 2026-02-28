@@ -21,6 +21,7 @@ let make = (
   ~onKeyDown=?,
   ~tabIndex=?,
   ~ariaLabel=?,
+  ~invalid=false,
   ~dir=?,
   ~style=?,
   ~dataSize=Size.Default,
@@ -47,6 +48,7 @@ let make = (
       ?onKeyDown
       ?tabIndex
       ?ariaLabel
+      ariaInvalid=?{invalid ? Some(#"true") : None}
       ?style
       ?children
       dataSlot="native-select"

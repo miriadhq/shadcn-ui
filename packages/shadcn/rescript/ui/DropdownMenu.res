@@ -318,6 +318,8 @@ module SubContent = {
     ~className="",
     ~children=?,
     ~id=?,
+    ~dir=?,
+    ~dataLang=?,
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
@@ -330,6 +332,8 @@ module SubContent = {
     <Content
       ?children
       ?id
+      ?dir
+      ?dataLang
       ?style
       ?onClick
       ?onKeyDown
