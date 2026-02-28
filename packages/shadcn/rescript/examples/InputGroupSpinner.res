@@ -3,7 +3,7 @@ let make = () =>
   <div className="grid w-full max-w-sm gap-4">
     <InputGroup>
       <InputGroup.Input placeholder="Searching..." />
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+      <InputGroup.Addon align=InlineEnd>
         <Spinner />
       </InputGroup.Addon>
     </InputGroup>
@@ -15,7 +15,7 @@ let make = () =>
     </InputGroup>
     <InputGroup>
       <InputGroup.Input placeholder="Saving changes..." />
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+      <InputGroup.Addon align=InlineEnd>
         <InputGroup.Text> {"Saving..."->React.string} </InputGroup.Text>
         <Spinner />
       </InputGroup.Addon>
@@ -25,7 +25,7 @@ let make = () =>
       <InputGroup.Addon>
         <Icons.Loader2 className="animate-spin" />
       </InputGroup.Addon>
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+      <InputGroup.Addon align=InlineEnd>
         <InputGroup.Text className="text-muted-foreground">
           {"Please wait..."->React.string}
         </InputGroup.Text>

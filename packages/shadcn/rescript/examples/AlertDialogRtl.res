@@ -51,9 +51,8 @@ module RtlAlertDialog = {
       ~dir=?,
       ~dataLang=?,
       ~keepMounted=?,
-      ~dataSize=Button.Size.Default,
+      ~size=Button.Size.Default,
     ) => {
-      let size = dataSize
       <Portal>
         <Overlay />
         <BaseUi.AlertDialog.Popup
@@ -140,11 +139,9 @@ module RtlAlertDialog = {
     let make = (
       ~children=React.null,
       ~className="",
-      ~dataVariant=Button.Variant.Outline,
-      ~dataSize=Button.Size.Default,
+      ~variant=Button.Variant.Outline,
+      ~size=Button.Size.Default,
     ) => {
-      let variant = dataVariant
-      let size = dataSize
       <BaseUi.AlertDialog.Close
         dataSlot="alert-dialog-cancel" render={<Button variant size className />}
       >
@@ -182,7 +179,7 @@ let make = () =>
       <RtlAlertDialog.Trigger className={rtlOutlineTriggerClass} type_="button">
         {"إظهار الحوار (صغير)"->React.string}
       </RtlAlertDialog.Trigger>
-      <RtlAlertDialog.Content dir="rtl" dataLang="ar" dataSize=Button.Size.Sm>
+      <RtlAlertDialog.Content dir="rtl" dataLang="ar" size=Sm>
         <RtlAlertDialog.Header>
           <RtlAlertDialog.Media>
             <Icons.Bluetooth />

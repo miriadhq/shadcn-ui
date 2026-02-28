@@ -9,15 +9,12 @@ let make = () =>
     </InputGroup>
     <InputGroup>
       <InputGroup.Input id="email-2" placeholder="shadcn@vercel.com" />
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockStart>
+      <InputGroup.Addon align=BlockStart>
         <Label htmlFor="email-2" className="text-foreground"> {"Email"->React.string} </Label>
         <Tooltip>
           <Tooltip.Trigger
             render={<InputGroup.Button
-              dataVariant=InputGroup.Variant.Ghost
-              ariaLabel="Help"
-              className="ml-auto rounded-full"
-              dataSize=InputGroup.Size.IconXs
+              variant=Ghost ariaLabel="Help" className="ml-auto rounded-full" size=IconXs
             />}
           >
             <Icons.Info />

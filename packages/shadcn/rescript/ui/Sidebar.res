@@ -47,7 +47,6 @@ external removeWindowListener: (browserWindow, string, windowKeyboardEvent => un
 @send external preventDefaultKeyboardEvent: windowKeyboardEvent => unit = "preventDefault"
 @set external setDocumentCookie: (Dom.document, string) => unit = "cookie"
 @val external mathRandom: unit => float = "Math.random"
-@val external objectAssign: ('target, 'source) => 'target = "Object.assign"
 @module("@base-ui/react/merge-props")
 external mergeProps: (
   BaseUi.Types.props<string, bool>,
@@ -112,27 +111,16 @@ let make = (
   ~side=Left,
   ~variant=Sidebar,
   ~collapsible=Offcanvas,
-  ~props: option<BaseUi.Types.DomProps.t>=?,
   ~dir: option<string>=?,
   ~id=?,
   ~style=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~rootProps: option<BaseUi.Types.DomProps.t>=?,
 ) => {
   let {isMobile, state, openMobile, setOpenMobile} = useSidebar()
-  let props: BaseUi.Types.DomProps.t = switch props {
-  | Some(props) => props
-  | None => {}
-  }
-  let rootProps: BaseUi.Types.DomProps.t = switch rootProps {
-  | Some(rootProps) => objectAssign(props, rootProps)
-  | None => props
-  }
 
   if collapsible == NotCollapsible {
     <div
-      {...rootProps}
       ?id
       ?style
       ?onClick
@@ -203,7 +191,6 @@ let make = (
         className={`relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear group-data-[collapsible=offcanvas]:w-0 group-data-[side=right]:rotate-180 ${desktopGapClass}`}
       />
       <div
-        {...rootProps}
         ?id
         ?style
         ?onClick
@@ -234,12 +221,10 @@ module Provider = {
     ~onOpenChange: option<bool => unit>=?,
     ~className=?,
     ~children=?,
-    ~props: option<BaseUi.Types.DomProps.t>=?,
     ~id=?,
     ~onClick=?,
     ~onKeyDown=?,
     ~style: option<ReactDOM.Style.t>=?,
-    ~rootProps: option<BaseUi.Types.DomProps.t>=?,
   ) => {
     let isMobile = useIsMobile()
     let (openMobile, setOpenMobileState) = React.useState(() => false)
@@ -319,22 +304,12 @@ module Provider = {
     | Some(style) => ReactDOM.Style.combine(baseStyle, style)
     | None => baseStyle
     }
-    let props: BaseUi.Types.DomProps.t = switch props {
-    | Some(props) => props
-    | None => {}
-    }
-    let rootProps: BaseUi.Types.DomProps.t = switch rootProps {
-    | Some(rootProps) => objectAssign(props, rootProps)
-    | None => props
-    }
-
     module ContextProvider = {
       let make = React.Context.provider(context)
     }
 
     <ContextProvider value={contextValue}>
       <div
-        {...rootProps}
         ?id
         ?onClick
         ?onKeyDown
@@ -1003,11 +978,9 @@ module MenuSubButton = {
     ~disabled=?,
     ~size=Size.Md,
     ~isActive=false,
-    ~dataSize: option<Size.t>=?,
     ~dataActive: option<bool>=?,
     ~linkProps: option<BaseUi.Types.props<string, bool>>=?,
   ) => {
-    let size = dataSize->Option.getOr(size)
     let dataActive = dataActive->Option.getOr(isActive)
     let baseWithoutDataActive: BaseUi.Types.props<string, bool> = {
       ?id,

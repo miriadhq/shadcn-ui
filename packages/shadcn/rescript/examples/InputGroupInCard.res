@@ -11,7 +11,7 @@ let make = () =>
           <Field.Label htmlFor="email-input"> {"Email Address"->React.string} </Field.Label>
           <InputGroup>
             <InputGroup.Input id="email-input" type_="email" placeholder="you@example.com" />
-            <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+            <InputGroup.Addon align=InlineEnd>
               <Icons.Mail />
             </InputGroup.Addon>
           </InputGroup>
@@ -23,7 +23,7 @@ let make = () =>
               <InputGroup.Text> {"https://"->React.string} </InputGroup.Text>
             </InputGroup.Addon>
             <InputGroup.Input id="website-input" placeholder="example.com" />
-            <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+            <InputGroup.Addon align=InlineEnd>
               <Icons.ExternalLink />
             </InputGroup.Addon>
           </InputGroup>
@@ -36,7 +36,7 @@ let make = () =>
             <InputGroup.Textarea
               id="feedback-textarea" placeholder="Share your thoughts..." className="min-h-[100px]"
             />
-            <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockEnd>
+            <InputGroup.Addon align=BlockEnd>
               <InputGroup.Text> {"0/500 characters"->React.string} </InputGroup.Text>
             </InputGroup.Addon>
           </InputGroup>

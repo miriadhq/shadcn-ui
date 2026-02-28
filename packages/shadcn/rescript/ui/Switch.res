@@ -30,15 +30,9 @@ let make = (
   ~dir=?,
   ~style=?,
   ~render=?,
-  ~size=?,
-  ~dataSize=?,
+  ~size=Size.Default,
 ) => {
   let _ignoredChildren = children
-  let size = switch (size, dataSize) {
-  | (Some(size), _) => size
-  | (None, Some(size)) => size
-  | (None, None) => Size.Default
-  }
   <BaseUi.Switch.Root
     ?id
     ?name

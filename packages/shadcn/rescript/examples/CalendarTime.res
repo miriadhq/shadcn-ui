@@ -7,7 +7,7 @@ let make = () => {
   let month = now->Date.getMonth
   let (date, setDate) = React.useState(() => Some(Date.makeWithYMD(~year, ~month, ~day=12)))
 
-  <Card dataSize=Card.Size.Sm className="mx-auto w-fit">
+  <Card size=Sm className="mx-auto w-fit">
     <Card.Content>
       <Calendar
         mode="single"

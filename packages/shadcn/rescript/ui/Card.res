@@ -19,9 +19,8 @@ let make = (
   ~style=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~dataSize=Size.Default,
+  ~size=Size.Default,
 ) => {
-  let size = dataSize
   <div
     ?id
     ?children

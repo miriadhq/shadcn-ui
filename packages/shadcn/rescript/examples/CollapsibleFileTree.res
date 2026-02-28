@@ -83,7 +83,7 @@ let rec renderItem = (fileItem: fileTreeItem) =>
 
 @react.component
 let make = () =>
-  <Card className="mx-auto w-full max-w-[16rem] gap-2" dataSize=Card.Size.Sm>
+  <Card className="mx-auto w-full max-w-[16rem] gap-2" size=Sm>
     <Card.Header>
       <Tabs defaultValue="explorer">
         <Tabs.List className="w-full">

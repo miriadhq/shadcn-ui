@@ -112,7 +112,6 @@ module ExtraDomProps = {
     @as("data-spacing") dataSpacing?: float,
     @as("data-inset") dataInset?: bool,
     @as("data-lang") dataLang?: string,
-    week?: JSON.t,
   }
 }
 

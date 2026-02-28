@@ -289,9 +289,8 @@ module HijriCalendar = {
           ?ariaLabel,
           ?role,
           ?scope,
-          ?week,
         }) =>
-          <td ?className ?ariaLabel ?role ?scope ?week>
+          <td ?className ?ariaLabel ?role ?scope>
             <div
               className="flex size-(--cell-size) items-center justify-center text-center" ?children
             />

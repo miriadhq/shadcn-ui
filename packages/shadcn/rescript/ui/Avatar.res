@@ -21,9 +21,8 @@ let make = (
   ~style=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~dataSize=Size.Default,
+  ~size=Size.Default,
 ) => {
-  let size = dataSize
   <BaseUi.Avatar.Root
     ?id
     ?style

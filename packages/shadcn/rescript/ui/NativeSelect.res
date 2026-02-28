@@ -27,9 +27,8 @@ let make = (
   ~invalid=false,
   ~dir=?,
   ~style=?,
-  ~dataSize=Size.Default,
+  ~size=Size.Default,
 ) => {
-  let size = dataSize
   <div
     ?id
     ?style

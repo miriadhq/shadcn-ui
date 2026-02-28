@@ -53,21 +53,9 @@ let make = (
   ~ariaLabel=?,
   ~type_=?,
   ~render=?,
-  ~variant=?,
-  ~dataVariant=?,
-  ~size=?,
-  ~dataSize=?,
+  ~variant=Variant.Default,
+  ~size=Size.Default,
 ) => {
-  let variant = switch (variant, dataVariant) {
-  | (Some(variant), _) => variant
-  | (None, Some(variant)) => variant
-  | (None, None) => Variant.Default
-  }
-  let size = switch (size, dataSize) {
-  | (Some(size), _) => size
-  | (None, Some(size)) => size
-  | (None, None) => Size.Default
-  }
   let _ignoredOnCheckedChange = onCheckedChange
   <BaseUi.Toggle
     ?id

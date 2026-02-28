@@ -11,25 +11,23 @@ let make = () =>
       </InputGroup>
       <InputGroup>
         <InputGroup.Input id="input-kbd-23" />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+        <InputGroup.Addon align=InlineEnd>
           <Kbd> {"⌘K"->React.string} </Kbd>
         </InputGroup.Addon>
       </InputGroup>
       <InputGroup>
         <InputGroup.Input id="input-search-apps-24" placeholder="Search for Apps..." />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
-          {"Ask AI"->React.string}
-        </InputGroup.Addon>
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+        <InputGroup.Addon align=InlineEnd> {"Ask AI"->React.string} </InputGroup.Addon>
+        <InputGroup.Addon align=InlineEnd>
           <Kbd> {"Tab"->React.string} </Kbd>
         </InputGroup.Addon>
       </InputGroup>
       <InputGroup>
         <InputGroup.Input id="input-search-type-25" placeholder="Type to search..." />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineStart>
+        <InputGroup.Addon align=InlineStart>
           <Icons.Sparkles />
         </InputGroup.Addon>
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+        <InputGroup.Addon align=InlineEnd>
           <Kbd.Group>
             <Kbd> {"Ctrl"->React.string} </Kbd>
             <Kbd> {"C"->React.string} </Kbd>
@@ -41,7 +39,7 @@ let make = () =>
       <Field.Label htmlFor="input-username-26"> {"Username"->React.string} </Field.Label>
       <InputGroup>
         <InputGroup.Input id="input-username-26" defaultValue="shadcn" />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+        <InputGroup.Addon align=InlineEnd>
           <div
             className="flex size-4 items-center justify-center rounded-full bg-green-500 dark:bg-green-800"
           >
@@ -58,9 +56,7 @@ let make = () =>
       <InputGroup.Addon>
         <Icons.Search />
       </InputGroup.Addon>
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
-        {"12 results"->React.string}
-      </InputGroup.Addon>
+      <InputGroup.Addon align=InlineEnd> {"12 results"->React.string} </InputGroup.Addon>
     </InputGroup>
     <InputGroup dataDisabled={true}>
       <InputGroup.Input
@@ -69,16 +65,14 @@ let make = () =>
       <InputGroup.Addon>
         <Icons.Search />
       </InputGroup.Addon>
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
-        {"Disabled"->React.string}
-      </InputGroup.Addon>
+      <InputGroup.Addon align=InlineEnd> {"Disabled"->React.string} </InputGroup.Addon>
     </InputGroup>
     <Field.Group className="grid grid-cols-2 gap-4">
       <Field>
         <Field.Label htmlFor="input-group-11"> {"First Name"->React.string} </Field.Label>
         <InputGroup>
           <InputGroup.Input id="input-group-11" placeholder="First Name" />
-          <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+          <InputGroup.Addon align=InlineEnd>
             <Icons.Info />
           </InputGroup.Addon>
         </InputGroup>
@@ -87,7 +81,7 @@ let make = () =>
         <Field.Label htmlFor="input-group-12"> {"Last Name"->React.string} </Field.Label>
         <InputGroup>
           <InputGroup.Input id="input-group-12" placeholder="Last Name" />
-          <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+          <InputGroup.Addon align=InlineEnd>
             <Icons.Info />
           </InputGroup.Addon>
         </InputGroup>
@@ -99,7 +93,7 @@ let make = () =>
       </Field.Label>
       <InputGroup>
         <InputGroup.Input id="input-group-29" disabled={true} defaultValue="shadcn" />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+        <InputGroup.Addon align=InlineEnd>
           <Spinner />
         </InputGroup.Addon>
       </InputGroup>

@@ -2,7 +2,7 @@
 let make = () =>
   <Field.Group>
     <Field.Set>
-      <Field.Legend dataVariant=Field.Variant.Label>
+      <Field.Legend variant=Field.Variant.Label>
         {"Subscription Plan"->React.string}
       </Field.Legend>
       <RadioGroup defaultValue="free">
@@ -27,7 +27,7 @@ let make = () =>
       </RadioGroup>
     </Field.Set>
     <Field.Set>
-      <Field.Legend dataVariant=Field.Variant.Label> {"Battery Level"->React.string} </Field.Legend>
+      <Field.Legend variant=Field.Variant.Label> {"Battery Level"->React.string} </Field.Legend>
       <Field.Description>
         {"Choose your preferred battery level."->React.string}
       </Field.Description>
@@ -95,7 +95,7 @@ let make = () =>
       </Field.Label>
     </RadioGroup>
     <Field.Set>
-      <Field.Legend dataVariant=Field.Variant.Label>
+      <Field.Legend variant=Field.Variant.Label>
         {"Invalid Radio Group"->React.string}
       </Field.Legend>
       <RadioGroup>
@@ -110,7 +110,7 @@ let make = () =>
       </RadioGroup>
     </Field.Set>
     <Field.Set>
-      <Field.Legend dataVariant=Field.Variant.Label>
+      <Field.Legend variant=Field.Variant.Label>
         {"Disabled Radio Group"->React.string}
       </Field.Legend>
       <RadioGroup disabled={true}>

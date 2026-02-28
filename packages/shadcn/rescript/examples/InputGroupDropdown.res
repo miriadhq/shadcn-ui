@@ -5,12 +5,10 @@ let make = () =>
   <div className="grid w-full max-w-sm gap-4">
     <InputGroup>
       <InputGroup.Input placeholder="Enter file name" />
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+      <InputGroup.Addon align=InlineEnd>
         <DropdownMenu>
           <DropdownMenu.Trigger
-            render={<InputGroup.Button
-              dataVariant=InputGroup.Variant.Ghost ariaLabel="More" dataSize=InputGroup.Size.IconXs
-            />}
+            render={<InputGroup.Button variant=Ghost ariaLabel="More" size=IconXs />}
           >
             <Icons.MoreHorizontal />
           </DropdownMenu.Trigger>
@@ -26,12 +24,10 @@ let make = () =>
     </InputGroup>
     <InputGroup>
       <InputGroup.Input placeholder="Enter search query" />
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+      <InputGroup.Addon align=InlineEnd>
         <DropdownMenu>
           <DropdownMenu.Trigger
-            render={<InputGroup.Button
-              dataVariant=InputGroup.Variant.Ghost className="!pr-1.5 text-xs"
-            />}
+            render={<InputGroup.Button variant=Ghost className="!pr-1.5 text-xs" />}
           >
             {"Search In..."->React.string}
             <Icons.ChevronDown className="size-3" />

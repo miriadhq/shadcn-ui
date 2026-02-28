@@ -3,11 +3,11 @@ let make = () =>
   <div className="grid w-full max-w-sm gap-4">
     <InputGroup>
       <InputGroup.Input placeholder="Enter password" type_="password" />
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+      <InputGroup.Addon align=InlineEnd>
         <Tooltip>
           <Tooltip.Trigger
             render={<InputGroup.Button
-              dataVariant=InputGroup.Variant.Ghost ariaLabel="Info" dataSize=InputGroup.Size.IconXs
+              variant=InputGroup.Variant.Ghost ariaLabel="Info" size=InputGroup.Size.IconXs
             />}
           >
             <Icons.Info />
@@ -20,11 +20,11 @@ let make = () =>
     </InputGroup>
     <InputGroup>
       <InputGroup.Input placeholder="Your email address" />
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+      <InputGroup.Addon align=InlineEnd>
         <Tooltip>
           <Tooltip.Trigger
             render={<InputGroup.Button
-              dataVariant=InputGroup.Variant.Ghost ariaLabel="Help" dataSize=InputGroup.Size.IconXs
+              variant=InputGroup.Variant.Ghost ariaLabel="Help" size=InputGroup.Size.IconXs
             />}
           >
             <Icons.HelpCircle />

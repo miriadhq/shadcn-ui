@@ -7,7 +7,7 @@ let make = () =>
       <InputGroup.Addon>
         <InputGroup.Text> {"https://"->React.string} </InputGroup.Text>
       </InputGroup.Addon>
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+      <InputGroup.Addon align=InlineEnd>
         <Icons.Info />
       </InputGroup.Addon>
     </InputGroup>

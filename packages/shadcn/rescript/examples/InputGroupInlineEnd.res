@@ -4,7 +4,7 @@ let make = () =>
     <Field.Label htmlFor="inline-end-input"> {"Input"->React.string} </Field.Label>
     <InputGroup>
       <InputGroup.Input id="inline-end-input" type_="password" placeholder="Enter password" />
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+      <InputGroup.Addon align=InlineEnd>
         <Icons.Eye />
       </InputGroup.Addon>
     </InputGroup>

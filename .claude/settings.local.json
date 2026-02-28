@@ -13,7 +13,8 @@
       "Bash(pnpm:*)",
       "Bash(echo === Charts ===:*)",
       "Bash(do:*)",
-      "Bash(perl:*)"
+      "Bash(perl:*)",
+      "Bash(xargs sed:*)"
     ],
     "deny": []
   }

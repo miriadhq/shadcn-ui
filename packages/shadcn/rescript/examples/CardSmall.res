@@ -2,7 +2,7 @@
 let make = () => {
   let featureName = "Scheduled reports"
 
-  <Card dataSize=Card.Size.Sm className="mx-auto w-full max-w-xs">
+  <Card size=Sm className="mx-auto w-full max-w-xs">
     <Card.Header>
       <Card.Title> {featureName->React.string} </Card.Title>
       <Card.Description>

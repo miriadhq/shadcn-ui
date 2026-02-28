@@ -2,9 +2,7 @@
 let make = () =>
   <Field.Group className="w-full max-w-xs">
     <Field.Set>
-      <Field.Legend dataVariant=Field.Variant.Label>
-        {"Compute Environment"->React.string}
-      </Field.Legend>
+      <Field.Legend variant=Label> {"Compute Environment"->React.string} </Field.Legend>
       <Field.Description>
         {"Select the compute environment for your cluster."->React.string}
       </Field.Description>

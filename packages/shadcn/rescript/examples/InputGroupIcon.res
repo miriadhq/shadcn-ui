@@ -18,13 +18,13 @@ let make = () =>
       <InputGroup.Addon>
         <Icons.CreditCard />
       </InputGroup.Addon>
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+      <InputGroup.Addon align=InlineEnd>
         <Icons.Check />
       </InputGroup.Addon>
     </InputGroup>
     <InputGroup>
       <InputGroup.Input placeholder="Card number" />
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+      <InputGroup.Addon align=InlineEnd>
         <Icons.Info />
       </InputGroup.Addon>
     </InputGroup>

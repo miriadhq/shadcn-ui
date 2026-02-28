@@ -7,7 +7,7 @@ let make = () =>
       </ButtonGroup.Text>
       <InputGroup>
         <InputGroup.Input id="url" />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+        <InputGroup.Addon align=InlineEnd>
           <Icons.ExternalLink />
         </InputGroup.Addon>
       </InputGroup>

@@ -12,7 +12,7 @@ let make = () =>
       <InputGroup>
         <InputGroup.Input id="input-button-14" />
         <InputGroup.Addon>
-          <InputGroup.Button dataVariant=InputGroup.Variant.Outline>
+          <InputGroup.Button variant=InputGroup.Variant.Outline>
             {"Outline"->React.string}
           </InputGroup.Button>
         </InputGroup.Addon>
@@ -20,33 +20,31 @@ let make = () =>
       <InputGroup>
         <InputGroup.Input id="input-button-15" />
         <InputGroup.Addon>
-          <InputGroup.Button dataVariant=InputGroup.Variant.Secondary>
+          <InputGroup.Button variant=InputGroup.Variant.Secondary>
             {"Secondary"->React.string}
           </InputGroup.Button>
         </InputGroup.Addon>
       </InputGroup>
       <InputGroup>
         <InputGroup.Input id="input-button-16" />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
-          <InputGroup.Button dataVariant=InputGroup.Variant.Secondary>
+        <InputGroup.Addon align=InlineEnd>
+          <InputGroup.Button variant=InputGroup.Variant.Secondary>
             {"Button"->React.string}
           </InputGroup.Button>
         </InputGroup.Addon>
       </InputGroup>
       <InputGroup>
         <InputGroup.Input id="input-button-17" />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
-          <InputGroup.Button dataSize=InputGroup.Size.IconXs>
+        <InputGroup.Addon align=InlineEnd>
+          <InputGroup.Button size=InputGroup.Size.IconXs>
             <Icons.Download />
           </InputGroup.Button>
         </InputGroup.Addon>
       </InputGroup>
       <InputGroup>
         <InputGroup.Input id="input-button-18" />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
-          <InputGroup.Button
-            dataVariant=InputGroup.Variant.Secondary dataSize=InputGroup.Size.IconXs
-          >
+        <InputGroup.Addon align=InlineEnd>
+          <InputGroup.Button variant=InputGroup.Variant.Secondary size=InputGroup.Size.IconXs>
             <Icons.Trash />
           </InputGroup.Button>
         </InputGroup.Addon>

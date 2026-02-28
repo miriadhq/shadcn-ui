@@ -5,7 +5,7 @@ let make = () =>
     <InputGroup.Addon>
       <Icons.Search className="text-muted-foreground" />
     </InputGroup.Addon>
-    <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+    <InputGroup.Addon align=InlineEnd>
       <Kbd> {"⌘K"->React.string} </Kbd>
     </InputGroup.Addon>
   </InputGroup>

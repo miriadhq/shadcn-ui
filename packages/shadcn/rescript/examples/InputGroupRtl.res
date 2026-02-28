@@ -8,19 +8,17 @@ let make = () =>
       <InputGroup.Addon>
         <Icons.Search />
       </InputGroup.Addon>
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
-        {"١٢ نتيجة"->React.string}
-      </InputGroup.Addon>
+      <InputGroup.Addon align=InlineEnd> {"١٢ نتيجة"->React.string} </InputGroup.Addon>
     </InputGroup>
     <InputGroup>
       <InputGroup.Input placeholder="جاري البحث..." />
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+      <InputGroup.Addon align=InlineEnd>
         <Spinner />
       </InputGroup.Addon>
     </InputGroup>
     <InputGroup>
       <InputGroup.Input placeholder="جاري حفظ التغييرات..." />
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+      <InputGroup.Addon align=InlineEnd>
         <InputGroup.Text> {"جاري الحفظ..."->React.string} </InputGroup.Text>
         <Spinner />
       </InputGroup.Addon>
@@ -30,11 +28,9 @@ let make = () =>
         <Field.Label htmlFor="rtl-textarea"> {"منطقة النص"->React.string} </Field.Label>
         <InputGroup>
           <InputGroup.Textarea id="rtl-textarea" placeholder="اكتب تعليقًا..." />
-          <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockEnd>
+          <InputGroup.Addon align=BlockEnd>
             <InputGroup.Text> {"٠/٢٨٠"->React.string} </InputGroup.Text>
-            <InputGroup.Button
-              dataVariant=InputGroup.Variant.Default dataSize=InputGroup.Size.Sm className="ms-auto"
-            >
+            <InputGroup.Button variant=Default size=Sm className="ms-auto">
               {"نشر"->React.string}
             </InputGroup.Button>
           </InputGroup.Addon>

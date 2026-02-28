@@ -6,7 +6,10 @@ let formatDate = (date: option<Date.t>) =>
   switch date {
   | None => ""
   | Some(d) =>
-    d->Date.toLocaleDateStringWithLocaleAndOptions("en-US", {day: #"2-digit", month: #long, year: #numeric})
+    d->Date.toLocaleDateStringWithLocaleAndOptions(
+      "en-US",
+      {day: #"2-digit", month: #long, year: #numeric},
+    )
   }
 
 @react.component
@@ -31,14 +34,11 @@ let make = () => {
           }
         }}
       />
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+      <InputGroup.Addon align=InlineEnd>
         <Popover open_={open_} onOpenChange={(v, _) => setOpen(_ => v)}>
           <Popover.Trigger
             render={<InputGroup.Button
-              id="date-picker"
-              ariaLabel="Select date"
-              dataVariant=InputGroup.Variant.Ghost
-              dataSize=InputGroup.Size.IconXs
+              id="date-picker" ariaLabel="Select date" variant=Ghost size=IconXs
             />}
           >
             <Icons.Calendar />

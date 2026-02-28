@@ -6,7 +6,7 @@ let make = () =>
         <InputGroup.Text> {"$"->React.string} </InputGroup.Text>
       </InputGroup.Addon>
       <InputGroup.Input placeholder="0.00" />
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+      <InputGroup.Addon align=InlineEnd>
         <InputGroup.Text> {"USD"->React.string} </InputGroup.Text>
       </InputGroup.Addon>
     </InputGroup>
@@ -15,19 +15,19 @@ let make = () =>
         <InputGroup.Text> {"https://"->React.string} </InputGroup.Text>
       </InputGroup.Addon>
       <InputGroup.Input placeholder="example.com" className="!pl-0.5" />
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+      <InputGroup.Addon align=InlineEnd>
         <InputGroup.Text> {".com"->React.string} </InputGroup.Text>
       </InputGroup.Addon>
     </InputGroup>
     <InputGroup>
       <InputGroup.Input placeholder="Enter your username" />
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+      <InputGroup.Addon align=InlineEnd>
         <InputGroup.Text> {"@company.com"->React.string} </InputGroup.Text>
       </InputGroup.Addon>
     </InputGroup>
     <InputGroup>
       <InputGroup.Textarea placeholder="Enter your message" />
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockEnd>
+      <InputGroup.Addon align=BlockEnd>
         <InputGroup.Text className="text-muted-foreground text-xs">
           {"120 characters left"->React.string}
         </InputGroup.Text>

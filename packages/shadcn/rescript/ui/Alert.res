@@ -29,14 +29,8 @@ let make = (
   ~style=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~variant=?,
-  ~dataVariant=?,
+  ~variant=Variant.Default,
 ) => {
-  let variant = switch (variant, dataVariant) {
-  | (Some(variant), _) => variant
-  | (None, Some(variant)) => variant
-  | (None, None) => Variant.Default
-  }
   <div
     ?id
     ?style

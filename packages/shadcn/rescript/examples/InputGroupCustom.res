@@ -9,10 +9,8 @@ let make = () =>
         className="flex field-sizing-content min-h-16 w-full resize-none rounded-md bg-transparent px-3 py-2.5 text-base transition-[color,box-shadow] outline-none md:text-sm"
         placeholder="Autoresize textarea..."
       />
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockEnd>
-        <InputGroup.Button
-          className="ml-auto" dataSize=InputGroup.Size.Sm dataVariant=InputGroup.Variant.Default
-        >
+      <InputGroup.Addon align=BlockEnd>
+        <InputGroup.Button className="ml-auto" size=Sm variant=Default>
           {"Submit"->React.string}
         </InputGroup.Button>
       </InputGroup.Addon>

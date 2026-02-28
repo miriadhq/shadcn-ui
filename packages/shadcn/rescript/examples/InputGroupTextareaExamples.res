@@ -40,7 +40,7 @@ let make = () =>
       <Field.Label htmlFor="prompt-31"> {"Addon (block-start)"->React.string} </Field.Label>
       <InputGroup>
         <InputGroup.Textarea id="prompt-31" />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockStart>
+        <InputGroup.Addon align=BlockStart>
           <InputGroup.Text> {"Ask, Search or Chat..."->React.string} </InputGroup.Text>
           <Icons.Info className="text-muted-foreground ml-auto" />
         </InputGroup.Addon>
@@ -55,13 +55,9 @@ let make = () =>
       </Field.Label>
       <InputGroup>
         <InputGroup.Textarea id="textarea-header-footer-30" placeholder="Enter your text here..." />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockEnd>
+        <InputGroup.Addon align=BlockEnd>
           <InputGroup.Text> {"0/280 characters"->React.string} </InputGroup.Text>
-          <InputGroup.Button
-            dataVariant=InputGroup.Variant.Default
-            dataSize=InputGroup.Size.IconXs
-            className="ml-auto rounded-full"
-          >
+          <InputGroup.Button variant=Default size=IconXs className="ml-auto rounded-full">
             <Icons.ArrowUp />
             <span className="sr-only"> {"Send"->React.string} </span>
           </InputGroup.Button>
@@ -74,13 +70,11 @@ let make = () =>
         <InputGroup.Textarea
           id="textarea-comment-31" placeholder="Share your thoughts..." className="min-h-[120px]"
         />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockEnd>
-          <InputGroup.Button
-            dataVariant=InputGroup.Variant.Ghost className="ml-auto" dataSize=InputGroup.Size.Sm
-          >
+        <InputGroup.Addon align=BlockEnd>
+          <InputGroup.Button variant=Ghost className="ml-auto" size=Sm>
             {"Cancel"->React.string}
           </InputGroup.Button>
-          <InputGroup.Button dataVariant=InputGroup.Variant.Default dataSize=InputGroup.Size.Sm>
+          <InputGroup.Button variant=Default size=Sm>
             {"Post Comment"->React.string}
           </InputGroup.Button>
         </InputGroup.Addon>
@@ -94,19 +88,19 @@ let make = () =>
           placeholder="console.log('Hello, world!');"
           className="min-h-[300px] py-3"
         />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockStart className="border-b">
+        <InputGroup.Addon align=BlockStart className="border-b">
           <InputGroup.Text className="font-mono font-medium">
             <Icons.FileCode />
             {"script.js"->React.string}
           </InputGroup.Text>
-          <InputGroup.Button dataSize=InputGroup.Size.IconXs className="ml-auto">
+          <InputGroup.Button size=IconXs className="ml-auto">
             <Icons.RefreshCcw />
           </InputGroup.Button>
-          <InputGroup.Button dataSize=InputGroup.Size.IconXs dataVariant=InputGroup.Variant.Ghost>
+          <InputGroup.Button size=IconXs variant=Ghost>
             <Icons.Download />
           </InputGroup.Button>
         </InputGroup.Addon>
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockEnd className="border-t">
+        <InputGroup.Addon align=BlockEnd className="border-t">
           <InputGroup.Text> {"Line 1, Column 1"->React.string} </InputGroup.Text>
           <InputGroup.Text className="ml-auto"> {"JavaScript"->React.string} </InputGroup.Text>
         </InputGroup.Addon>

@@ -4,7 +4,7 @@
 let make = () => {
   let (isOpen, setIsOpen) = React.useState(() => false)
 
-  <Card className="mx-auto w-full max-w-xs" dataSize=Card.Size.Sm>
+  <Card className="mx-auto w-full max-w-xs" size=Sm>
     <Card.Header>
       <Card.Title> {"Radius"->React.string} </Card.Title>
       <Card.Description> {"Set the corner radius of the element."->React.string} </Card.Description>

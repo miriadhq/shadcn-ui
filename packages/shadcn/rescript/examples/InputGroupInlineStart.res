@@ -4,7 +4,7 @@ let make = () =>
     <Field.Label htmlFor="inline-start-input"> {"Input"->React.string} </Field.Label>
     <InputGroup>
       <InputGroup.Input id="inline-start-input" placeholder="Search..." />
-      <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineStart>
+      <InputGroup.Addon align=InlineStart>
         <Icons.Search className="text-muted-foreground" />
       </InputGroup.Addon>
     </InputGroup>

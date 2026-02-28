@@ -98,7 +98,7 @@ module WeekNumberProps = {
     @as("aria-label") ariaLabel?: string,
     role?: string,
     scope?: string,
-    week?: JSON.t,
+    week?: int,
   }
 }
 
@@ -627,9 +627,8 @@ let make = (
         ?ariaLabel,
         ?role,
         ?scope,
-        ?week,
       }) =>
-        <td ?className ?ariaLabel ?role ?scope ?week>
+        <td ?className ?ariaLabel ?role ?scope>
           <div
             className="flex size-(--cell-size) items-center justify-center text-center" ?children
           />

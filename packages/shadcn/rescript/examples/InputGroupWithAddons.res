@@ -20,7 +20,7 @@ let make = () =>
       </Field.Label>
       <InputGroup>
         <InputGroup.Input id="input-icon-right-07" />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+        <InputGroup.Addon align=InlineEnd>
           <Icons.Eye />
         </InputGroup.Addon>
       </InputGroup>
@@ -34,7 +34,7 @@ let make = () =>
         <InputGroup.Addon>
           <Icons.Search className="text-muted-foreground" />
         </InputGroup.Addon>
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+        <InputGroup.Addon align=InlineEnd>
           <Icons.Info className="animate-pulse text-red-500" />
         </InputGroup.Addon>
       </InputGroup>
@@ -43,7 +43,7 @@ let make = () =>
       <Field.Label htmlFor="input-addon-20"> {"Addon (block-start)"->React.string} </Field.Label>
       <InputGroup className="h-auto">
         <InputGroup.Input id="input-addon-20" />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockStart>
+        <InputGroup.Addon align=BlockStart>
           <InputGroup.Text> {"First Name"->React.string} </InputGroup.Text>
           <Icons.Info className="text-muted-foreground ml-auto" />
         </InputGroup.Addon>
@@ -53,7 +53,7 @@ let make = () =>
       <Field.Label htmlFor="input-addon-21"> {"Addon (block-end)"->React.string} </Field.Label>
       <InputGroup className="h-auto">
         <InputGroup.Input id="input-addon-21" />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockEnd>
+        <InputGroup.Addon align=BlockEnd>
           <InputGroup.Text> {"20/240 characters"->React.string} </InputGroup.Text>
           <Icons.Info className="text-muted-foreground ml-auto" />
         </InputGroup.Addon>
@@ -63,9 +63,9 @@ let make = () =>
       <Field.Label htmlFor="input-icon-both-10"> {"Multiple Icons"->React.string} </Field.Label>
       <InputGroup>
         <InputGroup.Input id="input-icon-both-10" />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+        <InputGroup.Addon align=InlineEnd>
           <Icons.Info />
-          <InputGroup.Button dataSize=InputGroup.Size.IconXs>
+          <InputGroup.Button size=InputGroup.Size.IconXs>
             <Icons.Download />
           </InputGroup.Button>
         </InputGroup.Addon>
@@ -78,7 +78,7 @@ let make = () =>
       <Field.Label htmlFor="input-description-10"> {"Description"->React.string} </Field.Label>
       <InputGroup>
         <InputGroup.Input id="input-description-10" />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+        <InputGroup.Addon align=InlineEnd>
           <Icons.Info />
         </InputGroup.Addon>
       </InputGroup>
@@ -96,7 +96,7 @@ let make = () =>
       </InputGroup>
       <InputGroup>
         <InputGroup.Input id="input-optional-12" ariaLabel="Optional" />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+        <InputGroup.Addon align=InlineEnd>
           <InputGroup.Text> {"(optional)"->React.string} </InputGroup.Text>
         </InputGroup.Addon>
       </InputGroup>

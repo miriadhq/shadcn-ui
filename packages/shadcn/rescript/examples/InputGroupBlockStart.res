@@ -5,7 +5,7 @@ let make = () =>
       <Field.Label htmlFor="block-start-input"> {"Input"->React.string} </Field.Label>
       <InputGroup className="h-auto">
         <InputGroup.Input id="block-start-input" placeholder="Enter your name" />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockStart>
+        <InputGroup.Addon align=BlockStart>
           <InputGroup.Text> {"Full Name"->React.string} </InputGroup.Text>
         </InputGroup.Addon>
       </InputGroup>
@@ -19,10 +19,10 @@ let make = () =>
           placeholder="console.log('Hello, world!');"
           className="font-mono text-sm"
         />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockStart>
+        <InputGroup.Addon align=BlockStart>
           <Icons.FileCode className="text-muted-foreground" />
           <InputGroup.Text className="font-mono"> {"script.js"->React.string} </InputGroup.Text>
-          <InputGroup.Button dataSize=InputGroup.Size.IconXs className="ml-auto">
+          <InputGroup.Button size=IconXs className="ml-auto">
             <Icons.Download />
             <span className="sr-only"> {"Copy"->React.string} </span>
           </InputGroup.Button>

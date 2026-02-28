@@ -19,9 +19,11 @@ let make = () => {
   let year = now->Date.getFullYear
   let month = now->Date.getMonth
   let (date, setDate) = React.useState(() => Some(Date.makeWithYMD(~year, ~month=1, ~day=12)))
-  let (currentMonth, setCurrentMonth) = React.useState(() => Date.makeWithYMD(~year, ~month, ~day=1))
+  let (currentMonth, setCurrentMonth) = React.useState(() =>
+    Date.makeWithYMD(~year, ~month, ~day=1)
+  )
 
-  <Card className="mx-auto w-fit max-w-[300px]" dataSize=Card.Size.Sm>
+  <Card className="mx-auto w-fit max-w-[300px]" size=Sm>
     <Card.Content>
       <Calendar
         mode="single"
@@ -49,7 +51,13 @@ let make = () => {
               ~day=today->Date.getDate + preset.value,
             )
             setDate(_ => Some(newDate))
-            setCurrentMonth(_ => Date.makeWithYMD(~year=newDate->Date.getFullYear, ~month=newDate->Date.getMonth, ~day=1))
+            setCurrentMonth(_ =>
+              Date.makeWithYMD(
+                ~year=newDate->Date.getFullYear,
+                ~month=newDate->Date.getMonth,
+                ~day=1,
+              )
+            )
           }}
         >
           {preset.label->React.string}

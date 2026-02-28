@@ -192,16 +192,10 @@ module Content = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~rootProps: option<BaseUi.Types.DomProps.t>=?,
   ) => {
     let {carouselRef, orientation} = useCarousel()
-    let rootProps: BaseUi.Types.DomProps.t = switch rootProps {
-    | Some(rootProps) => rootProps
-    | None => {}
-    }
     <div dataSlot="carousel-content" ref={carouselRef} className="overflow-hidden">
       <div
-        {...rootProps}
         ?id
         ?style
         ?onClick
@@ -225,15 +219,9 @@ module Item = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~rootProps: option<BaseUi.Types.DomProps.t>=?,
   ) => {
     let {orientation} = useCarousel()
-    let rootProps: BaseUi.Types.DomProps.t = switch rootProps {
-    | Some(rootProps) => rootProps
-    | None => {}
-    }
     <div
-      {...rootProps}
       ?id
       ?style
       ?onClick

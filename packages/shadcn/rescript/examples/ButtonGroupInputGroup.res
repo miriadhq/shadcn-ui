@@ -17,12 +17,12 @@ let make = () => {
     <ButtonGroup>
       <InputGroup>
         <InputGroup.Input placeholder disabled=voiceEnabled />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+        <InputGroup.Addon align=InlineEnd>
           <Tooltip>
             <Tooltip.Trigger
               render={<InputGroup.Button
                 onClick={_ => setVoiceEnabled(value => !value)}
-                dataSize=InputGroup.Size.IconXs
+                size=IconXs
                 dataActive=voiceEnabled
                 ariaPressed=voiceEnabled
                 dataSlot="tooltip-trigger"

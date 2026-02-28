@@ -1,9 +1,7 @@
 @react.component
 let make = () =>
   <Field.Set>
-    <Field.Legend dataVariant=Field.Variant.Label>
-      {"Show these items on the desktop:"->React.string}
-    </Field.Legend>
+    <Field.Legend variant=Label> {"Show these items on the desktop:"->React.string} </Field.Legend>
     <Field.Description>
       {"Select the items you want to show on the desktop."->React.string}
     </Field.Description>

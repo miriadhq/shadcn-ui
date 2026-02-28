@@ -8,9 +8,6 @@ open BaseUi.Types
 external cn: (string, option<string>) => string = "twMerge"
 
 @val external dictEntries: dict<'a> => array<(string, 'a)> = "Object.entries"
-@val external jsTruthy: JSON.t => bool = "Boolean"
-external unknownToReactElement: unknown => React.element = "%identity"
-external toUnknown: 'a => unknown = "%identity"
 
 type colorTheme = {
   light?: string,
@@ -18,7 +15,7 @@ type colorTheme = {
 }
 
 type chartConfigItem = {
-  label?: unknown,
+  label?: React.element,
   icon?: unit => React.element,
   color?: string,
   theme?: colorTheme,
@@ -28,12 +25,12 @@ type chartConfig = dict<chartConfigItem>
 
 type chartContext = {config: chartConfig}
 
-type payloadItem = {
+type payloadItem<'value> = {
   @as("type") type_?: string,
   dataKey?: string,
   name?: string,
   color?: string,
-  value?: JSON.t,
+  value?: 'value,
   payload: dict<JSON.t>,
 }
 
@@ -51,14 +48,7 @@ let getString = (dict: dict<JSON.t>, key: string) =>
   | _ => None
   }
 
-let jsonToDisplayString = (value: JSON.t) =>
-  switch value {
-  | Number(number) => Some(number->Float.toLocaleString)
-  | String(string) => Some(string)
-  | _ => None
-  }
-
-let chartLabelToElement = (label: unknown): React.element => label->unknownToReactElement
+let jsonToDisplayString = (value: float) => value->Float.toLocaleString
 
 let themeColor = (~itemConfig: chartConfigItem, ~themeName: string) =>
   switch itemConfig.theme {
@@ -71,7 +61,11 @@ let themeColor = (~itemConfig: chartConfigItem, ~themeName: string) =>
   | None => itemConfig.color
   }
 
-let getPayloadConfigFromPayload = (~config: chartConfig, ~payload: payloadItem, ~key: string) => {
+let getPayloadConfigFromPayload = (
+  ~config: chartConfig,
+  ~payload: payloadItem<'value>,
+  ~key: string,
+) => {
   let configLabelKey = switch key {
   | "name" => payload.name->Option.orElse(payload.payload->getString("name"))
   | "dataKey" => payload.dataKey->Option.orElse(payload.payload->getString("dataKey"))
@@ -108,11 +102,11 @@ let renderStyleElement = (~id: string, ~config: chartConfig) => {
             | None => None
             }
           )
-          ->Array.joinWith("\n")
+          ->Array.join("\n")
 
         `${prefix} [data-chart=${id}] {\n${declarations}\n}`
       })
-      ->Array.joinWith("\n\n")
+      ->Array.join("\n\n")
     <style> {css->React.string} </style>
   }
 }
@@ -139,7 +133,6 @@ let make = (
   ~config: chartConfig,
   ~className=?,
   ~children=?,
-  ~rootProps: BaseUi.Types.DomProps.t={},
   ~id=?,
   ~style=?,
   ~onClick=?,
@@ -155,7 +148,6 @@ let make = (
   }
   <Provider value={Some({config: config})}>
     <div
-      {...rootProps}
       ?id
       ?style
       ?onClick
@@ -187,16 +179,15 @@ module TooltipContent = {
   @react.component
   let make = (
     ~active=false,
-    ~payload: array<payloadItem>=[],
+    ~payload: array<payloadItem<'value>>=[],
     ~className=?,
-    ~rootProps: BaseUi.Types.DomProps.t={},
     ~indicator=Indicator.Dot,
     ~hideLabel=false,
     ~hideIndicator=false,
     ~label="",
-    ~labelFormatter: option<(option<unknown>, array<payloadItem>) => React.element>=?,
+    ~labelFormatter: option<(option<React.element>, array<payloadItem<'value>>) => React.element>=?,
     ~labelClassName="",
-    ~formatter: option<(JSON.t, string, payloadItem, int, dict<JSON.t>) => React.element>=?,
+    ~formatter: option<('value, string, payloadItem<'value>, int, dict<JSON.t>) => React.element>=?,
     ~color="",
     ~nameKey="",
     ~labelKey="",
@@ -224,8 +215,8 @@ module TooltipContent = {
         let itemConfig = getPayloadConfigFromPayload(~config, ~payload=item, ~key)
         let value = if labelKey == "" && label != "" {
           switch config->Dict.get(label) {
-          | Some(configItem) => Some(configItem.label->Option.getOr(label->toUnknown))
-          | None => Some(label->toUnknown)
+          | Some(configItem) => Some(configItem.label->Option.getOr(label->React.string))
+          | None => Some(label->React.string)
           }
         } else {
           itemConfig->Option.flatMap(itemConfig => itemConfig.label)
@@ -237,10 +228,7 @@ module TooltipContent = {
           )
         | None =>
           switch value {
-          | Some(value) =>
-            Some(
-              <div className={`font-medium ${labelClassName}`}> {value->chartLabelToElement} </div>,
-            )
+          | Some(value) => Some(<div className={`font-medium ${labelClassName}`}> {value} </div>)
           | None => None
           }
         }
@@ -259,7 +247,6 @@ module TooltipContent = {
       )
 
       <div
-        {...rootProps}
         ?id
         ?style
         ?onClick
@@ -296,12 +283,11 @@ module TooltipContent = {
             | _ => None
             }
             let rawItemValue = item.value
-            let itemValue = rawItemValue->Option.flatMap(jsonToDisplayString)
-            let shouldShowValue = rawItemValue->Option.mapOr(false, jsTruthy)
+            let itemValue = rawItemValue->Option.map(jsonToDisplayString)
+            let shouldShowValue = rawItemValue->Option.isSome
             let itemLabel =
               itemConfig
               ->Option.flatMap(configItem => configItem.label)
-              ->Option.map(chartLabelToElement)
               ->Option.orElse(item.name->Option.map(React.string))
             let itemKey =
               item.dataKey
@@ -388,9 +374,8 @@ module LegendContent = {
   @react.component
   let make = (
     ~className=?,
-    ~rootProps: BaseUi.Types.DomProps.t={},
     ~hideIcon=false,
-    ~payload: array<payloadItem>=[],
+    ~payload: array<payloadItem<'value>>=[],
     ~verticalAlign="bottom",
     ~nameKey="",
     ~id=?,
@@ -404,7 +389,6 @@ module LegendContent = {
       React.null
     } else {
       <div
-        {...rootProps}
         ?id
         ?style
         ?onClick
@@ -445,10 +429,7 @@ module LegendContent = {
                 : icon()
             | None => <div className="h-2 w-2 shrink-0 rounded-[2px]" style=?colorStyle />
             }}
-            {switch itemConfig->Option.flatMap(itemConfig => itemConfig.label) {
-            | Some(label) => label->chartLabelToElement
-            | None => React.null
-            }}
+            {itemConfig->Option.flatMap(itemConfig => itemConfig.label)->Option.getOr(React.null)}
           </div>
         })
         ->React.array}

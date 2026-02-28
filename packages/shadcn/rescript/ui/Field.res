@@ -60,9 +60,8 @@ module Legend = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~dataVariant=Variant.Legend,
+    ~variant=Variant.Legend,
   ) => {
-    let variant = dataVariant
     <legend
       ?id
       ?children

@@ -9,12 +9,10 @@ let make = () => {
       <Field.Label htmlFor="input-tooltip-20"> {"Tooltip"->React.string} </Field.Label>
       <InputGroup>
         <InputGroup.Input id="input-tooltip-20" />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+        <InputGroup.Addon align=InlineEnd>
           <Tooltip>
             <Tooltip.Trigger
-              render={<InputGroup.Button
-                className="rounded-full" dataSize=InputGroup.Size.IconXs
-              />}
+              render={<InputGroup.Button className="rounded-full" size=InputGroup.Size.IconXs />}
             >
               <Icons.Info />
             </Tooltip.Trigger>
@@ -63,9 +61,7 @@ let make = () => {
       <InputGroup>
         <Popover>
           <Popover.Trigger render={<InputGroup.Addon />} nativeButton={false}>
-            <InputGroup.Button
-              dataVariant=InputGroup.Variant.Secondary dataSize=InputGroup.Size.IconXs
-            >
+            <InputGroup.Button variant=InputGroup.Variant.Secondary size=InputGroup.Size.IconXs>
               <Icons.Info />
             </InputGroup.Button>
           </Popover.Trigger>
@@ -82,8 +78,8 @@ let make = () => {
           {"https://"->React.string}
         </InputGroup.Addon>
         <InputGroup.Input id="input-secure-19" />
-        <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
-          <InputGroup.Button dataSize=InputGroup.Size.IconXs>
+        <InputGroup.Addon align=InlineEnd>
+          <InputGroup.Button size=InputGroup.Size.IconXs>
             <Icons.Info />
           </InputGroup.Button>
         </InputGroup.Addon>
@@ -98,7 +94,7 @@ let make = () => {
         <ButtonGroup.Text> {"https://"->React.string} </ButtonGroup.Text>
         <InputGroup>
           <InputGroup.Input id="url" />
-          <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
+          <InputGroup.Addon align=InlineEnd>
             <Icons.Info />
           </InputGroup.Addon>
         </InputGroup>

@@ -10,11 +10,7 @@ let make = () =>
       <InputGroup>
         <InputGroup.Input placeholder="Send a message..." />
         <Tooltip>
-          <Tooltip.Trigger
-            render={<InputGroup.Addon
-              dataAlign=InputGroup.DataAlign.InlineEnd dataSlot="tooltip-trigger"
-            />}
-          >
+          <Tooltip.Trigger render={<InputGroup.Addon align=InlineEnd dataSlot="tooltip-trigger" />}>
             <Icons.AudioLines />
           </Tooltip.Trigger>
           <Tooltip.Content> {"Voice Mode"->React.string} </Tooltip.Content>
