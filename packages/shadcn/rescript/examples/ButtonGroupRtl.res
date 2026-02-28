@@ -29,10 +29,7 @@ let make = () => {
             <Icons.MoreHorizontal />
           </DropdownMenu.Trigger>
           <DropdownMenu.Content
-            align=BaseUi.Types.Align.Start
-            dir="rtl"
-            dataLang="ar"
-            className="w-40"
+            align=BaseUi.Types.Align.Start dir="rtl" dataLang="ar" className="w-40"
           >
             <DropdownMenu.Group>
               <DropdownMenu.Item>

@@ -29,9 +29,7 @@ let make = () =>
       <Field.Label htmlFor="textarea-header-footer-15"> {"Disabled"->React.string} </Field.Label>
       <InputGroup>
         <InputGroup.Textarea
-          id="textarea-header-footer-15"
-          placeholder="Enter your text here..."
-          disabled={true}
+          id="textarea-header-footer-15" placeholder="Enter your text here..." disabled={true}
         />
       </InputGroup>
       <Field.Description>
@@ -74,12 +72,12 @@ let make = () =>
       <Field.Label htmlFor="textarea-comment-31"> {"Addon (Buttons)"->React.string} </Field.Label>
       <InputGroup>
         <InputGroup.Textarea
-          id="textarea-comment-31"
-          placeholder="Share your thoughts..."
-          className="min-h-[120px]"
+          id="textarea-comment-31" placeholder="Share your thoughts..." className="min-h-[120px]"
         />
         <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockEnd>
-          <InputGroup.Button dataVariant=InputGroup.Variant.Ghost className="ml-auto" dataSize=InputGroup.Size.Sm>
+          <InputGroup.Button
+            dataVariant=InputGroup.Variant.Ghost className="ml-auto" dataSize=InputGroup.Size.Sm
+          >
             {"Cancel"->React.string}
           </InputGroup.Button>
           <InputGroup.Button dataVariant=InputGroup.Variant.Default dataSize=InputGroup.Size.Sm>

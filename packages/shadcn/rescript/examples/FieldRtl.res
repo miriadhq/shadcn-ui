@@ -53,9 +53,7 @@ let make = () =>
                 {"رقم البطاقة"->React.string}
               </Field.Label>
               <Input
-                id="checkout-card-number-rtl"
-                placeholder="1234 5678 9012 3456"
-                required={true}
+                id="checkout-card-number-rtl" placeholder="1234 5678 9012 3456" required={true}
               />
               <Field.Description>
                 {"أدخل رقم البطاقة المكون من 16 رقمًا"->React.string}
@@ -142,7 +140,9 @@ let make = () =>
         </Field.Set>
         <Field orientation=BaseUi.Types.Orientation.Horizontal>
           <Button type_="submit"> {"إرسال"->React.string} </Button>
-          <Button variant=Button.Variant.Outline type_="button"> {"إلغاء"->React.string} </Button>
+          <Button variant=Button.Variant.Outline type_="button">
+            {"إلغاء"->React.string}
+          </Button>
         </Field>
       </Field.Group>
     </form>

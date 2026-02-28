@@ -17,22 +17,26 @@ let make = () => {
             {"نافذة جديدة"->React.string}
             <Menubar.Shortcut> {"⌘N"->React.string} </Menubar.Shortcut>
           </Menubar.Item>
-          <Menubar.Item disabled=true> {"نافذة التصفح المتخفي الجديدة"->React.string} </Menubar.Item>
+          <Menubar.Item disabled=true>
+            {"نافذة التصفح المتخفي الجديدة"->React.string}
+          </Menubar.Item>
         </Menubar.Group>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Group>
           <Menubar.Sub>
             <Menubar.SubTrigger> {"مشاركة"->React.string} </Menubar.SubTrigger>
             <Menubar.SubContent dir="rtl" dataLang="ar">
               <Menubar.Group>
-                <Menubar.Item> {"رابط البريد الإلكتروني"->React.string} </Menubar.Item>
+                <Menubar.Item>
+                  {"رابط البريد الإلكتروني"->React.string}
+                </Menubar.Item>
                 <Menubar.Item> {"الرسائل"->React.string} </Menubar.Item>
                 <Menubar.Item> {"الملاحظات"->React.string} </Menubar.Item>
               </Menubar.Group>
             </Menubar.SubContent>
           </Menubar.Sub>
         </Menubar.Group>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Group>
           <Menubar.Item>
             {"طباعة..."->React.string}
@@ -54,7 +58,7 @@ let make = () => {
             <Menubar.Shortcut> {"⇧⌘Z"->React.string} </Menubar.Shortcut>
           </Menubar.Item>
         </Menubar.Group>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Group>
           <Menubar.Sub>
             <Menubar.SubTrigger> {"بحث"->React.string} </Menubar.SubTrigger>
@@ -62,7 +66,7 @@ let make = () => {
               <Menubar.Group>
                 <Menubar.Item> {"البحث على الويب"->React.string} </Menubar.Item>
               </Menubar.Group>
-              <Menubar.Separator> {React.null} </Menubar.Separator>
+              <Menubar.Separator />
               <Menubar.Group>
                 <Menubar.Item> {"بحث..."->React.string} </Menubar.Item>
                 <Menubar.Item> {"البحث التالي"->React.string} </Menubar.Item>
@@ -71,7 +75,7 @@ let make = () => {
             </Menubar.SubContent>
           </Menubar.Sub>
         </Menubar.Group>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Group>
           <Menubar.Item> {"قص"->React.string} </Menubar.Item>
           <Menubar.Item> {"نسخ"->React.string} </Menubar.Item>
@@ -83,12 +87,14 @@ let make = () => {
       <Menubar.Trigger> {"عرض"->React.string} </Menubar.Trigger>
       <Menubar.Content className="w-44" dir="rtl" align=BaseUi.Types.Align.End dataLang="ar">
         <Menubar.Group>
-          <Menubar.CheckboxItem> {"شريط الإشارات المرجعية"->React.string} </Menubar.CheckboxItem>
+          <Menubar.CheckboxItem>
+            {"شريط الإشارات المرجعية"->React.string}
+          </Menubar.CheckboxItem>
           <Menubar.CheckboxItem checked=true>
             {"عناوين URL الكاملة"->React.string}
           </Menubar.CheckboxItem>
         </Menubar.Group>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Group>
           <Menubar.Item inset=true>
             {"إعادة تحميل"->React.string}
@@ -99,13 +105,17 @@ let make = () => {
             <Menubar.Shortcut> {"⇧⌘R"->React.string} </Menubar.Shortcut>
           </Menubar.Item>
         </Menubar.Group>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Group>
-          <Menubar.Item inset=true> {"تبديل وضع ملء الشاشة"->React.string} </Menubar.Item>
+          <Menubar.Item inset=true>
+            {"تبديل وضع ملء الشاشة"->React.string}
+          </Menubar.Item>
         </Menubar.Group>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Group>
-          <Menubar.Item inset=true> {"إخفاء الشريط الجانبي"->React.string} </Menubar.Item>
+          <Menubar.Item inset=true>
+            {"إخفاء الشريط الجانبي"->React.string}
+          </Menubar.Item>
         </Menubar.Group>
       </Menubar.Content>
     </Menubar.Menu>
@@ -117,11 +127,11 @@ let make = () => {
           <Menubar.RadioItem value="benoit"> {"Benoit"->React.string} </Menubar.RadioItem>
           <Menubar.RadioItem value="Luis"> {"Luis"->React.string} </Menubar.RadioItem>
         </Menubar.RadioGroup>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Group>
           <Menubar.Item inset=true> {"تعديل..."->React.string} </Menubar.Item>
         </Menubar.Group>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Group>
           <Menubar.Item inset=true> {"إضافة ملف شخصي..."->React.string} </Menubar.Item>
         </Menubar.Group>

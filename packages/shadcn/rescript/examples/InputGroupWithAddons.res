@@ -4,7 +4,9 @@
 let make = () =>
   <Field.Group>
     <Field>
-      <Field.Label htmlFor="input-icon-left-05"> {"Addon (inline-start)"->React.string} </Field.Label>
+      <Field.Label htmlFor="input-icon-left-05">
+        {"Addon (inline-start)"->React.string}
+      </Field.Label>
       <InputGroup>
         <InputGroup.Input id="input-icon-left-05" />
         <InputGroup.Addon>
@@ -13,7 +15,9 @@ let make = () =>
       </InputGroup>
     </Field>
     <Field>
-      <Field.Label htmlFor="input-icon-right-07"> {"Addon (inline-end)"->React.string} </Field.Label>
+      <Field.Label htmlFor="input-icon-right-07">
+        {"Addon (inline-end)"->React.string}
+      </Field.Label>
       <InputGroup>
         <InputGroup.Input id="input-icon-right-07" />
         <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>

@@ -8,11 +8,17 @@ type notifications = {
 
 @react.component
 let make = () => {
-  let (notifications, setNotifications) = React.useState(() => {email: true, sms: false, push: true})
+  let (notifications, setNotifications) = React.useState(() => {
+    email: true,
+    sms: false,
+    push: true,
+  })
   let (theme, setTheme) = React.useState(() => "light")
 
   <DropdownMenu>
-    <DropdownMenu.Trigger render={<Button variant=Button.Variant.Outline dataSlot="dropdown-menu-trigger" />}>
+    <DropdownMenu.Trigger
+      render={<Button variant=Button.Variant.Outline dataSlot="dropdown-menu-trigger" />}
+    >
       {"Complex Menu"->React.string}
     </DropdownMenu.Trigger>
     <DropdownMenu.Content className="w-44">
@@ -168,7 +174,9 @@ let make = () => {
                   <DropdownMenu.Portal>
                     <DropdownMenu.SubContent>
                       <DropdownMenu.Group>
-                        <DropdownMenu.Label> {"Notification Types"->React.string} </DropdownMenu.Label>
+                        <DropdownMenu.Label>
+                          {"Notification Types"->React.string}
+                        </DropdownMenu.Label>
                         <DropdownMenu.CheckboxItem
                           checked={notifications.push}
                           onCheckedChange={(v, _) => setNotifications(n => {...n, push: v})}

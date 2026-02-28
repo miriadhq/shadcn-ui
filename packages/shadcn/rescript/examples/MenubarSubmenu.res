@@ -12,7 +12,7 @@ let make = () =>
             <Menubar.Item> {"Notes"->React.string} </Menubar.Item>
           </Menubar.SubContent>
         </Menubar.Sub>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Item>
           {"Print..."->React.string}
           <Menubar.Shortcut> {"⌘P"->React.string} </Menubar.Shortcut>
@@ -30,7 +30,7 @@ let make = () =>
           {"Redo"->React.string}
           <Menubar.Shortcut> {"⇧⌘Z"->React.string} </Menubar.Shortcut>
         </Menubar.Item>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Sub>
           <Menubar.SubTrigger> {"Find"->React.string} </Menubar.SubTrigger>
           <Menubar.SubContent>
@@ -39,7 +39,7 @@ let make = () =>
             <Menubar.Item> {"Find Previous"->React.string} </Menubar.Item>
           </Menubar.SubContent>
         </Menubar.Sub>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Item> {"Cut"->React.string} </Menubar.Item>
         <Menubar.Item> {"Copy"->React.string} </Menubar.Item>
         <Menubar.Item> {"Paste"->React.string} </Menubar.Item>

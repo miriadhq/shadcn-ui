@@ -3,7 +3,9 @@ let make = () =>
   <Breadcrumb>
     <Breadcrumb.List>
       <Breadcrumb.Item>
-        <Breadcrumb.Link render={<a href="#link-component" />}> {"Home"->React.string} </Breadcrumb.Link>
+        <Breadcrumb.Link render={<a href="#link-component" />}>
+          {"Home"->React.string}
+        </Breadcrumb.Link>
       </Breadcrumb.Item>
       <Breadcrumb.Separator />
       <Breadcrumb.Item>

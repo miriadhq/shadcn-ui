@@ -60,15 +60,20 @@ module RT = {
 
   @module("@tanstack/react-table") external flexRender: ('a, 'b) => React.element = "flexRender"
   @module("@tanstack/react-table") external coreRowModel: unit => rowModelGetter = "getCoreRowModel"
-  @module("@tanstack/react-table") external filteredRowModelGetter: unit => rowModelGetter = "getFilteredRowModel"
-  @module("@tanstack/react-table") external paginationRowModelGetter: unit => rowModelGetter = "getPaginationRowModel"
-  @module("@tanstack/react-table") external sortedRowModelGetter: unit => rowModelGetter = "getSortedRowModel"
-  @module("@tanstack/react-table") external useReactTable: options<'data> => t<'data> = "useReactTable"
+  @module("@tanstack/react-table")
+  external filteredRowModelGetter: unit => rowModelGetter = "getFilteredRowModel"
+  @module("@tanstack/react-table")
+  external paginationRowModelGetter: unit => rowModelGetter = "getPaginationRowModel"
+  @module("@tanstack/react-table")
+  external sortedRowModelGetter: unit => rowModelGetter = "getSortedRowModel"
+  @module("@tanstack/react-table")
+  external useReactTable: options<'data> => t<'data> = "useReactTable"
 
   @send external getHeaderGroups: t<'data> => array<hdrGroup> = "getHeaderGroups"
   @send external getRowModel: t<'data> => rowModel<'data> = "getRowModel"
   @send external getFilteredRowModel: t<'data> => rowModel<'data> = "getFilteredRowModel"
-  @send external getFilteredSelectedRowModel: t<'data> => rowModel<'data> = "getFilteredSelectedRowModel"
+  @send
+  external getFilteredSelectedRowModel: t<'data> => rowModel<'data> = "getFilteredSelectedRowModel"
   @send external getAllColumns: t<'data> => array<col> = "getAllColumns"
   @send external getCanPreviousPage: t<'data> => bool = "getCanPreviousPage"
   @send external getCanNextPage: t<'data> => bool = "getCanNextPage"
@@ -118,7 +123,8 @@ module RT = {
 
 type numberFormat
 type numberFormatOpts = {style: string, currency: string}
-@scope("Intl") @new external makeNumberFormat: (string, numberFormatOpts) => numberFormat = "NumberFormat"
+@scope("Intl") @new
+external makeNumberFormat: (string, numberFormatOpts) => numberFormat = "NumberFormat"
 @send external formatAmount: (numberFormat, float) => string = "format"
 
 @scope(("navigator", "clipboard")) @val
@@ -178,9 +184,7 @@ let columns: array<RT.colDef<payment>> = [
     },
     cell: ctx => {
       let row = ctx->RT.ctxRow
-      <div className="lowercase">
-        {(row->RT.rowGetValue("email"): string)->React.string}
-      </div>
+      <div className="lowercase"> {(row->RT.rowGetValue("email"): string)->React.string} </div>
     },
   },
   {
@@ -190,7 +194,10 @@ let columns: array<RT.colDef<payment>> = [
       let row = ctx->RT.ctxRow
       let amount: float = row->RT.rowGetValue("amount")
       let formatted =
-        makeNumberFormat("ar-SA", ({style: "currency", currency: "USD"}: numberFormatOpts))->formatAmount(amount)
+        makeNumberFormat(
+          "ar-SA",
+          ({style: "currency", currency: "USD"}: numberFormatOpts),
+        )->formatAmount(amount)
       <div className="text-start font-medium"> {formatted->React.string} </div>
     },
   },
@@ -198,23 +205,31 @@ let columns: array<RT.colDef<payment>> = [
     id: "actions",
     enableHiding: false,
     cell: ctx => {
-      let payment = (ctx->RT.ctxRow)->RT.rowOriginal
+      let payment = ctx->RT.ctxRow->RT.rowOriginal
       <DropdownMenu>
-        <DropdownMenu.Trigger render={<Button variant=Button.Variant.Ghost size=Button.Size.IconXs />}>
+        <DropdownMenu.Trigger
+          render={<Button variant=Button.Variant.Ghost size=Button.Size.IconXs />}
+        >
           <span className="sr-only"> {"فتح القائمة"->React.string} </span>
           <Icons.MoreHorizontal />
         </DropdownMenu.Trigger>
         <DropdownMenu.Content align=BaseUi.Types.Align.Start dataLang="ar" className="w-40">
           <DropdownMenu.Group>
             <DropdownMenu.Label> {"الإجراءات"->React.string} </DropdownMenu.Label>
-            <DropdownMenu.Item onClick={_ => {let _ = writeText(payment.id)}}>
+            <DropdownMenu.Item
+              onClick={_ => {
+                let _ = writeText(payment.id)
+              }}
+            >
               {"نسخ معرف الدفع"->React.string}
             </DropdownMenu.Item>
           </DropdownMenu.Group>
           <DropdownMenu.Separator />
           <DropdownMenu.Group>
             <DropdownMenu.Item> {"عرض العميل"->React.string} </DropdownMenu.Item>
-            <DropdownMenu.Item> {"عرض تفاصيل الدفع"->React.string} </DropdownMenu.Item>
+            <DropdownMenu.Item>
+              {"عرض تفاصيل الدفع"->React.string}
+            </DropdownMenu.Item>
           </DropdownMenu.Group>
         </DropdownMenu.Content>
       </DropdownMenu>
@@ -224,11 +239,12 @@ let columns: array<RT.colDef<payment>> = [
 
 @react.component
 let make = () => {
-  let (sorting, setSorting) = React.useState(() => ([] : RT.sorting))
-  let (colFilters, setColFilters) = React.useState(() => (Obj.magic([]): RT.colFilters))
-  let (colVisibility, setColVisibility) =
-    React.useState(() => (Obj.magic(Dict.make()): RT.colVisibility))
-  let (rowSelection, setRowSelection) = React.useState(() => (Obj.magic(Dict.make()): RT.rowSel))
+  let (sorting, setSorting) = React.useState((): RT.sorting => [])
+  let (colFilters, setColFilters) = React.useState((): RT.colFilters => Obj.magic([]))
+  let (colVisibility, setColVisibility) = React.useState((): RT.colVisibility =>
+    Obj.magic(Dict.make())
+  )
+  let (rowSelection, setRowSelection) = React.useState((): RT.rowSel => Obj.magic(Dict.make()))
 
   let table = RT.useReactTable({
     data: tableData,
@@ -245,7 +261,7 @@ let make = () => {
       sorting,
       columnFilters: colFilters,
       columnVisibility: colVisibility,
-      rowSelection: rowSelection,
+      rowSelection,
     },
   })
 
@@ -269,7 +285,9 @@ let make = () => {
         className="max-w-sm"
       />
       <DropdownMenu>
-        <DropdownMenu.Trigger render={<Button variant=Button.Variant.Outline className="ms-auto" />}>
+        <DropdownMenu.Trigger
+          render={<Button variant=Button.Variant.Outline className="ms-auto" />}
+        >
           {"الأعمدة"->React.string}
           <Icons.ChevronDown />
         </DropdownMenu.Trigger>
@@ -306,10 +324,7 @@ let make = () => {
                 <Table.Head key={hdr->RT.hdrId}>
                   {hdr->RT.hdrIsPlaceholder
                     ? React.null
-                    : RT.flexRender(
-                        hdr->RT.hdrCol->RT.colColDef->RT.colDefHdr,
-                        hdr->RT.getHdrCtx,
-                      )}
+                    : RT.flexRender(hdr->RT.hdrCol->RT.colColDef->RT.colDefHdr, hdr->RT.getHdrCtx)}
                 </Table.Head>
               )
               ->React.array}
@@ -322,8 +337,7 @@ let make = () => {
             (table->RT.getRowModel).rows
             ->Array.map(row =>
               <Table.Row
-                key={row->RT.rowId}
-                dataState=?{row->RT.rowGetIsSelected ? Some("selected") : None}
+                key={row->RT.rowId} dataState=?{row->RT.rowGetIsSelected ? Some("selected") : None}
               >
                 {row
                 ->RT.rowGetVisibleCells

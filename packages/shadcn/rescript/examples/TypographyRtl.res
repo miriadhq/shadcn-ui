@@ -7,7 +7,9 @@ let make = () =>
     <p className="text-muted-foreground text-xl leading-7 [&:not(:first-child)]:mt-6">
       {"في قديم الزمان، في أرض بعيدة، كان هناك ملك كسول جداً يقضي يومه كله مستلقياً على عرشه. في أحد الأيام، جاءه مستشاروه بمشكلة: المملكة كانت تنفد من المال."->React.string}
     </p>
-    <h2 className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
+    <h2
+      className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
+    >
       {"خطة الملك"->React.string}
     </h2>
     <p className="leading-7 [&:not(:first-child)]:mt-6">
@@ -27,9 +29,15 @@ let make = () =>
       {"لم يكن رعايا الملك سعداء. تذمروا واشتكوا، لكن الملك كان حازماً:"->React.string}
     </p>
     <ul className="my-6 ms-6 list-disc [&>li]:mt-2">
-      <li> {"المستوى الأول من التورية: 5 قطع ذهبية"->React.string} </li>
-      <li> {"المستوى الثاني من النكات: 10 قطع ذهبية"->React.string} </li>
-      <li> {"المستوى الثالث من النكات القصيرة: 20 قطعة ذهبية"->React.string} </li>
+      <li>
+        {"المستوى الأول من التورية: 5 قطع ذهبية"->React.string}
+      </li>
+      <li>
+        {"المستوى الثاني من النكات: 10 قطع ذهبية"->React.string}
+      </li>
+      <li>
+        {"المستوى الثالث من النكات القصيرة: 20 قطعة ذهبية"->React.string}
+      </li>
     </ul>
     <p className="leading-7 [&:not(:first-child)]:mt-6">
       {"نتيجة لذلك، توقف الناس عن رواية النكات، وغرقت المملكة في الكآبة. لكن كان هناك شخص واحد رفض أن تحبطه حماقة الملك: مهرج البلاط المسمى المازح."->React.string}

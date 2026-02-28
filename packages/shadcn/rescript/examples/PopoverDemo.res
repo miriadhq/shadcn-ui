@@ -15,7 +15,7 @@ let make = () =>
         <div className="grid gap-2">
           <div className="grid grid-cols-3 items-center gap-4">
             <Label htmlFor="width"> {"Width"->React.string} </Label>
-            <Input id="width" defaultValue="100%" className="col-span-2 h-8"> {React.null} </Input>
+            <Input id="width" defaultValue="100%" className="col-span-2 h-8" />
           </div>
           <div className="grid grid-cols-3 items-center gap-4">
             <Label htmlFor="maxWidth"> {"Max. width"->React.string} </Label>
@@ -25,7 +25,7 @@ let make = () =>
           </div>
           <div className="grid grid-cols-3 items-center gap-4">
             <Label htmlFor="height"> {"Height"->React.string} </Label>
-            <Input id="height" defaultValue="25px" className="col-span-2 h-8"> {React.null} </Input>
+            <Input id="height" defaultValue="25px" className="col-span-2 h-8" />
           </div>
           <div className="grid grid-cols-3 items-center gap-4">
             <Label htmlFor="maxHeight"> {"Max. height"->React.string} </Label>

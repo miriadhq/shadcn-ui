@@ -15,7 +15,7 @@ let make = () =>
           </Menubar.Item>
           <Menubar.Item disabled=true> {"New Incognito Window"->React.string} </Menubar.Item>
         </Menubar.Group>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Group>
           <Menubar.Sub>
             <Menubar.SubTrigger> {"Share"->React.string} </Menubar.SubTrigger>
@@ -28,7 +28,7 @@ let make = () =>
             </Menubar.SubContent>
           </Menubar.Sub>
         </Menubar.Group>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Group>
           <Menubar.Item>
             {"Print..."->React.string}
@@ -51,7 +51,7 @@ let make = () =>
             <Menubar.Shortcut> {"⇧⌘Z"->React.string} </Menubar.Shortcut>
           </Menubar.Item>
         </Menubar.Group>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Group>
           <Menubar.Sub>
             <Menubar.SubTrigger> {"Find"->React.string} </Menubar.SubTrigger>
@@ -59,7 +59,7 @@ let make = () =>
               <Menubar.Group>
                 <Menubar.Item> {"Search the web"->React.string} </Menubar.Item>
               </Menubar.Group>
-              <Menubar.Separator> {React.null} </Menubar.Separator>
+              <Menubar.Separator />
               <Menubar.Group>
                 <Menubar.Item> {"Find..."->React.string} </Menubar.Item>
                 <Menubar.Item> {"Find Next"->React.string} </Menubar.Item>
@@ -68,7 +68,7 @@ let make = () =>
             </Menubar.SubContent>
           </Menubar.Sub>
         </Menubar.Group>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Group>
           <Menubar.Item> {"Cut"->React.string} </Menubar.Item>
           <Menubar.Item> {"Copy"->React.string} </Menubar.Item>
@@ -84,7 +84,7 @@ let make = () =>
           <Menubar.CheckboxItem> {"Bookmarks Bar"->React.string} </Menubar.CheckboxItem>
           <Menubar.CheckboxItem checked=true> {"Full URLs"->React.string} </Menubar.CheckboxItem>
         </Menubar.Group>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Group>
           <Menubar.Item inset=true>
             {"Reload"->React.string}
@@ -95,11 +95,11 @@ let make = () =>
             <Menubar.Shortcut> {"⇧⌘R"->React.string} </Menubar.Shortcut>
           </Menubar.Item>
         </Menubar.Group>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Group>
           <Menubar.Item inset=true> {"Toggle Fullscreen"->React.string} </Menubar.Item>
         </Menubar.Group>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Group>
           <Menubar.Item inset=true> {"Hide Sidebar"->React.string} </Menubar.Item>
         </Menubar.Group>
@@ -114,11 +114,11 @@ let make = () =>
           <Menubar.RadioItem value="benoit"> {"Benoit"->React.string} </Menubar.RadioItem>
           <Menubar.RadioItem value="Luis"> {"Luis"->React.string} </Menubar.RadioItem>
         </Menubar.RadioGroup>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Group>
           <Menubar.Item inset=true> {"Edit..."->React.string} </Menubar.Item>
         </Menubar.Group>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Group>
           <Menubar.Item inset=true> {"Add Profile..."->React.string} </Menubar.Item>
         </Menubar.Group>

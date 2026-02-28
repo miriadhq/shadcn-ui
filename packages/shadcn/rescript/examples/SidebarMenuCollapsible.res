@@ -15,10 +15,7 @@ let items: array<item> = [
   {
     title: "Getting Started",
     url: "#",
-    items: [
-      {title: "Installation", url: "#"},
-      {title: "Project Structure", url: "#"},
-    ],
+    items: [{title: "Installation", url: "#"}, {title: "Project Structure", url: "#"}],
   },
   {
     title: "Build Your Application",
@@ -74,9 +71,7 @@ let make = () =>
               {items
               ->Array.mapWithIndex((item, index) =>
                 <Collapsible
-                  key={Int.toString(index)}
-                  className="group/collapsible"
-                  defaultOpen={index == 0}
+                  key={Int.toString(index)} className="group/collapsible" defaultOpen={index == 0}
                 >
                   <Sidebar.MenuItem>
                     <Collapsible.Trigger render={<Sidebar.MenuButton />}>

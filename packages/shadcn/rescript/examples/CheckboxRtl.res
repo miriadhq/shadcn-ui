@@ -5,7 +5,9 @@ let make = () =>
   <Field.Group className="max-w-sm" dir="rtl">
     <Field orientation=BaseUi.Types.Orientation.Horizontal>
       <Checkbox id="terms-checkbox-rtl" name="terms-checkbox" />
-      <Label htmlFor="terms-checkbox-rtl"> {"قبول الشروط والأحكام"->React.string} </Label>
+      <Label htmlFor="terms-checkbox-rtl">
+        {"قبول الشروط والأحكام"->React.string}
+      </Label>
     </Field>
     <Field orientation=BaseUi.Types.Orientation.Horizontal>
       <Checkbox id="terms-checkbox-2-rtl" name="terms-checkbox-2" defaultChecked={true} />

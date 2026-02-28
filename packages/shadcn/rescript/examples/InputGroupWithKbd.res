@@ -42,7 +42,9 @@ let make = () =>
       <InputGroup>
         <InputGroup.Input id="input-username-26" defaultValue="shadcn" />
         <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
-          <div className="flex size-4 items-center justify-center rounded-full bg-green-500 dark:bg-green-800">
+          <div
+            className="flex size-4 items-center justify-center rounded-full bg-green-500 dark:bg-green-800"
+          >
             <Icons.Check className="size-3 text-white" />
           </div>
         </InputGroup.Addon>
@@ -61,7 +63,9 @@ let make = () =>
       </InputGroup.Addon>
     </InputGroup>
     <InputGroup dataDisabled={true}>
-      <InputGroup.Input id="input-search-disabled-28" placeholder="Search documentation..." disabled={true} />
+      <InputGroup.Input
+        id="input-search-disabled-28" placeholder="Search documentation..." disabled={true}
+      />
       <InputGroup.Addon>
         <Icons.Search />
       </InputGroup.Addon>

@@ -57,7 +57,14 @@ let make = (
   ~direction=?,
 ) =>
   <DrawerPrimitive.Root
-    ?children ?open_ ?defaultOpen ?onOpenChange ?onOpenChangeComplete ?modal ?direction dataSlot="drawer"
+    ?children
+    ?open_
+    ?defaultOpen
+    ?onOpenChange
+    ?onOpenChangeComplete
+    ?modal
+    ?direction
+    dataSlot="drawer"
   />
 
 module Trigger = {
@@ -134,14 +141,7 @@ module Close = {
 
 module Overlay = {
   @react.component
-  let make = (
-    ~className="",
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~keepMounted=?,
-  ) =>
+  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~keepMounted=?) =>
     <DrawerPrimitive.Overlay
       ?id
       ?style
@@ -217,14 +217,7 @@ module Footer = {
 
 module Title = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <DrawerPrimitive.Title
       ?id
       ?style
@@ -238,14 +231,7 @@ module Title = {
 
 module Description = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <DrawerPrimitive.Description
       ?id
       ?style

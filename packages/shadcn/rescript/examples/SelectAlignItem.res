@@ -17,7 +17,8 @@ let items: array<item> = [
 @react.component
 let make = () => {
   let (alignItemWithTrigger, setAlignItemWithTrigger) = React.useState(() => true)
-  let defaultItem = items->Array.get(2)->Option.getOr({label: "Banana", value: Nullable.make("banana")})
+  let defaultItem =
+    items->Array.get(2)->Option.getOr({label: "Banana", value: Nullable.make("banana")})
 
   <Field.Group className="w-full max-w-xs">
     <Field orientation=BaseUi.Types.Orientation.Horizontal>
@@ -42,9 +43,7 @@ let make = () => {
           <Select.Group>
             {items
             ->Array.map(item =>
-              <Select.Item key={item.label} value={item}>
-                {item.label->React.string}
-              </Select.Item>
+              <Select.Item key={item.label} value={item}> {item.label->React.string} </Select.Item>
             )
             ->React.array}
           </Select.Group>

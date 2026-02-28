@@ -99,7 +99,9 @@ module CalendarDayButton = {
       variant=Button.Variant.Ghost
       size=Button.Size.Icon
       className={twMerge(
-        `data-[selected-single=true]:bg-primary data-[selected-single=true]:text-primary-foreground data-[range-middle=true]:bg-accent data-[range-middle=true]:text-accent-foreground data-[range-start=true]:bg-primary data-[range-start=true]:text-primary-foreground data-[range-end=true]:bg-primary data-[range-end=true]:text-primary-foreground group-data-[focused=true]/day:border-ring group-data-[focused=true]/day:ring-ring/50 dark:hover:text-accent-foreground flex aspect-square size-auto w-full min-w-(--cell-size) flex-col gap-1 leading-none font-normal group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:ring-[3px] data-[range-end=true]:rounded-md data-[range-end=true]:rounded-r-md data-[range-middle=true]:rounded-none data-[range-start=true]:rounded-md data-[range-start=true]:rounded-l-md [&>span]:text-xs [&>span]:opacity-70 ${defaultClassNames.day} ${className->Option.getOr("")}`,
+        `data-[selected-single=true]:bg-primary data-[selected-single=true]:text-primary-foreground data-[range-middle=true]:bg-accent data-[range-middle=true]:text-accent-foreground data-[range-start=true]:bg-primary data-[range-start=true]:text-primary-foreground data-[range-end=true]:bg-primary data-[range-end=true]:text-primary-foreground group-data-[focused=true]/day:border-ring group-data-[focused=true]/day:ring-ring/50 dark:hover:text-accent-foreground flex aspect-square size-auto w-full min-w-(--cell-size) flex-col gap-1 leading-none font-normal group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:ring-[3px] data-[range-end=true]:rounded-md data-[range-end=true]:rounded-r-md data-[range-middle=true]:rounded-none data-[range-start=true]:rounded-md data-[range-start=true]:rounded-l-md [&>span]:text-xs [&>span]:opacity-70 ${defaultClassNames.day} ${className->Option.getOr(
+            "",
+          )}`,
       )}
       ?children
     />
@@ -126,8 +128,7 @@ module HijriCalendar = {
     | Label => "text-sm"
     | Dropdown
     | DropdownMonths
-    | DropdownYears =>
-      "rounded-md pl-2 pr-1 flex items-center gap-1 text-sm h-8 [&>svg]:text-muted-foreground [&>svg]:size-3.5"
+    | DropdownYears => "rounded-md pl-2 pr-1 flex items-center gap-1 text-sm h-8 [&>svg]:text-muted-foreground [&>svg]:size-3.5"
     }
 
     <PersianDayPicker
@@ -193,7 +194,9 @@ module HijriCalendar = {
           twMerge(`absolute inset-0 opacity-0 ${defaultClassNames.dropdown}`),
         ),
         caption_label: classNames.caption_label->Option.getOr(
-          twMerge(`select-none font-medium ${captionLabelClassName} ${defaultClassNames.caption_label}`),
+          twMerge(
+            `select-none font-medium ${captionLabelClassName} ${defaultClassNames.caption_label}`,
+          ),
         ),
         table: classNames.table->Option.getOr("w-full border-collapse"),
         weekdays: classNames.weekdays->Option.getOr(twMerge(`flex ${defaultClassNames.weekdays}`)),
@@ -207,7 +210,9 @@ module HijriCalendar = {
           twMerge(`select-none w-(--cell-size) ${defaultClassNames.week_number_header}`),
         ),
         week_number: classNames.week_number->Option.getOr(
-          twMerge(`text-[0.8rem] select-none text-muted-foreground ${defaultClassNames.week_number}`),
+          twMerge(
+            `text-[0.8rem] select-none text-muted-foreground ${defaultClassNames.week_number}`,
+          ),
         ),
         day: classNames.day->Option.getOr(
           twMerge(
@@ -288,7 +293,9 @@ module HijriCalendar = {
           ?week,
         }) =>
           <td ?className ?ariaLabel ?role ?scope ?week>
-            <div className="flex size-(--cell-size) items-center justify-center text-center" ?children />
+            <div
+              className="flex size-(--cell-size) items-center justify-center text-center" ?children
+            />
           </td>
         ),
       }}

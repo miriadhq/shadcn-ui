@@ -33,9 +33,7 @@ let make = () =>
           <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockEnd>
             <InputGroup.Text> {"٠/٢٨٠"->React.string} </InputGroup.Text>
             <InputGroup.Button
-              dataVariant=InputGroup.Variant.Default
-              dataSize=InputGroup.Size.Sm
-              className="ms-auto"
+              dataVariant=InputGroup.Variant.Default dataSize=InputGroup.Size.Sm className="ms-auto"
             >
               {"نشر"->React.string}
             </InputGroup.Button>

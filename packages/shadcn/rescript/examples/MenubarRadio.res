@@ -14,7 +14,7 @@ let make = () => {
           <Menubar.RadioItem value="benoit"> {"Benoit"->React.string} </Menubar.RadioItem>
           <Menubar.RadioItem value="luis"> {"Luis"->React.string} </Menubar.RadioItem>
         </Menubar.RadioGroup>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Item inset=true> {"Edit..."->React.string} </Menubar.Item>
         <Menubar.Item inset=true> {"Add Profile..."->React.string} </Menubar.Item>
       </Menubar.Content>

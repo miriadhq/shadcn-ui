@@ -168,10 +168,11 @@ module Button = {
     | Outline => UiButton.Variant.Outline
     | Destructive => UiButton.Variant.Destructive
     }
-    let resolvedClassName =
-      twMerge(
-        `${UiButton.buttonVariants(~variant=buttonVariant)} ${inputGroupButtonVariants(~size)} ${className}`,
-      )
+    let resolvedClassName = twMerge(
+      `${UiButton.buttonVariants(~variant=buttonVariant)} ${inputGroupButtonVariants(
+          ~size,
+        )} ${className}`,
+    )
     <BaseUi.Button
       ?id
       ?children

@@ -7,7 +7,9 @@ let make = () =>
       </Item.Media>
       <Item.Content>
         <Item.Title> {"Default Size"->React.string} </Item.Title>
-        <Item.Description> {"The standard size for most use cases."->React.string} </Item.Description>
+        <Item.Description>
+          {"The standard size for most use cases."->React.string}
+        </Item.Description>
       </Item.Content>
     </Item>
     <Item variant=Item.Variant.Outline size=Item.Size.Sm>

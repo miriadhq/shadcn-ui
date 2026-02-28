@@ -120,7 +120,9 @@ let make = () => {
   let desktopTotal = 7324
   let mobileTotal = 7250
 
-  <Card className="bg-card border flex flex-col gap-6 py-0 pb-4 rounded-xl shadow-sm text-card-foreground">
+  <Card
+    className="bg-card border flex flex-col gap-6 py-0 pb-4 rounded-xl shadow-sm text-card-foreground"
+  >
     <div
       className="!p-0 @container/card-header [.border-b]:pb-6 auto-rows-min border-b flex flex-col gap-2 grid-rows-[auto_auto] has-data-[slot=card-action]:grid-cols-[1fr_auto] items-stretch px-6 sm:flex-row"
     >

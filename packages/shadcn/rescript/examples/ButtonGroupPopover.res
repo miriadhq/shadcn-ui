@@ -1,7 +1,9 @@
 @react.component
 let make = () => {
-  let triggerClassName =
-    Button.buttonVariants(~variant=Button.Variant.Outline, ~size=Button.Size.Icon)
+  let triggerClassName = Button.buttonVariants(
+    ~variant=Button.Variant.Outline,
+    ~size=Button.Size.Icon,
+  )
 
   <ButtonGroup>
     <Button variant=Button.Variant.Outline>
@@ -20,7 +22,9 @@ let make = () => {
           </Popover.Description>
         </Popover.Header>
         <Field>
-          <Field.Label htmlFor="task" className="sr-only"> {"Task Description"->React.string} </Field.Label>
+          <Field.Label htmlFor="task" className="sr-only">
+            {"Task Description"->React.string}
+          </Field.Label>
           <Textarea id="task" placeholder="I need to..." className="resize-none" />
           <Field.Description>
             {"Copilot will open a pull request for review."->React.string}

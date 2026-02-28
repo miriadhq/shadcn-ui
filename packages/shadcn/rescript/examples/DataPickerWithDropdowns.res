@@ -10,7 +10,9 @@ let make = () => {
 
   <Field className="mx-auto w-72">
     <Popover open_=isOpen onOpenChange={(nextOpen, _) => setOpen(_ => nextOpen)}>
-      <Field.Label htmlFor="date-picker-with-dropdowns-desktop"> {"Date"->React.string} </Field.Label>
+      <Field.Label htmlFor="date-picker-with-dropdowns-desktop">
+        {"Date"->React.string}
+      </Field.Label>
       <Popover.Trigger
         render={<Button
           variant=Button.Variant.Outline

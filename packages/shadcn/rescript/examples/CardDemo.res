@@ -28,7 +28,7 @@ let make = () =>
                 {"Forgot your password?"->React.string}
               </a>
             </div>
-            <Input id="password" type_="password" required={true}> {React.null} </Input>
+            <Input id="password" type_="password" required={true} />
           </div>
         </div>
       </form>

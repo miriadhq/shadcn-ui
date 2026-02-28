@@ -55,8 +55,7 @@ let make = () =>
                       <span className="sr-only"> {"More"->React.string} </span>
                     </DropdownMenu.Trigger>
                     <DropdownMenu.Content
-                      side=BaseUi.Types.Side.Right
-                      align=BaseUi.Types.Align.Start
+                      side=BaseUi.Types.Side.Right align=BaseUi.Types.Align.Start
                     >
                       <DropdownMenu.Item>
                         <span> {"Edit Project"->React.string} </span>

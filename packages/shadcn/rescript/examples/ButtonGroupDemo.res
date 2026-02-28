@@ -38,7 +38,7 @@ let make = () => {
               {"Archive"->React.string}
             </DropdownMenu.Item>
           </DropdownMenu.Group>
-          <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+          <DropdownMenu.Separator />
           <DropdownMenu.Group>
             <DropdownMenu.Item>
               <Icons.Clock />
@@ -74,7 +74,7 @@ let make = () => {
               </DropdownMenu.SubContent>
             </DropdownMenu.Sub>
           </DropdownMenu.Group>
-          <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+          <DropdownMenu.Separator />
           <DropdownMenu.Group>
             <DropdownMenu.Item variant=DropdownMenu.Variant.Destructive>
               <Icons.Trash2 />

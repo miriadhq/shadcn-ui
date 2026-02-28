@@ -20,12 +20,10 @@ let make = () => {
 
   <Calendar
     mode="range"
-    defaultMonth=?{
-      switch dateRange {
-      | Some(value) => value.from
-      | None => None
-      }
-    }
+    defaultMonth=?{switch dateRange {
+    | Some(value) => value.from
+    | None => None
+    }}
     selected=dateRange
     onSelect={(value: option<dateRange>) => setDateRange(_ => value)}
     numberOfMonths=2

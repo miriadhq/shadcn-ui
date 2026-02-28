@@ -109,7 +109,10 @@ let make = (
     ?ariaExpanded
     ?ariaHaspopup
     ?dataState
-    tabIndex=?{switch tabIndex { | Some(v) => Some(v) | None => Some(0) }}
+    tabIndex=?{switch tabIndex {
+    | Some(v) => Some(v)
+    | None => Some(0)
+    }}
     ?nativeButton
     ?disabled
     ?style

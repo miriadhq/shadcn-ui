@@ -17,11 +17,11 @@ let make = () =>
         <Field.Group>
           <Field>
             <Label htmlFor="name-1"> {"الاسم"->React.string} </Label>
-            <Input id="name-1" name="name" defaultValue="Pedro Duarte"> {React.null} </Input>
+            <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
           </Field>
           <Field>
             <Label htmlFor="username-1"> {"اسم المستخدم"->React.string} </Label>
-            <Input id="username-1" name="username" defaultValue="@peduarte"> {React.null} </Input>
+            <Input id="username-1" name="username" defaultValue="@peduarte" />
           </Field>
         </Field.Group>
         <Dialog.Footer>

@@ -52,19 +52,16 @@ let make = () => {
       ->Array.map(row => {
         let isSelected = row.id == "1"
         <Table.Row
-          key=row.id dataState=?{
-            if isSelected {
-              Some("selected")
-            } else {
-              None
-            }
-          }
+          key=row.id
+          dataState=?{if isSelected {
+            Some("selected")
+          } else {
+            None
+          }}
         >
           <Table.Cell>
             <Checkbox
-              id={`row-${row.id}-checkbox`}
-              name={`row-${row.id}-checkbox`}
-              checked=isSelected
+              id={`row-${row.id}-checkbox`} name={`row-${row.id}-checkbox`} checked=isSelected
             />
           </Table.Cell>
           <Table.Cell className="font-medium"> {row.name->React.string} </Table.Cell>

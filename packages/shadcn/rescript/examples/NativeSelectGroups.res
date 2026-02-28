@@ -17,7 +17,9 @@ let make = () =>
       </NativeSelect.Option>
     </NativeSelect.OptGroup>
     <NativeSelect.OptGroup label="Operations">
-      <NativeSelect.Option value="support"> {"Customer Support"->React.string} </NativeSelect.Option>
+      <NativeSelect.Option value="support">
+        {"Customer Support"->React.string}
+      </NativeSelect.Option>
       <NativeSelect.Option value="product-manager">
         {"Product Manager"->React.string}
       </NativeSelect.Option>

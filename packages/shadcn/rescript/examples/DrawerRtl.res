@@ -84,7 +84,9 @@ let make = () => {
       <div className="mx-auto w-full max-w-sm">
         <Drawer.Header>
           <Drawer.Title> {"نقل الهدف"->React.string} </Drawer.Title>
-          <Drawer.Description> {"حدد هدف نشاطك اليومي."->React.string} </Drawer.Description>
+          <Drawer.Description>
+            {"حدد هدف نشاطك اليومي."->React.string}
+          </Drawer.Description>
         </Drawer.Header>
         <div className="p-4 pb-0">
           <div className="flex items-center justify-center space-x-2">

@@ -29,9 +29,13 @@ let make = () =>
           </InputGroup>
         </Field>
         <Field>
-          <Field.Label htmlFor="feedback-textarea"> {"Feedback & Comments"->React.string} </Field.Label>
+          <Field.Label htmlFor="feedback-textarea">
+            {"Feedback & Comments"->React.string}
+          </Field.Label>
           <InputGroup>
-            <InputGroup.Textarea id="feedback-textarea" placeholder="Share your thoughts..." className="min-h-[100px]" />
+            <InputGroup.Textarea
+              id="feedback-textarea" placeholder="Share your thoughts..." className="min-h-[100px]"
+            />
             <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockEnd>
               <InputGroup.Text> {"0/500 characters"->React.string} </InputGroup.Text>
             </InputGroup.Addon>

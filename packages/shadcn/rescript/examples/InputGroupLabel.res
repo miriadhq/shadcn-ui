@@ -10,9 +10,7 @@ let make = () =>
     <InputGroup>
       <InputGroup.Input id="email-2" placeholder="shadcn@vercel.com" />
       <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockStart>
-        <Label htmlFor="email-2" className="text-foreground">
-          {"Email"->React.string}
-        </Label>
+        <Label htmlFor="email-2" className="text-foreground"> {"Email"->React.string} </Label>
         <Tooltip>
           <Tooltip.Trigger
             render={<InputGroup.Button

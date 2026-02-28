@@ -23,11 +23,7 @@ let fileTree: array<fileTreeItem> = [
   }),
   Folder({
     name: "lib",
-    items: [
-      File({name: "utils.ts"}),
-      File({name: "cn.ts"}),
-      File({name: "api.ts"}),
-    ],
+    items: [File({name: "utils.ts"}), File({name: "cn.ts"}), File({name: "api.ts"})],
   }),
   Folder({
     name: "hooks",
@@ -39,18 +35,11 @@ let fileTree: array<fileTreeItem> = [
   }),
   Folder({
     name: "types",
-    items: [
-      File({name: "index.d.ts"}),
-      File({name: "api.d.ts"}),
-    ],
+    items: [File({name: "index.d.ts"}), File({name: "api.d.ts"})],
   }),
   Folder({
     name: "public",
-    items: [
-      File({name: "favicon.ico"}),
-      File({name: "logo.svg"}),
-      File({name: "images"}),
-    ],
+    items: [File({name: "favicon.ico"}), File({name: "logo.svg"}), File({name: "images"})],
   }),
   File({name: "app.tsx"}),
   File({name: "layout.tsx"}),
@@ -69,9 +58,9 @@ let rec renderItem = (fileItem: fileTreeItem) =>
         render={<button
           className={Button.twMerge(
             `${Button.buttonVariants(
-              ~variant=Button.Variant.Ghost,
-              ~size=Button.Size.Sm,
-            )} group hover:bg-accent hover:text-accent-foreground w-full justify-start transition-none`,
+                ~variant=Button.Variant.Ghost,
+                ~size=Button.Size.Sm,
+              )} group hover:bg-accent hover:text-accent-foreground w-full justify-start transition-none`,
           )}
           type_="button"
         />}
@@ -81,9 +70,7 @@ let rec renderItem = (fileItem: fileTreeItem) =>
         {name->React.string}
       </Collapsible.Trigger>
       <Collapsible.Content className="style-lyra:ml-4 mt-1 ml-5">
-        <div className="flex flex-col gap-1">
-          {items->Array.map(renderItem)->React.array}
-        </div>
+        <div className="flex flex-col gap-1"> {items->Array.map(renderItem)->React.array} </div>
       </Collapsible.Content>
     </Collapsible>
   | File({name}) =>

@@ -12,9 +12,10 @@ type dateRange = {
 let make = () => {
   let now = Date.make()
   let fromDate = Date.makeWithYMD(~year=Date.getFullYear(now), ~month=0, ~day=20)
-  let (dateRange, setDateRange) = React.useState(() =>
-    Some({from: fromDate, to_: addDays(fromDate, 20)})
-  )
+  let (dateRange, setDateRange) = React.useState(() => Some({
+    from: fromDate,
+    to_: addDays(fromDate, 20),
+  }))
 
   <Field className="mx-auto w-60">
     <Field.Label htmlFor="date-picker-range"> {"Date Picker Range"->React.string} </Field.Label>

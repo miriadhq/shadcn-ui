@@ -2,7 +2,9 @@
 let make = () =>
   <HoverCard>
     <HoverCard.Trigger
-      delay={10.} closeDelay={100.} render={<Button variant=Button.Variant.Link dataSlot="hover-card-trigger" />}
+      delay={10.}
+      closeDelay={100.}
+      render={<Button variant=Button.Variant.Link dataSlot="hover-card-trigger" />}
     >
       {"Hover Here"->React.string}
     </HoverCard.Trigger>

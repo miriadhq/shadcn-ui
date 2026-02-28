@@ -12,7 +12,9 @@ let make = () => {
         <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
           <Tooltip>
             <Tooltip.Trigger
-              render={<InputGroup.Button className="rounded-full" dataSize=InputGroup.Size.IconXs />}
+              render={<InputGroup.Button
+                className="rounded-full" dataSize=InputGroup.Size.IconXs
+              />}
             >
               <Icons.Info />
             </Tooltip.Trigger>
@@ -37,10 +39,7 @@ let make = () => {
               <Icons.ChevronDown />
             </DropdownMenu.Trigger>
             <DropdownMenu.Content
-              align=BaseUi.Types.Align.Start
-              className="min-w-16"
-              sideOffset=10.
-              alignOffset={-8.}
+              align=BaseUi.Types.Align.Start className="min-w-16" sideOffset=10. alignOffset={-8.}
             >
               <DropdownMenu.Item onClick={_ => setCountry(_ => "+1")}>
                 {"+1"->React.string}
@@ -64,7 +63,9 @@ let make = () => {
       <InputGroup>
         <Popover>
           <Popover.Trigger render={<InputGroup.Addon />} nativeButton={false}>
-            <InputGroup.Button dataVariant=InputGroup.Variant.Secondary dataSize=InputGroup.Size.IconXs>
+            <InputGroup.Button
+              dataVariant=InputGroup.Variant.Secondary dataSize=InputGroup.Size.IconXs
+            >
               <Icons.Info />
             </InputGroup.Button>
           </Popover.Trigger>

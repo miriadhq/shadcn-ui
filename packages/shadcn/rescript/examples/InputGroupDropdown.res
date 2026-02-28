@@ -9,9 +9,7 @@ let make = () =>
         <DropdownMenu>
           <DropdownMenu.Trigger
             render={<InputGroup.Button
-              dataVariant=InputGroup.Variant.Ghost
-              ariaLabel="More"
-              dataSize=InputGroup.Size.IconXs
+              dataVariant=InputGroup.Variant.Ghost ariaLabel="More" dataSize=InputGroup.Size.IconXs
             />}
           >
             <Icons.MoreHorizontal />
@@ -32,8 +30,7 @@ let make = () =>
         <DropdownMenu>
           <DropdownMenu.Trigger
             render={<InputGroup.Button
-              dataVariant=InputGroup.Variant.Ghost
-              className="!pr-1.5 text-xs"
+              dataVariant=InputGroup.Variant.Ghost className="!pr-1.5 text-xs"
             />}
           >
             {"Search In..."->React.string}

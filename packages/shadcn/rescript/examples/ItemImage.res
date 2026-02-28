@@ -32,11 +32,7 @@ let make = () =>
     <Item.Group className="gap-4">
       {music
       ->Array.map(song =>
-        <Item
-          key={song.title}
-          variant=Item.Variant.Outline
-          render={<a href="#" />}
-        >
+        <Item key={song.title} variant=Item.Variant.Outline render={<a href="#" />}>
           <Item.Media variant=Item.Media.Variant.Image>
             <img
               src={`https://avatar.vercel.sh/${song.title}`}

@@ -4,7 +4,7 @@
 let make = () =>
   <Field.Group className="max-w-sm">
     <Field orientation=BaseUi.Types.Orientation.Horizontal>
-      <Checkbox id="terms-checkbox" name="terms-checkbox"> {React.null} </Checkbox>
+      <Checkbox id="terms-checkbox" name="terms-checkbox" />
       <Label htmlFor="terms-checkbox"> {"Accept terms and conditions"->React.string} </Label>
     </Field>
     <Field orientation=BaseUi.Types.Orientation.Horizontal>
@@ -21,12 +21,12 @@ let make = () =>
       </Field.Content>
     </Field>
     <Field orientation=BaseUi.Types.Orientation.Horizontal dataDisabled=true>
-      <Checkbox id="toggle-checkbox" name="toggle-checkbox" disabled=true> {React.null} </Checkbox>
+      <Checkbox id="toggle-checkbox" name="toggle-checkbox" disabled=true />
       <Field.Label htmlFor="toggle-checkbox"> {"Enable notifications"->React.string} </Field.Label>
     </Field>
     <Field.Label>
       <Field orientation=BaseUi.Types.Orientation.Horizontal>
-        <Checkbox id="toggle-checkbox-2" name="toggle-checkbox-2"> {React.null} </Checkbox>
+        <Checkbox id="toggle-checkbox-2" name="toggle-checkbox-2" />
         <Field.Content>
           <Field.Title> {"Enable notifications"->React.string} </Field.Title>
           <Field.Description>

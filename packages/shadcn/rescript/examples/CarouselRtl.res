@@ -2,11 +2,7 @@
 
 @react.component
 let make = () =>
-  <Carousel
-    dir="rtl"
-    className="w-full max-w-[12rem] sm:max-w-xs"
-    opts={{direction: "rtl"}}
-  >
+  <Carousel dir="rtl" className="w-full max-w-[12rem] sm:max-w-xs" opts={{direction: "rtl"}}>
     <Carousel.Content>
       {Array.fromInitializer(~length=5, index =>
         <Carousel.Item key={Int.toString(index)}>

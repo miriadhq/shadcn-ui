@@ -62,7 +62,8 @@ let make = (
     ?dir
     dataSlot="command"
     className={`bg-popover text-popover-foreground flex size-full flex-col overflow-hidden rounded-xl! p-1 ${className}`}
-   ?children />
+    ?children
+  />
 
 module Dialog = {
   @react.component
@@ -154,14 +155,7 @@ module Input = {
 
 module List = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <CommandPrimitive.List
       ?id
       ?style
@@ -169,15 +163,20 @@ module List = {
       ?onKeyDown
       dataSlot="command-list"
       className={`no-scrollbar max-h-72 scroll-py-1 overflow-x-hidden overflow-y-auto outline-none ${className}`}
-     ?children />
+      ?children
+    />
 }
 
 module Empty = {
   @react.component
   let make = (~className="", ~children=?, ~id=?, ~style=?) =>
     <CommandPrimitive.Empty
-      ?id ?style dataSlot="command-empty" className={`py-6 text-center text-sm ${className}`}
-     ?children />
+      ?id
+      ?style
+      dataSlot="command-empty"
+      className={`py-6 text-center text-sm ${className}`}
+      ?children
+    />
 }
 
 module Group = {
@@ -189,7 +188,8 @@ module Group = {
       ?heading
       dataSlot="command-group"
       className={`text-foreground **:[[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 **:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-xs **:[[cmdk-group-heading]]:font-medium ${className}`}
-     ?children />
+      ?children
+    />
 }
 
 module Separator = {
@@ -237,14 +237,7 @@ module Item = {
 
 module Shortcut = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <span
       ?id
       ?style

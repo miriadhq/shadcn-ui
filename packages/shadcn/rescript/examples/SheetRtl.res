@@ -19,7 +19,9 @@ let make = () =>
           <Input id="sheet-rtl-name" defaultValue="Pedro Duarte" />
         </Field>
         <Field>
-          <Field.Label htmlFor="sheet-rtl-username"> {"اسم المستخدم"->React.string} </Field.Label>
+          <Field.Label htmlFor="sheet-rtl-username">
+            {"اسم المستخدم"->React.string}
+          </Field.Label>
           <Input id="sheet-rtl-username" defaultValue="peduarte" />
         </Field>
       </Field.Group>

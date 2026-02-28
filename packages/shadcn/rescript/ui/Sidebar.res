@@ -139,11 +139,11 @@ let make = (
       className={`bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col ${className}`}
     />
   } else if isMobile {
-    let mobileStyle =
-      ReactDOM.Style._dictToStyle(Dict.make())->ReactDOM.Style.unsafeAddProp(
-        "--sidebar-width",
-        sidebarWidthMobile,
-      )
+    let mobileStyle = ReactDOM.Style._dictToStyle(
+      dict{
+        "--sidebar-width": sidebarWidthMobile,
+      },
+    )
     <Sheet
       ?id
       ?style
@@ -300,10 +300,12 @@ module Provider = {
       toggleSidebar,
     })
 
-    let baseStyle =
-      ReactDOM.Style._dictToStyle(Dict.make())
-      ->ReactDOM.Style.unsafeAddProp("--sidebar-width", sidebarWidth)
-      ->ReactDOM.Style.unsafeAddProp("--sidebar-width-icon", sidebarWidthIcon)
+    let baseStyle = ReactDOM.Style._dictToStyle(
+      dict{
+        "--sidebar-width": sidebarWidth,
+        "--sidebar-width-icon": sidebarWidthIcon,
+      },
+    )
     let resolvedStyle = switch style {
     | Some(style) => ReactDOM.Style.combine(baseStyle, style)
     | None => baseStyle
@@ -715,8 +717,7 @@ module MenuButton = {
       tabIndex: tabIndex->Option.getOr(0),
       className: `${sidebarMenuButtonVariants(~variant, ~size)} ${className}`,
     }
-    let dataActiveOverlay: BaseUi.Types.props<string, bool> =
-      isActive ? {dataActive: true} : {}
+    let dataActiveOverlay: BaseUi.Types.props<string, bool> = isActive ? {dataActive: true} : {}
     let baseProps = mergeProps(baseWithoutDataActive, dataActiveOverlay)
     let mergedProps = switch buttonProps {
     | Some(buttonProps) => mergeProps(baseProps, buttonProps)
@@ -887,11 +888,11 @@ module MenuSkeleton = {
     ~onKeyDown=?,
   ) => {
     let (width, _setWidth) = React.useState(() => `${Float.toString(mathRandom() *. 40. +. 50.)}%`)
-    let textStyle =
-      ReactDOM.Style._dictToStyle(Dict.make())->ReactDOM.Style.unsafeAddProp(
-        "--skeleton-width",
-        width,
-      )
+    let textStyle = ReactDOM.Style._dictToStyle(
+      dict{
+        "--skeleton-width": width,
+      },
+    )
     <div
       ?id
       ?style
@@ -987,8 +988,7 @@ module MenuSubButton = {
       dataSize: (size :> string),
       className: `text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground [&>svg]:text-sidebar-accent-foreground data-active:bg-sidebar-accent data-active:text-sidebar-accent-foreground h-7 gap-2 rounded-md px-2 focus-visible:ring-2 data-[size=md]:text-sm data-[size=sm]:text-xs [&>svg]:size-4 flex min-w-0 -translate-x-px items-center overflow-hidden outline-hidden group-data-[collapsible=icon]:hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:shrink-0 ${className}`,
     }
-    let dataActiveOverlay: BaseUi.Types.props<string, bool> =
-      dataActive ? {dataActive: true} : {}
+    let dataActiveOverlay: BaseUi.Types.props<string, bool> = dataActive ? {dataActive: true} : {}
     let baseProps = mergeProps(baseWithoutDataActive, dataActiveOverlay)
     let props = switch linkProps {
     | Some(linkProps) => mergeProps(baseProps, linkProps)

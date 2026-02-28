@@ -11,7 +11,9 @@ let make = () =>
       </Field>
       <Field>
         <Field.Label htmlFor="password"> {"Password"->React.string} </Field.Label>
-        <Field.Description> {"Must be at least 8 characters long."->React.string} </Field.Description>
+        <Field.Description>
+          {"Must be at least 8 characters long."->React.string}
+        </Field.Description>
         <Input id="password" type_="password" placeholder="••••••••" />
       </Field>
     </Field.Group>

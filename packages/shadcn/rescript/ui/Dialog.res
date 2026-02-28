@@ -87,14 +87,7 @@ module Close = {
 
 module Overlay = {
   @react.component
-  let make = (
-    ~className="",
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~keepMounted=?,
-  ) =>
+  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~keepMounted=?) =>
     <BaseUi.Dialog.Backdrop
       ?id
       ?style
@@ -137,7 +130,9 @@ module Content = {
         {showCloseButton
           ? <BaseUi.Dialog.Close
               dataSlot="dialog-close"
-              render={<Button variant=Ghost size=IconSm className="absolute top-2 right-2" dataSlot="dialog-close" />}
+              render={<Button
+                variant=Ghost size=IconSm className="absolute top-2 right-2" dataSlot="dialog-close"
+              />}
             >
               <Icons.X />
               <span className="sr-only"> {"Close"->React.string} </span>
@@ -149,14 +144,7 @@ module Content = {
 
 module Header = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -170,14 +158,7 @@ module Header = {
 
 module Footer = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -191,14 +172,7 @@ module Footer = {
 
 module Title = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Dialog.Title
       ?id
       ?style
@@ -212,14 +186,7 @@ module Title = {
 
 module Description = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Dialog.Description
       ?id
       ?style

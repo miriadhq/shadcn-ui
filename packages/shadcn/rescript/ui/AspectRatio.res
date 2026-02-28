@@ -1,15 +1,7 @@
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
 @react.component
-let make = (
-  ~className="",
-  ~children=?,
-  ~id=?,
-  ~style=?,
-  ~ratio=?,
-  ~onClick=?,
-  ~onKeyDown=?,
-) => {
+let make = (~className="", ~children=?, ~id=?, ~style=?, ~ratio=?, ~onClick=?, ~onKeyDown=?) => {
   let style = switch style {
   | Some(style) => Some(style)
   | None =>
@@ -24,12 +16,6 @@ let make = (
     `relative aspect-(--ratio) ${className}`
   }
   <div
-    ?id
-    ?style
-    ?children
-    ?onClick
-    ?onKeyDown
-    dataSlot="aspect-ratio"
-    className={resolvedClassName}
+    ?id ?style ?children ?onClick ?onKeyDown dataSlot="aspect-ratio" className={resolvedClassName}
   />
 }

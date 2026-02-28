@@ -200,7 +200,7 @@ module TeamSwitcher = {
                   )
                   ->React.array}
                 </DropdownMenu.Group>
-                <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+                <DropdownMenu.Separator />
                 <DropdownMenu.Group>
                   <DropdownMenu.Item className="gap-2 p-2">
                     <div
@@ -232,7 +232,9 @@ module NavMainSection = {
         ->Array.map(item =>
           <Collapsible key={item.title} defaultOpen={item.isActive} className="group/collapsible">
             <Sidebar.MenuItem>
-              <Collapsible.Trigger render={<Sidebar.MenuButton ariaDisabled={false} dataSlot="collapsible-trigger" />}>
+              <Collapsible.Trigger
+                render={<Sidebar.MenuButton ariaDisabled={false} dataSlot="collapsible-trigger" />}
+              >
                 {renderIcon(~icon=item.icon)}
                 <span> {item.title->React.string} </span>
                 <Icons.ChevronRight
@@ -277,7 +279,9 @@ module NavProjectsSection = {
               <span> {project.name->React.string} </span>
             </Sidebar.MenuButton>
             <DropdownMenu>
-              <DropdownMenu.Trigger render={<Sidebar.MenuAction showOnHover=true dataSlot="dropdown-menu-trigger" />}>
+              <DropdownMenu.Trigger
+                render={<Sidebar.MenuAction showOnHover=true dataSlot="dropdown-menu-trigger" />}
+              >
                 <Icons.MoreHorizontal />
                 <span className="sr-only"> {"More"->React.string} </span>
               </DropdownMenu.Trigger>
@@ -294,7 +298,7 @@ module NavProjectsSection = {
                   {renderIcon(~icon=IconForward, ~className="text-muted-foreground")}
                   <span> {"Share Project"->React.string} </span>
                 </DropdownMenu.Item>
-                <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+                <DropdownMenu.Separator />
                 <DropdownMenu.Item>
                   {renderIcon(~icon=IconTrash2, ~className="text-muted-foreground")}
                   <span> {"Delete Project"->React.string} </span>
@@ -364,14 +368,14 @@ module NavUserSection = {
                   </div>
                 </DropdownMenu.Label>
               </DropdownMenu.Group>
-              <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+              <DropdownMenu.Separator />
               <DropdownMenu.Group>
                 <DropdownMenu.Item>
                   {renderIcon(~icon=IconSparkles)}
                   {"Upgrade to Pro"->React.string}
                 </DropdownMenu.Item>
               </DropdownMenu.Group>
-              <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+              <DropdownMenu.Separator />
               <DropdownMenu.Group>
                 <DropdownMenu.Item>
                   {renderIcon(~icon=IconBadgeCheck)}
@@ -386,7 +390,7 @@ module NavUserSection = {
                   {"Notifications"->React.string}
                 </DropdownMenu.Item>
               </DropdownMenu.Group>
-              <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+              <DropdownMenu.Separator />
               <DropdownMenu.Group>
                 <DropdownMenu.Item>
                   <Icons.LogOut />

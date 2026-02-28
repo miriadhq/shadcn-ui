@@ -40,14 +40,7 @@ let make = (
 
 module Track = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Progress.Track
       ?id
       ?style
@@ -55,19 +48,13 @@ module Track = {
       ?onKeyDown
       dataSlot="progress-track"
       className={`bg-muted relative flex h-1 w-full items-center overflow-x-hidden rounded-full ${className}`}
-     ?children />
+      ?children
+    />
 }
 
 module Indicator = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Progress.Indicator
       ?id
       ?style
@@ -81,14 +68,7 @@ module Indicator = {
 
 module Label = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Progress.Label
       ?id
       ?style
@@ -102,14 +82,7 @@ module Label = {
 
 module Value = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Progress.Value
       ?id
       ?style

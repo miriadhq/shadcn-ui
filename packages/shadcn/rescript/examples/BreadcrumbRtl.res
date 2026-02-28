@@ -5,14 +5,18 @@ let make = () =>
   <Breadcrumb dir="rtl">
     <Breadcrumb.List>
       <Breadcrumb.Item>
-        <Breadcrumb.Link render={<a href="/" />}> {"الرئيسية"->React.string} </Breadcrumb.Link>
+        <Breadcrumb.Link render={<a href="/" />}>
+          {"الرئيسية"->React.string}
+        </Breadcrumb.Link>
       </Breadcrumb.Item>
       <Breadcrumb.Separator>
         <Icons.Dot />
       </Breadcrumb.Separator>
       <Breadcrumb.Item>
         <DropdownMenu>
-          <DropdownMenu.Trigger render={<button className="flex items-center gap-1" type_="button" />}>
+          <DropdownMenu.Trigger
+            render={<button className="flex items-center gap-1" type_="button" />}
+          >
             {"المكونات"->React.string}
             <Icons.ChevronDown dataIcon="inline-end" className="size-3.5" />
           </DropdownMenu.Trigger>

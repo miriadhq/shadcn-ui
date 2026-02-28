@@ -28,6 +28,8 @@ let make = () =>
           </InputGroup.Button>
         </InputGroup.Addon>
       </InputGroup>
-      <Field.Description> {"Header positioned above the textarea."->React.string} </Field.Description>
+      <Field.Description>
+        {"Header positioned above the textarea."->React.string}
+      </Field.Description>
     </Field>
   </Field.Group>

@@ -39,9 +39,8 @@ module SonnerPrimitive = {
 let make = (
   ~theme=?,
   ~className="toaster group",
-  ~style=ReactDOM.Style.unsafeAddStyle(
-    {},
-    {
+  ~style=ReactDOM.Style._dictToStyle(
+    dict{
       "--normal-bg": "var(--popover)",
       "--normal-text": "var(--popover-foreground)",
       "--normal-border": "var(--border)",

@@ -7,8 +7,9 @@ let tooltipSides = [
 
 @react.component
 let make = () => {
-  let triggerClassName =
-    Button.twMerge(`${Button.buttonVariants(~variant=Button.Variant.Outline)} w-fit capitalize`)
+  let triggerClassName = Button.twMerge(
+    `${Button.buttonVariants(~variant=Button.Variant.Outline)} w-fit capitalize`,
+  )
 
   <div className="flex flex-wrap gap-2">
     {tooltipSides

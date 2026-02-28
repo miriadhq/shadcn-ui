@@ -1,7 +1,9 @@
 @react.component
 let make = () =>
   <div className="flex flex-col gap-4">
-    <ToggleGroup size=ToggleGroup.Size.Sm defaultValue={["top"]} variant=ToggleGroup.Variant.Outline>
+    <ToggleGroup
+      size=ToggleGroup.Size.Sm defaultValue={["top"]} variant=ToggleGroup.Variant.Outline
+    >
       <ToggleGroup.Item value="top" ariaLabel="Toggle top">
         {"Top"->React.string}
       </ToggleGroup.Item>

@@ -35,9 +35,7 @@ let make = () => {
               <Select.Group>
                 {countries
                 ->Array.map(c =>
-                  <Select.Item key={c.value} value={c.value}>
-                    {c.label->React.string}
-                  </Select.Item>
+                  <Select.Item key={c.value} value={c.value}> {c.label->React.string} </Select.Item>
                 )
                 ->React.array}
               </Select.Group>

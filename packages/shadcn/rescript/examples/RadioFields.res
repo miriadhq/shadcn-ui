@@ -27,9 +27,7 @@ let make = () =>
       </RadioGroup>
     </Field.Set>
     <Field.Set>
-      <Field.Legend dataVariant=Field.Variant.Label>
-        {"Battery Level"->React.string}
-      </Field.Legend>
+      <Field.Legend dataVariant=Field.Variant.Label> {"Battery Level"->React.string} </Field.Legend>
       <Field.Description>
         {"Choose your preferred battery level."->React.string}
       </Field.Description>
@@ -52,9 +50,7 @@ let make = () =>
       <Field orientation=BaseUi.Types.Orientation.Horizontal>
         <RadioGroup.Item value="option1" id="radio-content-1" />
         <Field.Content>
-          <Field.Label htmlFor="radio-content-1">
-            {"Enable Touch ID"->React.string}
-          </Field.Label>
+          <Field.Label htmlFor="radio-content-1"> {"Enable Touch ID"->React.string} </Field.Label>
           <Field.Description>
             {"Enable Touch ID to quickly unlock your device."->React.string}
           </Field.Description>
@@ -120,11 +116,15 @@ let make = () =>
       <RadioGroup disabled={true}>
         <Field dataDisabled={true} orientation=BaseUi.Types.Orientation.Horizontal>
           <RadioGroup.Item value="disabled1" id="radio-disabled-1" disabled={true} />
-          <Field.Label htmlFor="radio-disabled-1"> {"Disabled Option 1"->React.string} </Field.Label>
+          <Field.Label htmlFor="radio-disabled-1">
+            {"Disabled Option 1"->React.string}
+          </Field.Label>
         </Field>
         <Field dataDisabled={true} orientation=BaseUi.Types.Orientation.Horizontal>
           <RadioGroup.Item value="disabled2" id="radio-disabled-2" disabled={true} />
-          <Field.Label htmlFor="radio-disabled-2"> {"Disabled Option 2"->React.string} </Field.Label>
+          <Field.Label htmlFor="radio-disabled-2">
+            {"Disabled Option 2"->React.string}
+          </Field.Label>
         </Field>
       </RadioGroup>
     </Field.Set>

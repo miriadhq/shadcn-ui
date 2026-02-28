@@ -24,10 +24,7 @@ let make = () => {
     <InputGroup>
       <InputGroup.Input placeholder="Type to search..." />
       <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
-        <InputGroup.Button
-          onClick={_ => setIsFavorite(f => !f)}
-          dataSize=InputGroup.Size.IconXs
-        >
+        <InputGroup.Button onClick={_ => setIsFavorite(f => !f)} dataSize=InputGroup.Size.IconXs>
           <Icons.Info
             dataIcon={isFavorite ? "true" : "false"}
             className="data-[icon=true]:fill-blue-600 data-[icon=true]:stroke-blue-600"

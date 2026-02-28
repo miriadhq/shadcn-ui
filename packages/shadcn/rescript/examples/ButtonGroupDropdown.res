@@ -69,7 +69,7 @@ let make = () => {
             {"Copy Conversation"->React.string}
           </DropdownMenu.Item>
         </DropdownMenu.Group>
-        <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+        <DropdownMenu.Separator />
         <DropdownMenu.Group>
           <DropdownMenu.Item variant=DropdownMenu.Variant.Destructive>
             <LocalIcons.Trash />

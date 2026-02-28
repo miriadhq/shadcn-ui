@@ -15,9 +15,7 @@ let make = () =>
         <Button render={<a href="#" />} nativeButton={false}>
           {"Create project"->React.string}
         </Button>
-        <Button variant=Button.Variant.Outline>
-          {"Import project"->React.string}
-        </Button>
+        <Button variant=Button.Variant.Outline> {"Import project"->React.string} </Button>
       </div>
       <Button
         variant=Button.Variant.Link

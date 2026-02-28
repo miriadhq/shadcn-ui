@@ -1,7 +1,9 @@
 @react.component
 let make = () =>
   <Field.Set className="w-full max-w-xs">
-    <Field.Legend dataVariant=Field.Variant.Label> {"Subscription Plan"->React.string} </Field.Legend>
+    <Field.Legend dataVariant=Field.Variant.Label>
+      {"Subscription Plan"->React.string}
+    </Field.Legend>
     <Field.Description>
       {"Yearly and lifetime plans offer significant savings."->React.string}
     </Field.Description>

@@ -23,12 +23,10 @@ let make = () => {
     <Card.Content className="p-0">
       <Calendar
         mode="range"
-        defaultMonth=?{
-          switch range {
-          | Some(value) => value.from
-          | None => None
-          }
-        }
+        defaultMonth=?{switch range {
+        | Some(value) => value.from
+        | None => None
+        }}
         selected=range
         onSelect={(value: option<dateRange>) => setRange(_ => value)}
         numberOfMonths=1
@@ -52,7 +50,13 @@ let make = () => {
               {if props.modifiers.outside->Option.getOr(false) {
                 React.null
               } else {
-                <span> {(if isWeekend {"$120"} else {"$100"})->React.string} </span>
+                <span>
+                  {if isWeekend {
+                    "$120"
+                  } else {
+                    "$100"
+                  }->React.string}
+                </span>
               }}
             </Calendar.DayButton>
           },

@@ -8,7 +8,7 @@ let make = () =>
         <Menubar.CheckboxItem checked=true>
           {"Always Show Full URLs"->React.string}
         </Menubar.CheckboxItem>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Item inset=true>
           {"Reload"->React.string}
           <Menubar.Shortcut> {"⌘R"->React.string} </Menubar.Shortcut>

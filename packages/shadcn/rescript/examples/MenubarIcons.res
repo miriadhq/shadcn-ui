@@ -13,7 +13,7 @@ let make = () =>
           <Icons.Folder />
           {"Open Folder"->React.string}
         </Menubar.Item>
-        <Menubar.Separator> {React.null} </Menubar.Separator>
+        <Menubar.Separator />
         <Menubar.Item>
           <Icons.Save />
           {"Save"->React.string}
@@ -33,7 +33,7 @@ let make = () =>
             <Icons.HelpCircle />
             {"Help"->React.string}
           </Menubar.Item>
-          <Menubar.Separator> {React.null} </Menubar.Separator>
+          <Menubar.Separator />
           <Menubar.Item variant=Menubar.Variant.Destructive>
             <Icons.Trash />
             {"Delete"->React.string}

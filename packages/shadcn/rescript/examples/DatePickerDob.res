@@ -12,9 +12,7 @@ let make = () => {
     <Popover open_={open_} onOpenChange={(v, _) => setOpen(_ => v)}>
       <Popover.Trigger
         render={<Button
-          variant=Button.Variant.Outline
-          id="date"
-          className="justify-start font-normal"
+          variant=Button.Variant.Outline id="date" className="justify-start font-normal"
         />}
       >
         {switch date {

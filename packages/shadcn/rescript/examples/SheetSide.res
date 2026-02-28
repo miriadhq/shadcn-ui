@@ -5,11 +5,11 @@ let sheetSides = [
   (BaseUi.Types.Side.Left, "left"),
 ]
 
-let loremIpsum =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+let loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
-let triggerClassName =
-  Button.twMerge(`${Button.buttonVariants(~variant=Button.Variant.Outline)} capitalize`)
+let triggerClassName = Button.twMerge(
+  `${Button.buttonVariants(~variant=Button.Variant.Outline)} capitalize`,
+)
 
 @react.component
 let make = () =>
@@ -21,8 +21,7 @@ let make = () =>
           {label->React.string}
         </Sheet.Trigger>
         <Sheet.Content
-          side
-          className="data-[side=bottom]:max-h-[50vh] data-[side=top]:max-h-[50vh]"
+          side className="data-[side=bottom]:max-h-[50vh] data-[side=top]:max-h-[50vh]"
         >
           <Sheet.Header>
             <Sheet.Title> {"Edit profile"->React.string} </Sheet.Title>

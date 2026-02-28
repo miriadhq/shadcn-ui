@@ -1,4 +1,7 @@
-let tags = Array.make(~length=50, 0)->Array.mapWithIndex((_, index) => `v1.2.0-beta.${Int.toString(50 - index)}`)
+let tags =
+  Array.make(~length=50, 0)->Array.mapWithIndex((_, index) =>
+    `v1.2.0-beta.${Int.toString(50 - index)}`
+  )
 
 @react.component
 let make = () =>

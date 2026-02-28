@@ -40,7 +40,9 @@ let make = () => {
           </ContextMenu.SubContent>
         </ContextMenu.Sub>
         <ContextMenu.Sub>
-          <ContextMenu.SubTrigger> {"المزيد من الأدوات"->React.string} </ContextMenu.SubTrigger>
+          <ContextMenu.SubTrigger>
+            {"المزيد من الأدوات"->React.string}
+          </ContextMenu.SubTrigger>
           <ContextMenu.SubContent className="w-44" dir="rtl" dataLang="ar">
             <ContextMenu.Group>
               <ContextMenu.Item> {"حفظ الصفحة..."->React.string} </ContextMenu.Item>
@@ -71,17 +73,12 @@ let make = () => {
       </ContextMenu.Group>
       <ContextMenu.Separator />
       <ContextMenu.Group>
-        <ContextMenu.RadioGroup
-          value={people}
-          onValueChange={(v, _) => setPeople(_ => v)}
-        >
+        <ContextMenu.RadioGroup value={people} onValueChange={(v, _) => setPeople(_ => v)}>
           <ContextMenu.Label> {"الأشخاص"->React.string} </ContextMenu.Label>
           <ContextMenu.RadioItem value="pedro">
             {"Pedro Duarte"->React.string}
           </ContextMenu.RadioItem>
-          <ContextMenu.RadioItem value="colm">
-            {"Colm Tuite"->React.string}
-          </ContextMenu.RadioItem>
+          <ContextMenu.RadioItem value="colm"> {"Colm Tuite"->React.string} </ContextMenu.RadioItem>
         </ContextMenu.RadioGroup>
       </ContextMenu.Group>
     </ContextMenu.Content>

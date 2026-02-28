@@ -12,7 +12,8 @@
       "Bash(pnpm rescript:*)",
       "Bash(pnpm:*)",
       "Bash(echo === Charts ===:*)",
-      "Bash(do:*)"
+      "Bash(do:*)",
+      "Bash(perl:*)"
     ],
     "deny": []
   }

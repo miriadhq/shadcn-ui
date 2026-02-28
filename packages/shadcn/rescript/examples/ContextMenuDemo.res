@@ -31,11 +31,11 @@ let make = () =>
               <ContextMenu.Item> {"Create Shortcut..."->React.string} </ContextMenu.Item>
               <ContextMenu.Item> {"Name Window..."->React.string} </ContextMenu.Item>
             </ContextMenu.Group>
-            <ContextMenu.Separator> {React.null} </ContextMenu.Separator>
+            <ContextMenu.Separator />
             <ContextMenu.Group>
               <ContextMenu.Item> {"Developer Tools"->React.string} </ContextMenu.Item>
             </ContextMenu.Group>
-            <ContextMenu.Separator> {React.null} </ContextMenu.Separator>
+            <ContextMenu.Separator />
             <ContextMenu.Group>
               <ContextMenu.Item variant=ContextMenu.Variant.Destructive>
                 {"Delete"->React.string}
@@ -44,14 +44,14 @@ let make = () =>
           </ContextMenu.SubContent>
         </ContextMenu.Sub>
       </ContextMenu.Group>
-      <ContextMenu.Separator> {React.null} </ContextMenu.Separator>
+      <ContextMenu.Separator />
       <ContextMenu.Group>
         <ContextMenu.CheckboxItem checked=true>
           {"Show Bookmarks"->React.string}
         </ContextMenu.CheckboxItem>
         <ContextMenu.CheckboxItem> {"Show Full URLs"->React.string} </ContextMenu.CheckboxItem>
       </ContextMenu.Group>
-      <ContextMenu.Separator> {React.null} </ContextMenu.Separator>
+      <ContextMenu.Separator />
       <ContextMenu.Group>
         <ContextMenu.RadioGroup value="pedro">
           <ContextMenu.Label> {"People"->React.string} </ContextMenu.Label>

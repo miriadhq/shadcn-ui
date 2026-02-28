@@ -8,8 +8,16 @@ type person = {
 
 let people = [
   {username: "shadcn", avatar: "https://github.com/shadcn.png", email: "shadcn@vercel.com"},
-  {username: "maxleiter", avatar: "https://github.com/maxleiter.png", email: "maxleiter@vercel.com"},
-  {username: "evilrabbit", avatar: "https://github.com/evilrabbit.png", email: "evilrabbit@vercel.com"},
+  {
+    username: "maxleiter",
+    avatar: "https://github.com/maxleiter.png",
+    email: "maxleiter@vercel.com",
+  },
+  {
+    username: "evilrabbit",
+    avatar: "https://github.com/evilrabbit.png",
+    email: "evilrabbit@vercel.com",
+  },
 ]
 
 @react.component
@@ -29,7 +37,7 @@ let make = () =>
                 <Avatar className="size-[--spacing(6.5)]">
                   <Avatar.Image src={person.avatar} className="grayscale" />
                   <Avatar.Fallback>
-                    {(person.username->String.slice(~start=0, ~end=1))->React.string}
+                    {person.username->String.slice(~start=0, ~end=1)->React.string}
                   </Avatar.Fallback>
                 </Avatar>
               </Item.Media>

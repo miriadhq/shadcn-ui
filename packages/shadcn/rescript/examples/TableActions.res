@@ -15,7 +15,12 @@ let make = () =>
         <Table.Cell className="text-right">
           <DropdownMenu>
             <DropdownMenu.Trigger
-              render={<Button variant=Button.Variant.Ghost size=Button.Size.Icon className="size-8" dataSlot="dropdown-menu-trigger" />}
+              render={<Button
+                variant=Button.Variant.Ghost
+                size=Button.Size.Icon
+                className="size-8"
+                dataSlot="dropdown-menu-trigger"
+              />}
             >
               <Icons.MoreHorizontal />
               <span className="sr-only"> {"Open menu"->React.string} </span>
@@ -23,7 +28,7 @@ let make = () =>
             <DropdownMenu.Content align=BaseUi.Types.Align.End>
               <DropdownMenu.Item> {"Edit"->React.string} </DropdownMenu.Item>
               <DropdownMenu.Item> {"Duplicate"->React.string} </DropdownMenu.Item>
-              <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+              <DropdownMenu.Separator />
               <DropdownMenu.Item variant=DropdownMenu.Variant.Destructive>
                 {"Delete"->React.string}
               </DropdownMenu.Item>
@@ -37,7 +42,12 @@ let make = () =>
         <Table.Cell className="text-right">
           <DropdownMenu>
             <DropdownMenu.Trigger
-              render={<Button variant=Button.Variant.Ghost size=Button.Size.Icon className="size-8" dataSlot="dropdown-menu-trigger" />}
+              render={<Button
+                variant=Button.Variant.Ghost
+                size=Button.Size.Icon
+                className="size-8"
+                dataSlot="dropdown-menu-trigger"
+              />}
             >
               <Icons.MoreHorizontal />
               <span className="sr-only"> {"Open menu"->React.string} </span>
@@ -45,7 +55,7 @@ let make = () =>
             <DropdownMenu.Content align=BaseUi.Types.Align.End>
               <DropdownMenu.Item> {"Edit"->React.string} </DropdownMenu.Item>
               <DropdownMenu.Item> {"Duplicate"->React.string} </DropdownMenu.Item>
-              <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+              <DropdownMenu.Separator />
               <DropdownMenu.Item variant=DropdownMenu.Variant.Destructive>
                 {"Delete"->React.string}
               </DropdownMenu.Item>
@@ -59,7 +69,12 @@ let make = () =>
         <Table.Cell className="text-right">
           <DropdownMenu>
             <DropdownMenu.Trigger
-              render={<Button variant=Button.Variant.Ghost size=Button.Size.Icon className="size-8" dataSlot="dropdown-menu-trigger" />}
+              render={<Button
+                variant=Button.Variant.Ghost
+                size=Button.Size.Icon
+                className="size-8"
+                dataSlot="dropdown-menu-trigger"
+              />}
             >
               <Icons.MoreHorizontal />
               <span className="sr-only"> {"Open menu"->React.string} </span>
@@ -67,7 +82,7 @@ let make = () =>
             <DropdownMenu.Content align=BaseUi.Types.Align.End>
               <DropdownMenu.Item> {"Edit"->React.string} </DropdownMenu.Item>
               <DropdownMenu.Item> {"Duplicate"->React.string} </DropdownMenu.Item>
-              <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+              <DropdownMenu.Separator />
               <DropdownMenu.Item variant=DropdownMenu.Variant.Destructive>
                 {"Delete"->React.string}
               </DropdownMenu.Item>

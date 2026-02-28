@@ -104,14 +104,7 @@ module Portal = {
 
 module Overlay = {
   @react.component
-  let make = (
-    ~className="",
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~keepMounted=?,
-  ) =>
+  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~keepMounted=?) =>
     <BaseUi.Dialog.Backdrop
       ?id
       ?style
@@ -152,8 +145,7 @@ module Content = {
   ) => {
     let style = switch (style, dir) {
     | (Some(style), Some(dir)) => Some(style->ReactDOM.Style.unsafeAddProp("direction", dir))
-    | (None, Some(dir)) =>
-      Some(ReactDOM.Style._dictToStyle(Dict.make())->ReactDOM.Style.unsafeAddProp("direction", dir))
+    | (None, Some(dir)) => Some(ReactDOM.Style._dictToStyle(dict{"direction": dir}))
     | (Some(style), None) => Some(style)
     | (None, None) => None
     }
@@ -175,7 +167,9 @@ module Content = {
         {showCloseButton
           ? <BaseUi.Dialog.Close
               dataSlot="sheet-close"
-              render={<Button variant=Ghost size=IconSm className="absolute top-3 right-3" dataSlot="sheet-close" />}
+              render={<Button
+                variant=Ghost size=IconSm className="absolute top-3 right-3" dataSlot="sheet-close"
+              />}
             >
               <Icons.X />
               <span className="sr-only"> {"Close"->React.string} </span>
@@ -188,14 +182,7 @@ module Content = {
 
 module Header = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -209,14 +196,7 @@ module Header = {
 
 module Footer = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -230,14 +210,7 @@ module Footer = {
 
 module Title = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Dialog.Title
       ?id
       ?style
@@ -251,14 +224,7 @@ module Title = {
 
 module Description = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Dialog.Description
       ?id
       ?style

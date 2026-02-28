@@ -8,15 +8,12 @@ let make = () => {
   let (position, setPosition) = React.useState(() => "bottom")
 
   <DropdownMenu>
-    <DropdownMenu.Trigger render={<Button variant=Button.Variant.Outline dataSlot="dropdown-menu-trigger" />}>
+    <DropdownMenu.Trigger
+      render={<Button variant=Button.Variant.Outline dataSlot="dropdown-menu-trigger" />}
+    >
       {"افتح القائمة"->React.string}
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content
-      align=BaseUi.Types.Align.End
-      dir="rtl"
-      dataLang="ar"
-      className="w-36"
-    >
+    <DropdownMenu.Content align=BaseUi.Types.Align.End dir="rtl" dataLang="ar" className="w-36">
       <DropdownMenu.Group>
         <DropdownMenu.Sub>
           <DropdownMenu.SubTrigger> {"الحساب"->React.string} </DropdownMenu.SubTrigger>
@@ -45,10 +42,14 @@ let make = () => {
         <DropdownMenu.Label> {"الفريق"->React.string} </DropdownMenu.Label>
         <DropdownMenu.Item> {"الفريق"->React.string} </DropdownMenu.Item>
         <DropdownMenu.Sub>
-          <DropdownMenu.SubTrigger> {"دعوة المستخدمين"->React.string} </DropdownMenu.SubTrigger>
+          <DropdownMenu.SubTrigger>
+            {"دعوة المستخدمين"->React.string}
+          </DropdownMenu.SubTrigger>
           <DropdownMenu.Portal>
             <DropdownMenu.SubContent dir="rtl" dataLang="ar">
-              <DropdownMenu.Item> {"البريد الإلكتروني"->React.string} </DropdownMenu.Item>
+              <DropdownMenu.Item>
+                {"البريد الإلكتروني"->React.string}
+              </DropdownMenu.Item>
               <DropdownMenu.Item> {"رسالة"->React.string} </DropdownMenu.Item>
               <DropdownMenu.Sub>
                 <DropdownMenu.SubTrigger> {"المزيد"->React.string} </DropdownMenu.SubTrigger>
@@ -75,20 +76,17 @@ let make = () => {
       <DropdownMenu.Group>
         <DropdownMenu.Label> {"عرض"->React.string} </DropdownMenu.Label>
         <DropdownMenu.CheckboxItem
-          checked={showStatusBar}
-          onCheckedChange={(v, _) => setShowStatusBar(_ => v)}
+          checked={showStatusBar} onCheckedChange={(v, _) => setShowStatusBar(_ => v)}
         >
           {"شريط الحالة"->React.string}
         </DropdownMenu.CheckboxItem>
         <DropdownMenu.CheckboxItem
-          checked={showActivityBar}
-          onCheckedChange={(v, _) => setShowActivityBar(_ => v)}
+          checked={showActivityBar} onCheckedChange={(v, _) => setShowActivityBar(_ => v)}
         >
           {"شريط النشاط"->React.string}
         </DropdownMenu.CheckboxItem>
         <DropdownMenu.CheckboxItem
-          checked={showPanel}
-          onCheckedChange={(v, _) => setShowPanel(_ => v)}
+          checked={showPanel} onCheckedChange={(v, _) => setShowPanel(_ => v)}
         >
           {"اللوحة"->React.string}
         </DropdownMenu.CheckboxItem>
@@ -98,8 +96,12 @@ let make = () => {
         <DropdownMenu.Label> {"الموضع"->React.string} </DropdownMenu.Label>
         <DropdownMenu.RadioGroup value={position} onValueChange={(v, _) => setPosition(_ => v)}>
           <DropdownMenu.RadioItem value="top"> {"أعلى"->React.string} </DropdownMenu.RadioItem>
-          <DropdownMenu.RadioItem value="bottom"> {"أسفل"->React.string} </DropdownMenu.RadioItem>
-          <DropdownMenu.RadioItem value="right"> {"يمين"->React.string} </DropdownMenu.RadioItem>
+          <DropdownMenu.RadioItem value="bottom">
+            {"أسفل"->React.string}
+          </DropdownMenu.RadioItem>
+          <DropdownMenu.RadioItem value="right">
+            {"يمين"->React.string}
+          </DropdownMenu.RadioItem>
           <DropdownMenu.RadioItem value="left"> {"يسار"->React.string} </DropdownMenu.RadioItem>
         </DropdownMenu.RadioGroup>
       </DropdownMenu.Group>

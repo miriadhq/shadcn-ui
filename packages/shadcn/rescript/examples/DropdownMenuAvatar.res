@@ -4,7 +4,12 @@
 let make = () =>
   <DropdownMenu>
     <DropdownMenu.Trigger
-      render={<Button variant=Button.Variant.Ghost size=Button.Size.Icon className="rounded-full" dataSlot="dropdown-menu-trigger" />}
+      render={<Button
+        variant=Button.Variant.Ghost
+        size=Button.Size.Icon
+        className="rounded-full"
+        dataSlot="dropdown-menu-trigger"
+      />}
     >
       <Avatar>
         <Avatar.Image src="https://github.com/shadcn.png" alt="shadcn" />

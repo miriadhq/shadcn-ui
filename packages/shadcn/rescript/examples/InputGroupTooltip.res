@@ -7,9 +7,7 @@ let make = () =>
         <Tooltip>
           <Tooltip.Trigger
             render={<InputGroup.Button
-              dataVariant=InputGroup.Variant.Ghost
-              ariaLabel="Info"
-              dataSize=InputGroup.Size.IconXs
+              dataVariant=InputGroup.Variant.Ghost ariaLabel="Info" dataSize=InputGroup.Size.IconXs
             />}
           >
             <Icons.Info />
@@ -26,9 +24,7 @@ let make = () =>
         <Tooltip>
           <Tooltip.Trigger
             render={<InputGroup.Button
-              dataVariant=InputGroup.Variant.Ghost
-              ariaLabel="Help"
-              dataSize=InputGroup.Size.IconXs
+              dataVariant=InputGroup.Variant.Ghost ariaLabel="Help" dataSize=InputGroup.Size.IconXs
             />}
           >
             <Icons.HelpCircle />

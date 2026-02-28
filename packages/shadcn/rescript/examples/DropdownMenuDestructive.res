@@ -3,7 +3,9 @@
 @react.component
 let make = () =>
   <DropdownMenu>
-    <DropdownMenu.Trigger render={<Button variant=Button.Variant.Outline dataSlot="dropdown-menu-trigger" />}>
+    <DropdownMenu.Trigger
+      render={<Button variant=Button.Variant.Outline dataSlot="dropdown-menu-trigger" />}
+    >
       {"Actions"->React.string}
     </DropdownMenu.Trigger>
     <DropdownMenu.Content>

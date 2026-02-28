@@ -23,8 +23,7 @@ let make = () =>
             <div className="flex items-center">
               <Label htmlFor="password-rtl"> {"كلمة المرور"->React.string} </Label>
               <a
-                href="#"
-                className="ms-auto inline-block text-sm underline-offset-4 hover:underline"
+                href="#" className="ms-auto inline-block text-sm underline-offset-4 hover:underline"
               >
                 {"نسيت كلمة المرور؟"->React.string}
               </a>

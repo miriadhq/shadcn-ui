@@ -1,7 +1,9 @@
 module RtlAccordion = {
   @react.component
   let make = (~children=React.null, ~className="", ~defaultValue=?) =>
-    <BaseUi.Accordion.Root ?defaultValue dataSlot="accordion" className={`flex w-full flex-col ${className}`}>
+    <BaseUi.Accordion.Root
+      ?defaultValue dataSlot="accordion" className={`flex w-full flex-col ${className}`}
+    >
       {children}
     </BaseUi.Accordion.Root>
 
@@ -41,7 +43,9 @@ module RtlAccordion = {
         dataSlot="accordion-content"
         className="data-open:animate-accordion-down data-closed:animate-accordion-up overflow-hidden text-sm"
       >
-        <div className="[&_a]:hover:text-foreground h-(--accordion-panel-height) pt-0 pb-2.5 data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4">
+        <div
+          className="[&_a]:hover:text-foreground h-(--accordion-panel-height) pt-0 pb-2.5 data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4"
+        >
           {children}
         </div>
       </BaseUi.Accordion.Panel>
@@ -58,20 +62,17 @@ let items: array<item> = [
   {
     value: "item-1",
     question: "كيف يمكنني إعادة تعيين كلمة المرور؟",
-    answer:
-      "انقر على 'نسيت كلمة المرور' في صفحة تسجيل الدخول، أدخل عنوان بريدك الإلكتروني، وسنرسل لك رابطًا لإعادة تعيين كلمة المرور. سينتهي صلاحية الرابط خلال 24 ساعة.",
+    answer: "انقر على 'نسيت كلمة المرور' في صفحة تسجيل الدخول، أدخل عنوان بريدك الإلكتروني، وسنرسل لك رابطًا لإعادة تعيين كلمة المرور. سينتهي صلاحية الرابط خلال 24 ساعة.",
   },
   {
     value: "item-2",
     question: "هل يمكنني تغيير خطة الاشتراك الخاصة بي؟",
-    answer:
-      "نعم، يمكنك ترقية أو تخفيض خطتك في أي وقت من إعدادات حسابك. ستظهر التغييرات في دورة الفوترة التالية.",
+    answer: "نعم، يمكنك ترقية أو تخفيض خطتك في أي وقت من إعدادات حسابك. ستظهر التغييرات في دورة الفوترة التالية.",
   },
   {
     value: "item-3",
     question: "ما هي طرق الدفع التي تقبلونها؟",
-    answer:
-      "نقبل جميع بطاقات الائتمان الرئيسية و PayPal والتحويلات المصرفية. تتم معالجة جميع المدفوعات بأمان من خلال شركاء الدفع لدينا.",
+    answer: "نقبل جميع بطاقات الائتمان الرئيسية و PayPal والتحويلات المصرفية. تتم معالجة جميع المدفوعات بأمان من خلال شركاء الدفع لدينا.",
   },
 ]
 

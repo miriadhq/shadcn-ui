@@ -15,10 +15,7 @@ let items: array<item> = [
   {
     title: "Getting Started",
     url: "#",
-    items: [
-      {title: "Installation", url: "#"},
-      {title: "Project Structure", url: "#"},
-    ],
+    items: [{title: "Installation", url: "#"}, {title: "Project Structure", url: "#"}],
   },
   {
     title: "Build Your Application",

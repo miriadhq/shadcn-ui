@@ -10,7 +10,9 @@ let make = () =>
         placeholder="Autoresize textarea..."
       />
       <InputGroup.Addon dataAlign=InputGroup.DataAlign.BlockEnd>
-        <InputGroup.Button className="ml-auto" dataSize=InputGroup.Size.Sm dataVariant=InputGroup.Variant.Default>
+        <InputGroup.Button
+          className="ml-auto" dataSize=InputGroup.Size.Sm dataVariant=InputGroup.Variant.Default
+        >
           {"Submit"->React.string}
         </InputGroup.Button>
       </InputGroup.Addon>

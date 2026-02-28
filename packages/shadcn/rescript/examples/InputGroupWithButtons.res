@@ -44,7 +44,9 @@ let make = () =>
       <InputGroup>
         <InputGroup.Input id="input-button-18" />
         <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
-          <InputGroup.Button dataVariant=InputGroup.Variant.Secondary dataSize=InputGroup.Size.IconXs>
+          <InputGroup.Button
+            dataVariant=InputGroup.Variant.Secondary dataSize=InputGroup.Size.IconXs
+          >
             <Icons.Trash />
           </InputGroup.Button>
         </InputGroup.Addon>

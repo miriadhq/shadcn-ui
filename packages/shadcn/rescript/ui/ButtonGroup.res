@@ -58,15 +58,7 @@ let make = (
 
 module Text = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~render=?,
-  ) => {
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~render=?) => {
     let props: BaseUi.Types.props<string, bool> = {
       ?id,
       ?style,

@@ -48,7 +48,11 @@ let make = () => {
           className="flex-1"
           onClick={_ => {
             let today = Date.make()
-            let newDate = makeDate(today->getFullYear, today->getMonth, today->getDate + preset.value)
+            let newDate = makeDate(
+              today->getFullYear,
+              today->getMonth,
+              today->getDate + preset.value,
+            )
             setDate(_ => Some(newDate))
             setCurrentMonth(_ => makeDate(newDate->getFullYear, newDate->getMonth, 1))
           }}

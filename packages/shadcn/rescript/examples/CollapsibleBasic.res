@@ -5,9 +5,7 @@ let make = () =>
       <Collapsible className="data-open:bg-muted rounded-md">
         <Collapsible.Trigger
           render={<button
-            className={`${Button.buttonVariants(
-                ~variant=Button.Variant.Ghost,
-              )} w-full`}
+            className={`${Button.buttonVariants(~variant=Button.Variant.Ghost)} w-full`}
             type_="button"
           />}
         >

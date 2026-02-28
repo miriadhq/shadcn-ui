@@ -47,7 +47,9 @@ let allItems = timezones->Array.flatMap(g => g.items)
 let make = () =>
   <Combobox items={allItems}>
     <Combobox.Input placeholder="Select a timezone">
-      <InputGroup.Addon> <Icons.Globe /> </InputGroup.Addon>
+      <InputGroup.Addon>
+        <Icons.Globe />
+      </InputGroup.Addon>
     </Combobox.Input>
     <Combobox.Content alignOffset={-28.} className="w-60">
       <Combobox.Empty> {"No timezones found."->React.string} </Combobox.Empty>

@@ -1,23 +1,22 @@
 @@directive("'use client'")
 
 type toLocaleDateStringOpts = {day: string, month: string, year: string}
-@send external toLocaleDateString: (Date.t, string, toLocaleDateStringOpts) => string = "toLocaleDateString"
+@send
+external toLocaleDateString: (Date.t, string, toLocaleDateStringOpts) => string =
+  "toLocaleDateString"
 @module("chrono-node") external parseDate: string => Nullable.t<Date.t> = "parseDate"
 
 let formatDate = (date: option<Date.t>) =>
   switch date {
   | None => ""
-  | Some(d) =>
-    d->toLocaleDateString("en-US", {day: "2-digit", month: "long", year: "numeric"})
+  | Some(d) => d->toLocaleDateString("en-US", {day: "2-digit", month: "long", year: "numeric"})
   }
 
 @react.component
 let make = () => {
   let (open_, setOpen) = React.useState(() => false)
   let (value, setValue) = React.useState(() => "In 2 days")
-  let (date, setDate) = React.useState(() =>
-    parseDate("In 2 days")->Nullable.toOption
-  )
+  let (date, setDate) = React.useState(() => parseDate("In 2 days")->Nullable.toOption)
 
   <Field className="mx-auto max-w-xs">
     <Field.Label htmlFor="date-optional"> {"Schedule Date"->React.string} </Field.Label>
@@ -49,9 +48,7 @@ let make = () => {
             <span className="sr-only"> {"Select date"->React.string} </span>
           </Popover.Trigger>
           <Popover.Content
-            className="w-auto overflow-hidden p-0"
-            align=BaseUi.Types.Align.End
-            sideOffset={8.}
+            className="w-auto overflow-hidden p-0" align=BaseUi.Types.Align.End sideOffset={8.}
           >
             <Calendar
               mode="single"

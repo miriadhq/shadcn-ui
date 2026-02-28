@@ -50,14 +50,7 @@ module Portal = {
 
 module Overlay = {
   @react.component
-  let make = (
-    ~className="",
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~keepMounted=?,
-  ) =>
+  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~keepMounted=?) =>
     <BaseUi.AlertDialog.Backdrop
       ?id
       ?style
@@ -101,14 +94,7 @@ module Content = {
 
 module Header = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -122,14 +108,7 @@ module Header = {
 
 module Footer = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -143,14 +122,7 @@ module Footer = {
 
 module Media = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -164,14 +136,7 @@ module Media = {
 
 module Title = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.AlertDialog.Title
       ?id
       ?style
@@ -185,14 +150,7 @@ module Title = {
 
 module Description = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.AlertDialog.Description
       ?id
       ?style

@@ -71,11 +71,7 @@ let themeColor = (~itemConfig: chartConfigItem, ~themeName: string) =>
   | None => itemConfig.color
   }
 
-let getPayloadConfigFromPayload = (
-  ~config: chartConfig,
-  ~payload: payloadItem,
-  ~key: string,
-) => {
+let getPayloadConfigFromPayload = (~config: chartConfig, ~payload: payloadItem, ~key: string) => {
   let configLabelKey = switch key {
   | "name" => payload.name->Option.orElse(payload.payload->getString("name"))
   | "dataKey" => payload.dataKey->Option.orElse(payload.payload->getString("dataKey"))
@@ -88,35 +84,35 @@ let getPayloadConfigFromPayload = (
 }
 
 let renderStyleElement = (~id: string, ~config: chartConfig) => {
-  let colorConfig = config
-  ->dictEntries
-  ->Array.filter(((_, itemConfig)) =>
-    switch (itemConfig.theme, itemConfig.color) {
-    | (Some(_), _)
-    | (_, Some(_)) => true
-    | _ => false
-    }
-  )
+  let colorConfig =
+    config
+    ->dictEntries
+    ->Array.filter(((_, itemConfig)) =>
+      switch (itemConfig.theme, itemConfig.color) {
+      | (Some(_), _)
+      | (_, Some(_)) => true
+      | _ => false
+      }
+    )
   if colorConfig->Array.length == 0 {
     React.null
   } else {
-    let css = [
-      ("light", ""),
-      ("dark", ".dark"),
-    ]
-    ->Array.map(((themeName, prefix)) => {
-      let declarations = colorConfig
-      ->Array.filterMap(((key, itemConfig)) =>
-        switch themeColor(~itemConfig, ~themeName) {
-        | Some(color) => Some(`  --color-${key}: ${color};`)
-        | None => None
-        }
-      )
-      ->joinWithSeparator("\n")
+    let css =
+      [("light", ""), ("dark", ".dark")]
+      ->Array.map(((themeName, prefix)) => {
+        let declarations =
+          colorConfig
+          ->Array.filterMap(((key, itemConfig)) =>
+            switch themeColor(~itemConfig, ~themeName) {
+            | Some(color) => Some(`  --color-${key}: ${color};`)
+            | None => None
+            }
+          )
+          ->joinWithSeparator("\n")
 
-      `${prefix} [data-chart=${id}] {\n${declarations}\n}`
-    })
-    ->joinWithSeparator("\n\n")
+        `${prefix} [data-chart=${id}] {\n${declarations}\n}`
+      })
+      ->joinWithSeparator("\n\n")
     <style> {css->React.string} </style>
   }
 }
@@ -234,14 +230,14 @@ module TooltipContent = {
         switch labelFormatter {
         | Some(formatLabel) =>
           Some(
-            <div className={`font-medium ${labelClassName}`}>
-              {formatLabel(value, payload)}
-            </div>,
+            <div className={`font-medium ${labelClassName}`}> {formatLabel(value, payload)} </div>,
           )
         | None =>
           switch value {
           | Some(value) =>
-            Some(<div className={`font-medium ${labelClassName}`}> {value->chartLabelToElement} </div>)
+            Some(
+              <div className={`font-medium ${labelClassName}`}> {value->chartLabelToElement} </div>,
+            )
           | None => None
           }
         }
@@ -296,13 +292,15 @@ module TooltipContent = {
             let rawItemValue = item.value
             let itemValue = rawItemValue->Option.flatMap(jsonToDisplayString)
             let shouldShowValue = rawItemValue->Option.mapOr(false, jsTruthy)
-            let itemLabel = itemConfig
-            ->Option.flatMap(configItem => configItem.label)
-            ->Option.map(chartLabelToElement)
-            ->Option.orElse(item.name->Option.map(React.string))
-            let itemKey = item.dataKey
-            ->Option.orElse(item.name)
-            ->Option.getOr(Int.toString(index))
+            let itemLabel =
+              itemConfig
+              ->Option.flatMap(configItem => configItem.label)
+              ->Option.map(chartLabelToElement)
+              ->Option.orElse(item.name->Option.map(React.string))
+            let itemKey =
+              item.dataKey
+              ->Option.orElse(item.name)
+              ->Option.getOr(Int.toString(index))
 
             <div
               key={itemKey}
@@ -330,9 +328,12 @@ module TooltipContent = {
                                 : ""}`
                           }
                           let indicatorStyle = indicatorColor->Option.map(color =>
-                            ReactDOM.Style._dictToStyle(Dict.make())
-                            ->ReactDOM.Style.unsafeAddProp("--color-bg", color)
-                            ->ReactDOM.Style.unsafeAddProp("--color-border", color)
+                            ReactDOM.Style._dictToStyle(
+                              dict{
+                                "--color-bg": color,
+                                "--color-border": color,
+                              },
+                            )
                           )
                           <div
                             style=?indicatorStyle
@@ -350,7 +351,7 @@ module TooltipContent = {
                       | (true, Some(labelElement)) => labelElement
                       | _ => React.null
                       }}
-                    {switch itemLabel {
+                      {switch itemLabel {
                       | Some(itemLabel) =>
                         <span className="text-muted-foreground"> {itemLabel} </span>
                       | None => React.null
@@ -421,10 +422,10 @@ module LegendContent = {
           }
           let itemConfig = getPayloadConfigFromPayload(~config, ~payload=item, ~key)
           let itemKey = item.dataKey->Option.orElse(item.name)->Option.getOr(Int.toString(index))
-          let colorStyle = item.color->Option.map(color =>
-            ReactDOM.Style._dictToStyle(Dict.make())
-            ->ReactDOM.Style.unsafeAddProp("backgroundColor", color)
-          )
+          let colorStyle =
+            item.color->Option.map(color =>
+              ReactDOM.Style._dictToStyle(dict{"backgroundColor": color})
+            )
 
           <div
             key={itemKey}

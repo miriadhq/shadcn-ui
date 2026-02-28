@@ -9,11 +9,11 @@ let make = () => {
     <Field.Description>
       {"Set your budget range ($"->React.string}
       <span className="font-medium tabular-nums">
-        {(value->Array.get(0)->Option.getOr(0.)->Float.toInt->Int.toString)->React.string}
+        {value->Array.get(0)->Option.getOr(0.)->Float.toInt->Int.toString->React.string}
       </span>
       {" - "->React.string}
       <span className="font-medium tabular-nums">
-        {(value->Array.get(1)->Option.getOr(0.)->Float.toInt->Int.toString)->React.string}
+        {value->Array.get(1)->Option.getOr(0.)->Float.toInt->Int.toString->React.string}
       </span>
       {")."->React.string}
     </Field.Description>

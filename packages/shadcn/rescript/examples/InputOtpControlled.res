@@ -5,11 +5,7 @@ let make = () => {
   let (value, setValue) = React.useState(() => "")
 
   <div className="space-y-2">
-    <InputOtp
-      maxLength={6}
-      value={value}
-      onValueChange={(v, _) => setValue(_ => v)}
-    >
+    <InputOtp maxLength={6} value={value} onValueChange={(v, _) => setValue(_ => v)}>
       <InputOtp.Group>
         <InputOtp.Slot index={0} />
         <InputOtp.Slot index={1} />
@@ -21,7 +17,7 @@ let make = () => {
     </InputOtp>
     <div className="text-center text-sm">
       {if value === "" {
-        {"Enter your one-time password."->React.string}
+        "Enter your one-time password."->React.string
       } else {
         {`You entered: ${value}`->React.string}
       }}

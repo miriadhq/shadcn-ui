@@ -85,8 +85,7 @@ let make = () =>
         tickLine={false}
         tickMargin={10}
         axisLine={false}
-        tickFormatter={value =>
-          monthsAr->Dict.get(value)->Option.getOr(value)->slice(0, 3)}
+        tickFormatter={value => monthsAr->Dict.get(value)->Option.getOr(value)->slice(0, 3)}
         reversed={true}
       />
       <Chart.Tooltip content={<Chart.TooltipContent />} />

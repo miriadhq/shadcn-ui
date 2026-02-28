@@ -6,7 +6,9 @@ let make = () =>
     <Item variant=Item.Variant.Outline dir="rtl">
       <Item.Content>
         <Item.Title> {"عنصر أساسي"->React.string} </Item.Title>
-        <Item.Description> {"عنصر بسيط يحتوي على عنوان ووصف."->React.string} </Item.Description>
+        <Item.Description>
+          {"عنصر بسيط يحتوي على عنوان ووصف."->React.string}
+        </Item.Description>
       </Item.Content>
       <Item.Actions>
         <Button variant=Button.Variant.Outline size=Button.Size.Sm>

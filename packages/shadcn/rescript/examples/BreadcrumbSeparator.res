@@ -9,7 +9,9 @@ let make = () =>
         <Icons.Dot />
       </Breadcrumb.Separator>
       <Breadcrumb.Item>
-        <Breadcrumb.Link render={<a href="/components" />}> {"Components"->React.string} </Breadcrumb.Link>
+        <Breadcrumb.Link render={<a href="/components" />}>
+          {"Components"->React.string}
+        </Breadcrumb.Link>
       </Breadcrumb.Item>
       <Breadcrumb.Separator>
         <Icons.Dot />

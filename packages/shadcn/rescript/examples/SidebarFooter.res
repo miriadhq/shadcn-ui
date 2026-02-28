@@ -18,7 +18,9 @@ let make = () =>
                 {"Username"->React.string}
                 <Icons.ChevronUp className="ml-auto" />
               </DropdownMenu.Trigger>
-              <DropdownMenu.Content side=BaseUi.Types.Side.Top className="w-(--radix-popper-anchor-width)">
+              <DropdownMenu.Content
+                side=BaseUi.Types.Side.Top className="w-(--radix-popper-anchor-width)"
+              >
                 <DropdownMenu.Item>
                   <span> {"Account"->React.string} </span>
                 </DropdownMenu.Item>

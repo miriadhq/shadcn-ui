@@ -116,7 +116,9 @@ module SidebarContentInner = {
             <Sidebar.Menu>
               {navMain
               ->Array.map(item =>
-                <Collapsible key={item.title} defaultOpen={item.isActive} className="group/collapsible">
+                <Collapsible
+                  key={item.title} defaultOpen={item.isActive} className="group/collapsible"
+                >
                   <Sidebar.MenuItem>
                     <Collapsible.Trigger
                       render={<Sidebar.MenuButton
@@ -162,7 +164,9 @@ module SidebarContentInner = {
                   </Sidebar.MenuButton>
                   <DropdownMenu>
                     <DropdownMenu.Trigger
-                      render={<Sidebar.MenuAction showOnHover=true dataSlot="dropdown-menu-trigger" />}
+                      render={<Sidebar.MenuAction
+                        showOnHover=true dataSlot="dropdown-menu-trigger"
+                      />}
                     >
                       <Icons.MoreHorizontal />
                       <span className="sr-only"> {"المزيد"->React.string} </span>

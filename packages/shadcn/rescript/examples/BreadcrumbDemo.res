@@ -8,7 +8,9 @@ let make = () =>
       <Breadcrumb.Separator />
       <Breadcrumb.Item>
         <DropdownMenu>
-          <DropdownMenu.Trigger render={<Button size=IconSm variant=Ghost dataSlot="dropdown-menu-trigger" />}>
+          <DropdownMenu.Trigger
+            render={<Button size=IconSm variant=Ghost dataSlot="dropdown-menu-trigger" />}
+          >
             <Breadcrumb.Ellipsis />
             <span className="sr-only"> {"Toggle menu"->React.string} </span>
           </DropdownMenu.Trigger>

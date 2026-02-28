@@ -32,11 +32,15 @@ let countries = [
 
 @react.component
 let make = () =>
-  <Combobox items={countries} defaultValue={countries->Array.get(0)->Option.getOr({code: "", value: "", label: "Select country", continent: ""})}>
+  <Combobox
+    items={countries}
+    defaultValue={countries
+    ->Array.get(0)
+    ->Option.getOr({code: "", value: "", label: "Select country", continent: ""})}
+  >
     <Combobox.Trigger
       render={<Button
-        variant=Button.Variant.Outline
-        className="w-64 justify-between font-normal"
+        variant=Button.Variant.Outline className="w-64 justify-between font-normal"
       />}
     >
       <Combobox.Value />

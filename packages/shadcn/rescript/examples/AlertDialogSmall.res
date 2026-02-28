@@ -2,8 +2,7 @@
 let make = () =>
   <AlertDialog>
     <AlertDialog.Trigger
-      className={Button.buttonVariants(~variant=Button.Variant.Outline)}
-      type_="button"
+      className={Button.buttonVariants(~variant=Button.Variant.Outline)} type_="button"
     >
       {"Show Dialog"->React.string}
     </AlertDialog.Trigger>

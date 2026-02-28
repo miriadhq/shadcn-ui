@@ -10,7 +10,9 @@ let make = () =>
       </Breadcrumb.Separator>
       <Breadcrumb.Item>
         <DropdownMenu>
-          <DropdownMenu.Trigger render={<button className="flex items-center gap-1" type_="button" />}>
+          <DropdownMenu.Trigger
+            render={<button className="flex items-center gap-1" type_="button" />}
+          >
             {"Components"->React.string}
             <Icons.ChevronDown dataIcon="inline-end" />
           </DropdownMenu.Trigger>

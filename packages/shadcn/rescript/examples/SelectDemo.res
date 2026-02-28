@@ -16,7 +16,7 @@ let items: array<item> = [
 let make = () =>
   <Select items>
     <Select.Trigger className="w-full max-w-48">
-      <Select.Value> {React.null} </Select.Value>
+      <Select.Value />
     </Select.Trigger>
     <Select.Content>
       <Select.Group>

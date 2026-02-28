@@ -55,9 +55,12 @@ module TooltipDemo = {
                 ? React.null
                 : <div
                     className={`shrink-0 rounded-[2px] border-[--color-border] bg-[--color-bg] ${indicatorClass}`}
-                    style={ReactDOM.Style._dictToStyle(Dict.make())
-                      ->ReactDOM.Style.unsafeAddProp("--color-bg", item.fill)
-                      ->ReactDOM.Style.unsafeAddProp("--color-border", item.fill)}
+                    style={ReactDOM.Style._dictToStyle(
+                      dict{
+                        "--color-bg": item.fill,
+                        "--color-border": item.fill,
+                      },
+                    )}
                   />}
               <div
                 className={`flex flex-1 justify-between leading-none ${nestLabel

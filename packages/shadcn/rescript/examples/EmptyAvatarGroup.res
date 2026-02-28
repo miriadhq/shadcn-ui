@@ -3,7 +3,9 @@ let make = () =>
   <Empty>
     <Empty.Header>
       <Empty.Media>
-        <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:size-12 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
+        <div
+          className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:size-12 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale"
+        >
           <Avatar>
             <Avatar.Image src="https://github.com/shadcn.png" alt="@shadcn" />
             <Avatar.Fallback> {"CN"->React.string} </Avatar.Fallback>

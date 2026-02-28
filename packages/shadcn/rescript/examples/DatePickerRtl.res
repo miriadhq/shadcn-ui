@@ -4,7 +4,8 @@ type dateFnsLocale
 @module("date-fns/locale") external arSA: dateFnsLocale = "arSA"
 type dateFnsFormatOpts = {locale: dateFnsLocale}
 @module("date-fns") external format: (Date.t, string) => string = "format"
-@module("date-fns") external formatWithLocale: (Date.t, string, dateFnsFormatOpts) => string = "format"
+@module("date-fns")
+external formatWithLocale: (Date.t, string, dateFnsFormatOpts) => string = "format"
 
 @module("react-day-picker/locale") external arSADayPicker: Calendar.Locale.t = "arSA"
 

@@ -3,7 +3,9 @@
 @react.component
 let make = () =>
   <DropdownMenu>
-    <DropdownMenu.Trigger render={<Button variant=Button.Variant.Outline dataSlot="dropdown-menu-trigger" />}>
+    <DropdownMenu.Trigger
+      render={<Button variant=Button.Variant.Outline dataSlot="dropdown-menu-trigger" />}
+    >
       {"Open"->React.string}
     </DropdownMenu.Trigger>
     <DropdownMenu.Content className="w-40" align=BaseUi.Types.Align.Start>
@@ -22,7 +24,7 @@ let make = () =>
           <DropdownMenu.Shortcut> {"⌘S"->React.string} </DropdownMenu.Shortcut>
         </DropdownMenu.Item>
       </DropdownMenu.Group>
-      <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+      <DropdownMenu.Separator />
       <DropdownMenu.Group>
         <DropdownMenu.Item> {"Team"->React.string} </DropdownMenu.Item>
         <DropdownMenu.Sub>
@@ -31,7 +33,7 @@ let make = () =>
             <DropdownMenu.SubContent>
               <DropdownMenu.Item> {"Email"->React.string} </DropdownMenu.Item>
               <DropdownMenu.Item> {"Message"->React.string} </DropdownMenu.Item>
-              <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+              <DropdownMenu.Separator />
               <DropdownMenu.Item> {"More..."->React.string} </DropdownMenu.Item>
             </DropdownMenu.SubContent>
           </DropdownMenu.Portal>
@@ -41,13 +43,13 @@ let make = () =>
           <DropdownMenu.Shortcut> {"⌘+T"->React.string} </DropdownMenu.Shortcut>
         </DropdownMenu.Item>
       </DropdownMenu.Group>
-      <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+      <DropdownMenu.Separator />
       <DropdownMenu.Group>
         <DropdownMenu.Item> {"GitHub"->React.string} </DropdownMenu.Item>
         <DropdownMenu.Item> {"Support"->React.string} </DropdownMenu.Item>
         <DropdownMenu.Item disabled=true> {"API"->React.string} </DropdownMenu.Item>
       </DropdownMenu.Group>
-      <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+      <DropdownMenu.Separator />
       <DropdownMenu.Group>
         <DropdownMenu.Item>
           {"Log out"->React.string}

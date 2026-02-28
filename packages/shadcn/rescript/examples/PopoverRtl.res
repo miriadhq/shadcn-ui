@@ -25,7 +25,9 @@ let make = () =>
           <Popover.Content side dir="rtl">
             <Popover.Header>
               <Popover.Title> {"الأبعاد"->React.string} </Popover.Title>
-              <Popover.Description> {"تعيين الأبعاد للطبقة."->React.string} </Popover.Description>
+              <Popover.Description>
+                {"تعيين الأبعاد للطبقة."->React.string}
+              </Popover.Description>
             </Popover.Header>
           </Popover.Content>
         </Popover>
@@ -42,7 +44,9 @@ let make = () =>
           <Popover.Content side dir="rtl">
             <Popover.Header>
               <Popover.Title> {"الأبعاد"->React.string} </Popover.Title>
-              <Popover.Description> {"تعيين الأبعاد للطبقة."->React.string} </Popover.Description>
+              <Popover.Description>
+                {"تعيين الأبعاد للطبقة."->React.string}
+              </Popover.Description>
             </Popover.Header>
           </Popover.Content>
         </Popover>

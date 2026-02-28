@@ -3,9 +3,7 @@
 @react.component
 let make = () =>
   <Resizable
-    orientation=BaseUi.Types.Orientation.Horizontal
-    className="max-w-sm rounded-lg border"
-    dir="rtl"
+    orientation=BaseUi.Types.Orientation.Horizontal className="max-w-sm rounded-lg border" dir="rtl"
   >
     <Resizable.Panel defaultSize="50%">
       <div className="flex h-[200px] items-center justify-center p-6">

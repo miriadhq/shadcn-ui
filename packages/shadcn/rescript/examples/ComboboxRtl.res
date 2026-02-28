@@ -18,15 +18,16 @@ let make = () => {
     <Combobox
       multiple={true}
       items={categories}
-      itemToStringValue={(item: string) =>
-        categoryLabelsAr->Dict.get(item)->Option.getOr(item)}
+      itemToStringValue={(item: string) => categoryLabelsAr->Dict.get(item)->Option.getOr(item)}
     >
       <Combobox.Chips>
         <Combobox.Chip> {"التكنولوجيا"->React.string} </Combobox.Chip>
         <Combobox.ChipsInput placeholder="أضف فئات" />
       </Combobox.Chips>
       <Combobox.Content dir="rtl" dataLang="ar">
-        <Combobox.Empty> {"لم يتم العثور على فئات."->React.string} </Combobox.Empty>
+        <Combobox.Empty>
+          {"لم يتم العثور على فئات."->React.string}
+        </Combobox.Empty>
         <Combobox.List>
           {categories
           ->Array.map(item =>

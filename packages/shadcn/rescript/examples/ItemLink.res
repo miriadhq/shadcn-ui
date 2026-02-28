@@ -12,7 +12,9 @@ let make = () =>
         <Icons.ChevronRight className="size-4" />
       </Item.Actions>
     </Item>
-    <Item variant=Item.Variant.Outline render={<a href="#" target="_blank" rel="noopener noreferrer" />}>
+    <Item
+      variant=Item.Variant.Outline render={<a href="#" target="_blank" rel="noopener noreferrer" />}
+    >
       <Item.Content>
         <Item.Title> {"External resource"->React.string} </Item.Title>
         <Item.Description>

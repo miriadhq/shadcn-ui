@@ -8,5 +8,7 @@ let make = (
   ~children=?,
 ) => {
   let _ignoredChildren = children
-  <Icons.Loader2 ?dataIcon ?dataSlot role ariaLabel className={`size-4 animate-spin ${className}`} />
+  <Icons.Loader2
+    ?dataIcon ?dataSlot role ariaLabel className={`size-4 animate-spin ${className}`}
+  />
 }

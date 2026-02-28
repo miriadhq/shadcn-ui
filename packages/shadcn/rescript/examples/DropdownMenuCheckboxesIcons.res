@@ -8,10 +8,16 @@ type notifications = {
 
 @react.component
 let make = () => {
-  let (notifications, setNotifications) = React.useState(() => {email: true, sms: false, push: true})
+  let (notifications, setNotifications) = React.useState(() => {
+    email: true,
+    sms: false,
+    push: true,
+  })
 
   <DropdownMenu>
-    <DropdownMenu.Trigger render={<Button variant=Button.Variant.Outline dataSlot="dropdown-menu-trigger" />}>
+    <DropdownMenu.Trigger
+      render={<Button variant=Button.Variant.Outline dataSlot="dropdown-menu-trigger" />}
+    >
       {"Notifications"->React.string}
     </DropdownMenu.Trigger>
     <DropdownMenu.Content className="w-48">
