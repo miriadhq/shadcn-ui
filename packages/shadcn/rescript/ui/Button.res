@@ -93,12 +93,20 @@ let make = (
   ~dataRangeMiddle=?,
   ~render=?,
   ~dataSlot=?,
+  ~ariaControls=?,
+  ~ariaExpanded=?,
+  ~ariaHaspopup=?,
+  ~dataState=?,
 ) => {
   let resolvedClassName = twMerge(`${buttonVariants(~variant, ~size)} ${className}`)
   <BaseUi.Button
     dataSlot={dataSlot->Option.getOr("button")}
     className=resolvedClassName
     ?id
+    ?ariaControls
+    ?ariaExpanded
+    ?ariaHaspopup
+    ?dataState
     tabIndex=?{switch tabIndex { | Some(v) => Some(v) | None => Some(0) }}
     ?nativeButton
     ?disabled

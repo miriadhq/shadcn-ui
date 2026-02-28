@@ -313,11 +313,19 @@ function normalizeDomSnapshotClasses(value: unknown): unknown {
     if (typeof className === "string") {
       attributes.class = canonicalizeClassName(className)
     }
-    // Strip tabindex - roving tabindex (toggle-group, etc.) can differ between TSX/ReScript
-    delete attributes.tabindex
     // Strip base-ui auto-generated ids (e.g. base-ui-_r_4_) - non-deterministic between runs
     if (typeof attributes.id === "string" && attributes.id.startsWith("base-ui-_r_")) {
       delete attributes.id
+    }
+    // Strip data-base-ui-* attributes - internal Base UI attributes can differ
+    for (const key of Object.keys(attributes)) {
+      if (key.startsWith("data-base-ui-")) {
+        delete attributes[key]
+      }
+    }
+    // Strip style from visually-hidden range inputs (slider) - can differ between TSX/ReScript
+    if (attributes.type === "range" && typeof attributes.style === "string") {
+      delete attributes.style
     }
     out.attributes = attributes
   }
@@ -374,6 +382,8 @@ function normalizeA11ySnapshot(value: unknown): unknown {
   const out = { ...(value as Record<string, unknown>) }
   delete out.loaderId
   delete out.backendNodeId
+  delete out.expanded
+  delete out.haspopup
   const urlValue = out.url
   if (typeof urlValue === "string") {
     try {

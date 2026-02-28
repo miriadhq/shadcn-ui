@@ -2,6 +2,9 @@
 
 open BaseUi.Types
 
+@module("tailwind-merge")
+external twMerge: string => string = "twMerge"
+
 @react.component
 let make = (
   ~className="",
@@ -34,7 +37,7 @@ let make = (
     ?style
     ?children
     dataSlot="radio-group"
-    className={`grid w-full gap-2 ${className}`}
+    className={twMerge(`grid w-full gap-2 ${className}`)}
   />
 
 module Item = {
@@ -53,6 +56,7 @@ module Item = {
     ~onClick=?,
     ~onKeyDown=?,
     ~tabIndex=?,
+    ~role=?,
     ~ariaLabel=?,
     ~style=?,
   ) =>
@@ -68,6 +72,7 @@ module Item = {
       ?onClick
       ?onKeyDown
       ?tabIndex
+      ?role
       ?ariaLabel
       ?style
       dataSlot="radio-group-item"

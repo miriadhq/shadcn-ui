@@ -168,7 +168,7 @@ function run() {
       "--config",
       "test/visual/vitest.pixel.config.ts",
       "test/visual/pixel-perfect-vite.test.ts",
-      "--maxConcurrency=8",
+      "--maxConcurrency=1",
       ...passthrough,
     ]
 

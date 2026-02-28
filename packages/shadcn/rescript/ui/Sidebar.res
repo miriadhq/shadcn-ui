@@ -690,23 +690,34 @@ module MenuButton = {
     ~children=React.null,
     ~type_=?,
     ~ariaDisabled=?,
+    ~dataSlot=?,
+    ~ariaExpanded=?,
+    ~ariaHaspopup=?,
+    ~ariaControls=?,
+    ~tabIndex=?,
   ) => {
     let {isMobile, state} = useSidebar()
     let resolvedRender = switch tooltip {
     | Some(_) => Some(<Tooltip.Trigger />)
     | None => render
     }
-    let baseProps: BaseUi.Types.props<string, bool> = {
+    let baseWithoutDataActive: BaseUi.Types.props<string, bool> = {
       render: React.null,
       children,
-      dataSlot: "sidebar-menu-button",
+      dataSlot: dataSlot->Option.getOr("sidebar-menu-button"),
       dataSidebar: "menu-button",
       dataSize: (size :> string),
-      dataActive: isActive,
       ?type_,
       ?ariaDisabled,
+      ariaExpanded: ariaExpanded->Option.getOr(false),
+      ariaHaspopup: ariaHaspopup->Option.getOr("menu"),
+      ?ariaControls,
+      tabIndex: tabIndex->Option.getOr(0),
       className: `${sidebarMenuButtonVariants(~variant, ~size)} ${className}`,
     }
+    let dataActiveOverlay: BaseUi.Types.props<string, bool> =
+      isActive ? {dataActive: true} : {}
+    let baseProps = mergeProps(baseWithoutDataActive, dataActiveOverlay)
     let mergedProps = switch buttonProps {
     | Some(buttonProps) => mergeProps(baseProps, buttonProps)
     | None => baseProps
@@ -807,6 +818,10 @@ module MenuAction = {
     ~ariaLabel=?,
     ~ariaDisabled=?,
     ~showOnHover=false,
+    ~dataSlot=?,
+    ~ariaExpanded=?,
+    ~ariaHaspopup=?,
+    ~tabIndex=?,
   ) => {
     let showOnHoverClass = showOnHover
       ? "peer-data-active/menu-button:text-sidebar-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 aria-expanded:opacity-100 md:opacity-0"
@@ -819,9 +834,12 @@ module MenuAction = {
       ?type_,
       ?ariaLabel,
       ?ariaDisabled,
+      ariaExpanded: ariaExpanded->Option.getOr(false),
+      ariaHaspopup: ariaHaspopup->Option.getOr("menu"),
+      tabIndex: tabIndex->Option.getOr(0),
       render: React.null,
       children,
-      dataSlot: "sidebar-menu-action",
+      dataSlot: dataSlot->Option.getOr("sidebar-menu-action"),
       dataSidebar: "menu-action",
       className: `text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground peer-hover/menu-button:text-sidebar-accent-foreground absolute top-1.5 right-1 aspect-square w-5 rounded-md p-0 peer-data-[size=default]/menu-button:top-1.5 peer-data-[size=lg]/menu-button:top-2.5 peer-data-[size=sm]/menu-button:top-1 focus-visible:ring-2 [&>svg]:size-4 flex items-center justify-center outline-hidden transition-transform group-data-[collapsible=icon]:hidden after:absolute after:-inset-2 md:after:hidden [&>svg]:shrink-0 ${showOnHoverClass} ${className}`,
     }
@@ -954,7 +972,7 @@ module MenuSubButton = {
   ) => {
     let size = dataSize->Option.getOr(size)
     let dataActive = dataActive->Option.getOr(isActive)
-    let baseProps: BaseUi.Types.props<string, bool> = {
+    let baseWithoutDataActive: BaseUi.Types.props<string, bool> = {
       ?id,
       ?style,
       ?onClick,
@@ -964,12 +982,14 @@ module MenuSubButton = {
       render: React.null,
       ?disabled,
       ?children,
-      dataActive,
       dataSlot: "sidebar-menu-sub-button",
       dataSidebar: "menu-sub-button",
       dataSize: (size :> string),
       className: `text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground [&>svg]:text-sidebar-accent-foreground data-active:bg-sidebar-accent data-active:text-sidebar-accent-foreground h-7 gap-2 rounded-md px-2 focus-visible:ring-2 data-[size=md]:text-sm data-[size=sm]:text-xs [&>svg]:size-4 flex min-w-0 -translate-x-px items-center overflow-hidden outline-hidden group-data-[collapsible=icon]:hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:shrink-0 ${className}`,
     }
+    let dataActiveOverlay: BaseUi.Types.props<string, bool> =
+      dataActive ? {dataActive: true} : {}
+    let baseProps = mergeProps(baseWithoutDataActive, dataActiveOverlay)
     let props = switch linkProps {
     | Some(linkProps) => mergeProps(baseProps, linkProps)
     | None => baseProps

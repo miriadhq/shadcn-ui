@@ -22,6 +22,7 @@ export default defineConfig({
       "@": appRoot,
       "next/image": path.resolve(harnessRoot, "next-image.tsx"),
       "next/link": path.resolve(harnessRoot, "next-link.tsx"),
+      "next/font/google": path.resolve(harnessRoot, "next-font-google.ts"),
       react: path.resolve(appRoot, "node_modules/react"),
       "react-dom/client": path.resolve(appRoot, "node_modules/react-dom/client.js"),
       "react-dom/server": path.resolve(appRoot, "node_modules/react-dom/server.browser.js"),

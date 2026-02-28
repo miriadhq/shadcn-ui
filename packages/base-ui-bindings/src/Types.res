@@ -228,6 +228,9 @@ type props<'value, 'checked> = {
   thumbCollisionBehavior?: ThumbCollisionBehavior.t,
   @as("type") type_?: string,
   @as("aria-label") ariaLabel?: string,
+  @as("aria-controls") ariaControls?: string,
+  @as("aria-expanded") ariaExpanded?: bool,
+  @as("aria-haspopup") ariaHaspopup?: string,
   @as("aria-current")
   ariaCurrent?: [#page | #step | #location | #date | #time | #"true" | #"false"],
   @as("aria-details")

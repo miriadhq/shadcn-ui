@@ -158,6 +158,7 @@ module TeamSwitcher = {
                 render={<Sidebar.MenuButton
                   size=Sidebar.MenuButton.Size.Lg
                   className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                  dataSlot="dropdown-menu-trigger"
                 />}
               >
                 <div
@@ -231,7 +232,7 @@ module NavMainSection = {
         ->Array.map(item =>
           <Collapsible key={item.title} defaultOpen={item.isActive} className="group/collapsible">
             <Sidebar.MenuItem>
-              <Collapsible.Trigger render={<Sidebar.MenuButton ariaDisabled={false} />}>
+              <Collapsible.Trigger render={<Sidebar.MenuButton ariaDisabled={false} dataSlot="collapsible-trigger" />}>
                 {renderIcon(~icon=item.icon)}
                 <span> {item.title->React.string} </span>
                 <Icons.ChevronRight
@@ -276,7 +277,7 @@ module NavProjectsSection = {
               <span> {project.name->React.string} </span>
             </Sidebar.MenuButton>
             <DropdownMenu>
-              <DropdownMenu.Trigger render={<Sidebar.MenuAction showOnHover=true />}>
+              <DropdownMenu.Trigger render={<Sidebar.MenuAction showOnHover=true dataSlot="dropdown-menu-trigger" />}>
                 <Icons.MoreHorizontal />
                 <span className="sr-only"> {"More"->React.string} </span>
               </DropdownMenu.Trigger>
@@ -328,6 +329,7 @@ module NavUserSection = {
               render={<Sidebar.MenuButton
                 size=Sidebar.MenuButton.Size.Lg
                 className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                dataSlot="dropdown-menu-trigger"
               />}
             >
               <Avatar className="h-8 w-8 rounded-lg">
