@@ -5,11 +5,6 @@ type preset = {
   value: int,
 }
 
-@new external makeDate: (int, int, int) => Date.t = "Date"
-@send external getFullYear: Date.t => int = "getFullYear"
-@send external getMonth: Date.t => int = "getMonth"
-@send external getDate: Date.t => int = "getDate"
-
 let presets: array<preset> = [
   {label: "Today", value: 0},
   {label: "Tomorrow", value: 1},
@@ -21,10 +16,10 @@ let presets: array<preset> = [
 @react.component
 let make = () => {
   let now = Date.make()
-  let year = now->getFullYear
-  let month = now->getMonth
-  let (date, setDate) = React.useState(() => Some(makeDate(year, 1, 12)))
-  let (currentMonth, setCurrentMonth) = React.useState(() => makeDate(year, month, 1))
+  let year = now->Date.getFullYear
+  let month = now->Date.getMonth
+  let (date, setDate) = React.useState(() => Some(Date.makeWithYMD(~year, ~month=1, ~day=12)))
+  let (currentMonth, setCurrentMonth) = React.useState(() => Date.makeWithYMD(~year, ~month, ~day=1))
 
   <Card className="mx-auto w-fit max-w-[300px]" dataSize=Card.Size.Sm>
     <Card.Content>
@@ -48,13 +43,13 @@ let make = () => {
           className="flex-1"
           onClick={_ => {
             let today = Date.make()
-            let newDate = makeDate(
-              today->getFullYear,
-              today->getMonth,
-              today->getDate + preset.value,
+            let newDate = Date.makeWithYMD(
+              ~year=today->Date.getFullYear,
+              ~month=today->Date.getMonth,
+              ~day=today->Date.getDate + preset.value,
             )
             setDate(_ => Some(newDate))
-            setCurrentMonth(_ => makeDate(newDate->getFullYear, newDate->getMonth, 1))
+            setCurrentMonth(_ => Date.makeWithYMD(~year=newDate->Date.getFullYear, ~month=newDate->Date.getMonth, ~day=1))
           }}
         >
           {preset.label->React.string}

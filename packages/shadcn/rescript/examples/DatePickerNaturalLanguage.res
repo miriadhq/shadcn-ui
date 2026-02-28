@@ -1,15 +1,12 @@
 @@directive("'use client'")
 
-type toLocaleDateStringOpts = {day: string, month: string, year: string}
-@send
-external toLocaleDateString: (Date.t, string, toLocaleDateStringOpts) => string =
-  "toLocaleDateString"
 @module("chrono-node") external parseDate: string => Nullable.t<Date.t> = "parseDate"
 
 let formatDate = (date: option<Date.t>) =>
   switch date {
   | None => ""
-  | Some(d) => d->toLocaleDateString("en-US", {day: "2-digit", month: "long", year: "numeric"})
+  | Some(d) =>
+    d->Date.toLocaleDateStringWithLocaleAndOptions("en-US", {day: #"2-digit", month: #long, year: #numeric})
   }
 
 @react.component

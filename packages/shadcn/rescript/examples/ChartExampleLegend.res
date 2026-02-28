@@ -1,6 +1,5 @@
 @@directive("'use client'")
 
-@send external slice: (string, int, int) => string = "slice"
 
 type chartDatum = {month: string, desktop: int, mobile: int}
 
@@ -72,7 +71,7 @@ let make = () =>
         tickLine={false}
         tickMargin={10}
         axisLine={false}
-        tickFormatter={value => value->slice(0, 3)}
+        tickFormatter={value => value->String.slice(~start=0, ~end=3)}
       />
       <Chart.Tooltip content={<Chart.TooltipContent />} />
       <Chart.Legend content={<Chart.LegendContent />} />

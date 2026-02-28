@@ -5,11 +5,10 @@ open BaseUi.Types
 @module("tailwind-merge")
 external cn: (string, option<string>) => string = "twMerge"
 
-@val external isArray: 'a => bool = "Array.isArray"
 @get external unsafeArrayLength: 'a => int = "length"
 
 let lengthIfArray = value =>
-  if isArray(value) {
+  if Array.isArray(value) {
     Some(unsafeArrayLength(value))
   } else {
     None

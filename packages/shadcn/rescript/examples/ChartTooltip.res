@@ -1,6 +1,5 @@
 @@directive("'use client'")
 
-@send external toLocaleString: int => string = "toLocaleString"
 
 type payloadEntry = {
   name: string,
@@ -72,7 +71,7 @@ module TooltipDemo = {
                   <span className="text-muted-foreground"> {item.name->React.string} </span>
                 </div>
                 <span className="text-foreground font-mono font-medium tabular-nums">
-                  {item.value->toLocaleString->React.string}
+                  {item.value->Int.toLocaleString->React.string}
                 </span>
               </div>
             </div>

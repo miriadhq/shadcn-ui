@@ -1,27 +1,21 @@
 @@directive("'use client'")
 
-type toLocaleDateStringOpts = {day: string, month: string, year: string}
-@send
-external toLocaleDateString: (Date.t, string, toLocaleDateStringOpts) => string =
-  "toLocaleDateString"
-@new external dateFromString: string => Date.t = "Date"
-@send external getTime: Date.t => float = "getTime"
-
 let formatDate = (date: option<Date.t>) =>
   switch date {
   | None => ""
-  | Some(d) => d->toLocaleDateString("en-US", {day: "2-digit", month: "long", year: "numeric"})
+  | Some(d) =>
+    d->Date.toLocaleDateStringWithLocaleAndOptions("en-US", {day: #"2-digit", month: #long, year: #numeric})
   }
 
 let isValidDate = (d: Date.t) => {
-  let t = d->getTime
+  let t = d->Date.getTime
   !Float.isNaN(t)
 }
 
 @react.component
 let make = () => {
   let (open_, setOpen) = React.useState(() => false)
-  let initialDate = Some(dateFromString("2025-06-01"))
+  let initialDate = Some(Date.fromString("2025-06-01"))
   let (date, setDate) = React.useState(() => initialDate)
   let (month, setMonth) = React.useState(() => initialDate->Option.getOr(Date.make()))
   let (value, setValue) = React.useState(() => formatDate(initialDate))
@@ -34,7 +28,7 @@ let make = () => {
         value={value}
         placeholder="June 01, 2025"
         onValueChange={(v, _) => {
-          let parsed = dateFromString(v)
+          let parsed = Date.fromString(v)
           setValue(_ => v)
           if parsed->isValidDate {
             setDate(_ => Some(parsed))

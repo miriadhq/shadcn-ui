@@ -2,8 +2,6 @@
 
 @@directive("'use client'")
 
-@send external replaceAll: (string, string, string) => string = "replaceAll"
-@send external toLocaleString: int => string = "toLocaleString"
 
 type chartDatum = {
   date: string,
@@ -115,7 +113,7 @@ module TooltipContent = {
 
 @react.component
 let make = () => {
-  let chartId = `chart-${React.useId()->replaceAll(":", "")}`
+  let chartId = `chart-${React.useId()->String.replaceAll(":", "")}`
   let activeChart = "desktop"
   let desktopTotal = 7324
   let mobileTotal = 7250
@@ -141,7 +139,7 @@ let make = () => {
         >
           <span className="text-muted-foreground text-xs"> {"Desktop"->React.string} </span>
           <span className="text-lg leading-none font-bold sm:text-3xl">
-            {desktopTotal->toLocaleString->React.string}
+            {desktopTotal->Int.toLocaleString->React.string}
           </span>
         </button>
         <button
@@ -150,7 +148,7 @@ let make = () => {
         >
           <span className="text-muted-foreground text-xs"> {"Mobile"->React.string} </span>
           <span className="text-lg leading-none font-bold sm:text-3xl">
-            {mobileTotal->toLocaleString->React.string}
+            {mobileTotal->Int.toLocaleString->React.string}
           </span>
         </button>
       </div>

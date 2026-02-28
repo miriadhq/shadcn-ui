@@ -1,6 +1,5 @@
 @@directive("'use client'")
 
-@send external slice: (string, int, int) => string = "slice"
 
 type chartDatum = {month: string, desktop: int, mobile: int}
 
@@ -72,7 +71,7 @@ let make = () =>
         tickLine={false}
         tickMargin={10}
         axisLine={false}
-        tickFormatter={value => value->slice(0, 3)}
+        tickFormatter={value => value->String.slice(~start=0, ~end=3)}
       />
       <Recharts.Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
       <Recharts.Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />

@@ -7,9 +7,6 @@ open BaseUi.Types
 @module("tailwind-merge")
 external cn: (string, option<string>) => string = "twMerge"
 
-@send external replaceAll: (string, string, string) => string = "replaceAll"
-@send external joinWithSeparator: (array<string>, string) => string = "join"
-@send external toLocaleStringNumber: float => string = "toLocaleString"
 @val external dictEntries: dict<'a> => array<(string, 'a)> = "Object.entries"
 @val external jsTruthy: JSON.t => bool = "Boolean"
 external unknownToReactElement: unknown => React.element = "%identity"
@@ -56,7 +53,7 @@ let getString = (dict: dict<JSON.t>, key: string) =>
 
 let jsonToDisplayString = (value: JSON.t) =>
   switch value {
-  | Number(number) => Some(number->toLocaleStringNumber)
+  | Number(number) => Some(number->Float.toLocaleString)
   | String(string) => Some(string)
   | _ => None
   }
@@ -111,11 +108,11 @@ let renderStyleElement = (~id: string, ~config: chartConfig) => {
             | None => None
             }
           )
-          ->joinWithSeparator("\n")
+          ->Array.joinWith("\n")
 
         `${prefix} [data-chart=${id}] {\n${declarations}\n}`
       })
-      ->joinWithSeparator("\n\n")
+      ->Array.joinWith("\n\n")
     <style> {css->React.string} </style>
   }
 }
@@ -148,7 +145,7 @@ let make = (
   ~onClick=?,
   ~onKeyDown=?,
 ) => {
-  let uniqueId = React.useId()->replaceAll(":", "")
+  let uniqueId = React.useId()->String.replaceAll(":", "")
   let chartId = switch id {
   | Some(id) => `chart-${id}`
   | None => `chart-${uniqueId}`

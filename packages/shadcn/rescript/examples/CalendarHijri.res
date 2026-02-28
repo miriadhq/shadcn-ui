@@ -1,7 +1,6 @@
 @@directive("'use client'")
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
-@new external makeDate: (int, int, int) => Date.t = "Date"
 @send external focusElement: Dom.element => unit = "focus"
 @get external getDayDate: Calendar.Day.t => Date.t = "date"
 
@@ -309,7 +308,7 @@ module HijriCalendar = {
 
 @react.component
 let make = () => {
-  let (date, setDate) = React.useState(() => Some(makeDate(2025, 5, 12)))
+  let (date, setDate) = React.useState(() => Some(Date.makeWithYMD(~year=2025, ~month=5, ~day=12)))
 
   <div className={vazirmatn.className}>
     <HijriCalendar

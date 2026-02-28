@@ -5,17 +5,13 @@ type dateRange = {
   to: option<Date.t>,
 }
 
-@new external makeDate: (int, int, int) => Date.t = "Date"
-@send external getFullYear: Date.t => int = "getFullYear"
-@send external getDay: Date.t => int = "getDay"
-
 @react.component
 let make = () => {
-  let year = Date.make()->getFullYear
-  let startDate = makeDate(year, 11, 8)
+  let year = Date.make()->Date.getFullYear
+  let startDate = Date.makeWithYMD(~year, ~month=11, ~day=8)
   let initialRange: dateRange = {
     from: Some(startDate),
-    to: Some(makeDate(year, 11, 18)),
+    to: Some(Date.makeWithYMD(~year, ~month=11, ~day=18)),
   }
   let (range, setRange) = React.useState(() => Some(initialRange))
 
@@ -38,7 +34,7 @@ let make = () => {
         }}
         components={{
           dayButton: props => {
-            let isWeekend = switch props.day.date->getDay {
+            let isWeekend = switch props.day.date->Date.getDay {
             | 0 | 6 => true
             | _ => false
             }

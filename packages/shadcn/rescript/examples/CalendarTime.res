@@ -1,15 +1,11 @@
 @@directive("'use client'")
 
-@new external makeDate: (int, int, int) => Date.t = "Date"
-@send external getFullYear: Date.t => int = "getFullYear"
-@send external getMonth: Date.t => int = "getMonth"
-
 @react.component
 let make = () => {
   let now = Date.make()
-  let year = now->getFullYear
-  let month = now->getMonth
-  let (date, setDate) = React.useState(() => Some(makeDate(year, month, 12)))
+  let year = now->Date.getFullYear
+  let month = now->Date.getMonth
+  let (date, setDate) = React.useState(() => Some(Date.makeWithYMD(~year, ~month, ~day=12)))
 
   <Card dataSize=Card.Size.Sm className="mx-auto w-fit">
     <Card.Content>

@@ -5,16 +5,13 @@ type dateRange = {
   to: option<Date.t>,
 }
 
-@new external makeDate: (int, int, int) => Date.t = "Date"
-@send external getFullYear: Date.t => int = "getFullYear"
-
 @react.component
 let make = () => {
-  let year = Date.make()->getFullYear
-  let startDate = makeDate(year, 0, 12)
+  let year = Date.make()->Date.getFullYear
+  let startDate = Date.makeWithYMD(~year, ~month=0, ~day=12)
   let initialRange: dateRange = {
     from: Some(startDate),
-    to: Some(makeDate(year, 0, 42)),
+    to: Some(Date.makeWithYMD(~year, ~month=0, ~day=42)),
   }
   let (dateRange, setDateRange) = React.useState(() => Some(initialRange))
 

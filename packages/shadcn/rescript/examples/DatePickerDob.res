@@ -1,6 +1,5 @@
 @@directive("'use client'")
 
-@send external toLocaleDateString: Date.t => string = "toLocaleDateString"
 
 @react.component
 let make = () => {
@@ -16,7 +15,7 @@ let make = () => {
         />}
       >
         {switch date {
-        | Some(d) => d->toLocaleDateString->React.string
+        | Some(d) => d->Date.toLocaleDateString->React.string
         | None => "Select date"->React.string
         }}
       </Popover.Trigger>
