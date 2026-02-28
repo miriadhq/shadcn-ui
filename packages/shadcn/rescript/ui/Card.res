@@ -15,6 +15,7 @@ let make = (
   ~className="",
   ~children=?,
   ~id=?,
+  ~dir=?,
   ~style=?,
   ~onClick=?,
   ~onKeyDown=?,
@@ -29,6 +30,7 @@ let make = (
     ?id
     ?children
     ?style
+    ?dir
     ?onClick
     ?onKeyDown
     dataSlot="card"

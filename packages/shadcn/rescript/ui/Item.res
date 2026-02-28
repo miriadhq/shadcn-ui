@@ -46,6 +46,7 @@ let make = (
   ~size=Size.Default,
   ~children=?,
   ~id=?,
+  ~dir=?,
   ~style=?,
   ~onClick=?,
   ~render=?,
@@ -55,6 +56,7 @@ let make = (
     props: {
       className: `${itemVariants(~variant, ~size)} ${className}`,
       ?id,
+      ?dir,
       ?style,
       ?children,
       ?onClick,

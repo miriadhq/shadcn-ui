@@ -11,11 +11,12 @@ module Size = {
 }
 
 @react.component
-let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
+let make = (~className="", ~children=?, ~id=?, ~dir=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
   <nav
     dataSlot="pagination"
     ?id
     ?style
+    ?dir
     ?onClick
     ?onKeyDown
     role="navigation"

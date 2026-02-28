@@ -10,6 +10,7 @@ let make = (
   ~value=?,
   ~max=?,
   ~min=?,
+  ~dir=?,
   ~style=?,
   ~onClick=?,
   ~onKeyDown=?,
@@ -19,6 +20,7 @@ let make = (
     ?value
     ?max
     ?min
+    ?dir
     ?style
     ?onClick
     ?onKeyDown

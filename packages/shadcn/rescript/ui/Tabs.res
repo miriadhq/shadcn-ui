@@ -28,6 +28,7 @@ let make = (
   ~onValueChange=?,
   ~orientation=Orientation.Horizontal,
   ~disabled=?,
+  ~dir=?,
   ~onClick=?,
   ~onKeyDown=?,
   ~style=?,
@@ -38,6 +39,7 @@ let make = (
     ?defaultValue
     ?onValueChange
     ?disabled
+    ?dir
     ?onClick
     ?onKeyDown
     ?style
@@ -54,6 +56,7 @@ module List = {
     ~variant=Variant.Default,
     ~children=?,
     ~id=?,
+    ~dir=?,
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
@@ -61,6 +64,7 @@ module List = {
     <BaseUi.Tabs.List
       ?id
       ?style
+      ?dir
       ?onClick
       ?onKeyDown
       ?children

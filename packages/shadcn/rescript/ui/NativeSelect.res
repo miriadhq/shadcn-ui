@@ -21,6 +21,7 @@ let make = (
   ~onKeyDown=?,
   ~tabIndex=?,
   ~ariaLabel=?,
+  ~dir=?,
   ~style=?,
   ~dataSize=Size.Default,
 ) => {
@@ -28,6 +29,7 @@ let make = (
   <div
     ?id
     ?style
+    ?dir
     ?onClick
     ?onKeyDown
     dataSlot="native-select-wrapper"

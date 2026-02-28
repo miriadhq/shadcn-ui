@@ -102,6 +102,7 @@ let make = (
   ~disabled=?,
   ~dataDisabled=?,
   ~dataInvalid=?,
+  ~dir=?,
 ) => {
   let resolvedOrientation = switch dataOrientation {
   | Some(value) => value
@@ -121,6 +122,7 @@ let make = (
     ?disabled
     ?dataDisabled
     ?dataInvalid
+    ?dir
     role="group"
     dataSlot="field"
     dataOrientation={(resolvedOrientation :> string)}
@@ -144,10 +146,20 @@ module Content = {
 
 module Label = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~htmlFor=?, ~onClick=?, ~onKeyDown=?, ~style=?) =>
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~htmlFor=?,
+    ~dir=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~style=?,
+  ) =>
     <Label
       ?id
       ?htmlFor
+      ?dir
       ?onClick
       ?onKeyDown
       ?style
@@ -173,11 +185,12 @@ module Title = {
 
 module Description = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~dir=?, ~onClick=?, ~onKeyDown=?) =>
     <p
       ?id
       ?children
       ?style
+      ?dir
       ?onClick
       ?onKeyDown
       dataSlot="field-description"

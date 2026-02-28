@@ -3,10 +3,11 @@
 @@directive("'use client'")
 
 @react.component
-let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
+let make = (~className="", ~children=?, ~id=?, ~style=?, ~dir=?, ~onClick=?, ~onKeyDown=?) => {
   <div
     ?id
     ?style
+    ?dir
     ?onClick
     ?onKeyDown
     dataSlot="table-container"

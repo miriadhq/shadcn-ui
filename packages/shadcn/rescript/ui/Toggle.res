@@ -39,6 +39,7 @@ let make = (
   ~children=?,
   ~id=?,
   ~name=?,
+  ~dir=?,
   ~disabled=?,
   ~checked=?,
   ~defaultChecked=?,
@@ -73,6 +74,7 @@ let make = (
   <BaseUi.Toggle
     ?id
     ?name
+    ?dir
     ?disabled
     ?checked
     ?defaultChecked

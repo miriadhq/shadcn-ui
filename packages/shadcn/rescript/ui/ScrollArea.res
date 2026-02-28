@@ -12,6 +12,7 @@ let make = (
   ~onKeyDown=?,
   ~tabIndex=?,
   ~ariaLabel=?,
+  ~dir=?,
   ~orientation=?,
 ) =>
   <BaseUi.ScrollArea.Root
@@ -21,6 +22,7 @@ let make = (
     ?onKeyDown
     ?tabIndex
     ?ariaLabel
+    ?dir
     ?orientation
     dataSlot="scroll-area"
     className={`relative ${className}`}

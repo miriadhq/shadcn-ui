@@ -24,6 +24,7 @@ let make = (
   ~className="",
   ~children=?,
   ~id=?,
+  ~dir=?,
   ~style=?,
   ~onClick=?,
   ~onKeyDown=?,
@@ -32,6 +33,7 @@ let make = (
   <ResizablePrimitive.Group
     ?id
     ?style
+    ?dir
     ?onClick
     ?onKeyDown
     ?orientation

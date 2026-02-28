@@ -32,6 +32,7 @@ let make = (
   ~onKeyDown=?,
   ~tabIndex=?,
   ~ariaLabel=?,
+  ~dir=?,
   ~style=?,
   ~render=?,
   ~orientation=?,
@@ -63,6 +64,7 @@ let make = (
       ?onKeyDown
       ?tabIndex
       ?ariaLabel
+      ?dir
       ?style
       ?render
       ?orientation

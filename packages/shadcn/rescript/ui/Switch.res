@@ -23,6 +23,8 @@ let make = (
   ~onKeyDown=?,
   ~tabIndex=0,
   ~ariaLabel=?,
+  ~ariaInvalid=?,
+  ~dir=?,
   ~style=?,
   ~render=?,
   ~size=?,
@@ -52,6 +54,8 @@ let make = (
     ?onKeyDown
     tabIndex
     ?ariaLabel
+    ?ariaInvalid
+    ?dir
     ?style
     ?render
     dataSlot="switch"

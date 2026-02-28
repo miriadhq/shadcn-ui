@@ -9,6 +9,7 @@ let make = (
   ~id=?,
   ~dataSlot="label",
   ~htmlFor=?,
+  ~dir=?,
   ~onClick=?,
   ~onKeyDown=?,
   ~style=?,
@@ -17,6 +18,7 @@ let make = (
     ?id
     ?children
     ?htmlFor
+    ?dir
     ?onClick
     ?onKeyDown
     ?style

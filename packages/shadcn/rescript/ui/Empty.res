@@ -19,11 +19,12 @@ let emptyMediaVariants = (~variant=Variant.Default) => {
 }
 
 @react.component
-let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
+let make = (~className="", ~children=?, ~id=?, ~dir=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
   <div
     ?id
     ?children
     ?style
+    ?dir
     ?onClick
     ?onKeyDown
     dataSlot="empty"

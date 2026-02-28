@@ -6,7 +6,10 @@
       "Bash(ls:*)",
       "Bash(cat:*)",
       "WebSearch",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(python3:*)",
+      "Bash(grep:*)",
+      "Bash(pnpm rescript:*)"
     ],
     "deny": []
   }

@@ -19,6 +19,7 @@ let make = (
   ~tabIndex=?,
   ~ariaLabel=?,
   ~ariaInvalid=?,
+  ~dir=?,
   ~style=?,
   ~render=?,
 ) => {
@@ -42,6 +43,7 @@ let make = (
     tabIndex=?resolvedTabIndex
     ?ariaLabel
     ?ariaInvalid
+    ?dir
     ?style
     ?render
     dataSlot="checkbox"

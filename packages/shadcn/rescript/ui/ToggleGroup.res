@@ -49,6 +49,7 @@ let make = (
   ~onKeyDown=?,
   ~tabIndex=?,
   ~ariaLabel=?,
+  ~dir=?,
 ) => {
   let dataVariant = variant->Option.map(variant => (variant :> string))
   let dataSize = size->Option.map(size => (size :> string))
@@ -73,6 +74,7 @@ let make = (
     ?onKeyDown
     ?tabIndex
     ?ariaLabel
+    ?dir
   >
     <ContextProvider value={{?variant, ?size, spacing, orientation}}> {children} </ContextProvider>
   </BaseUi.ToggleGroup>

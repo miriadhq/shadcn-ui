@@ -15,9 +15,11 @@ let make = (
   ~onClick=?,
   ~onKeyDown=?,
   ~ariaLabel=?,
+  ~dir=?,
   ~style=?,
   ~maxLength=?,
   ~tabIndex=?,
+  ~rows=?,
   ~spellCheck=?,
   ~dataSlot="textarea",
 ) => {
@@ -33,9 +35,11 @@ let make = (
     ?onClick
     ?onKeyDown
     ?ariaLabel
+    ?dir
     ?style
     ?maxLength
     ?tabIndex
+    ?rows
     ?spellCheck
     ?children
     dataSlot
