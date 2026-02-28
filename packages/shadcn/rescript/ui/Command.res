@@ -3,6 +3,10 @@
 @@directive("'use client'")
 
 open BaseUi.Types
+
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 module CommandPrimitive = {
   @module("cmdk")
   external make: React.component<props<'value, 'checked>> = "Command"
@@ -40,7 +44,7 @@ module CommandPrimitive = {
 
 @react.component
 let make = (
-  ~className="",
+  ~className=?,
   ~children=?,
   ~id=?,
   ~style=?,
@@ -61,14 +65,17 @@ let make = (
     ?onValueChange
     ?dir
     dataSlot="command"
-    className={`bg-popover text-popover-foreground flex size-full flex-col overflow-hidden rounded-xl! p-1 ${className}`}
+    className={cn(
+      "bg-popover text-popover-foreground flex size-full flex-col overflow-hidden rounded-xl! p-1",
+      className,
+    )}
     ?children
   />
 
 module Dialog = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=React.null,
     ~open_=?,
     ~defaultOpen=?,
@@ -93,7 +100,10 @@ module Dialog = {
         />
         <BaseUi.Dialog.Popup
           dataSlot="dialog-content"
-          className={`bg-background data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-foreground/10 fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl p-4 text-sm ring-1 duration-100 outline-none sm:max-w-sm top-1/3 translate-y-0 overflow-hidden rounded-xl! p-0 ${className}`}
+          className={cn(
+            "bg-background data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-foreground/10 fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl p-4 text-sm ring-1 duration-100 outline-none sm:max-w-sm top-1/3 translate-y-0 overflow-hidden rounded-xl! p-0",
+            className,
+          )}
         >
           {children}
           {showCloseButton
@@ -115,7 +125,7 @@ module Dialog = {
 module Input = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=?,
     ~id=?,
     ~style=?,
@@ -143,7 +153,10 @@ module Input = {
           ?dir
           ?children
           dataSlot="command-input"
-          className={`w-full text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
+          className={cn(
+            "w-full text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
+            className,
+          )}
         />
         <InputGroup.Addon>
           <Icons.Search className="size-4 shrink-0 opacity-50" />
@@ -155,59 +168,65 @@ module Input = {
 
 module List = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <CommandPrimitive.List
       ?id
       ?style
       ?onClick
       ?onKeyDown
       dataSlot="command-list"
-      className={`no-scrollbar max-h-72 scroll-py-1 overflow-x-hidden overflow-y-auto outline-none ${className}`}
+      className={cn(
+        "no-scrollbar max-h-72 scroll-py-1 overflow-x-hidden overflow-y-auto outline-none",
+        className,
+      )}
       ?children
     />
 }
 
 module Empty = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?) =>
     <CommandPrimitive.Empty
       ?id
       ?style
       dataSlot="command-empty"
-      className={`py-6 text-center text-sm ${className}`}
+      className={cn("py-6 text-center text-sm", className)}
       ?children
     />
 }
 
 module Group = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~heading=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~heading=?) =>
     <CommandPrimitive.Group
       ?id
       ?style
       ?heading
       dataSlot="command-group"
-      className={`text-foreground **:[[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 **:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-xs **:[[cmdk-group-heading]]:font-medium ${className}`}
+      className={cn(
+        "text-foreground **:[[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 **:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-xs **:[[cmdk-group-heading]]:font-medium",
+        className,
+      )}
       ?children
     />
 }
 
 module Separator = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?) =>
     <CommandPrimitive.Separator
       ?id
       ?style
       ?children
       dataSlot="command-separator"
-      className={`bg-border -mx-1 h-px ${className}`}
+      className={cn("bg-border -mx-1 h-px", className)}
     />
 }
 
 module Item = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=React.null,
     ~id=?,
     ~style=?,
@@ -226,7 +245,10 @@ module Item = {
       ?onClick
       ?onKeyDown
       dataSlot="command-item"
-      className={`data-selected:bg-muted data-selected:text-foreground data-selected:*:[svg]:text-foreground group/command-item relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none in-data-[slot=dialog-content]:rounded-lg! data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 ${className}`}
+      className={cn(
+        "data-selected:bg-muted data-selected:text-foreground data-selected:*:[svg]:text-foreground group/command-item relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none in-data-[slot=dialog-content]:rounded-lg! data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        className,
+      )}
     >
       {children}
       <Icons.Check
@@ -237,7 +259,7 @@ module Item = {
 
 module Shortcut = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <span
       ?id
       ?style
@@ -245,6 +267,9 @@ module Shortcut = {
       ?onClick
       ?onKeyDown
       dataSlot="command-shortcut"
-      className={`text-muted-foreground group-data-selected/command-item:text-foreground ml-auto text-xs tracking-widest ${className}`}
+      className={cn(
+        "text-muted-foreground group-data-selected/command-item:text-foreground ml-auto text-xs tracking-widest",
+        className,
+      )}
     />
 }

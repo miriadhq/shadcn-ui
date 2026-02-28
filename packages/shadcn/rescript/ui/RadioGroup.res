@@ -3,11 +3,11 @@
 open BaseUi.Types
 
 @module("tailwind-merge")
-external twMerge: string => string = "twMerge"
+external cn: (string, option<string>) => string = "twMerge"
 
 @react.component
 let make = (
-  ~className="",
+  ~className=?,
   ~children=?,
   ~id=?,
   ~name=?,
@@ -39,13 +39,13 @@ let make = (
     ?style
     ?children
     dataSlot="radio-group"
-    className={twMerge(`grid w-full gap-2 ${className}`)}
+    className={cn("grid w-full gap-2", className)}
   />
 
 module Item = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=React.null,
     ~id=?,
     ~name=?,
@@ -82,7 +82,10 @@ module Item = {
       ?dir
       ?style
       dataSlot="radio-group-item"
-      className={`border-input text-primary dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 group/radio-group-item peer relative flex aspect-square size-4 shrink-0 rounded-full border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 focus-visible:ring-3 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:ring-3 ${className}`}
+      className={cn(
+        "border-input text-primary dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 group/radio-group-item peer relative flex aspect-square size-4 shrink-0 rounded-full border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 focus-visible:ring-3 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:ring-3",
+        className,
+      )}
     >
       <BaseUi.Radio.Indicator
         dataSlot="radio-group-indicator"

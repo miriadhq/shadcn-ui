@@ -1,12 +1,7 @@
 @react.component
 let make = () => {
-  let triggerClassName = `${Button.buttonVariants(
-      ~variant=Button.Variant.Ghost,
-      ~size=Button.Size.Icon,
-    )} rounded-full`
-
   <DropdownMenu>
-    <DropdownMenu.Trigger className=triggerClassName type_="button">
+    <DropdownMenu.Trigger render={<Button variant=Ghost size=Icon className="rounded-full" />}>
       <Avatar>
         <Avatar.Image
           src="https://github.com/shadcn.png" alt="shadcn" renderBeforeHydration={true}

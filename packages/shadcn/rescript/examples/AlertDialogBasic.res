@@ -1,11 +1,7 @@
 @react.component
 let make = () =>
   <AlertDialog>
-    <AlertDialog.Trigger
-      className={Button.buttonVariants(~variant=Button.Variant.Outline)} type_="button"
-    >
-      {"Show Dialog"->React.string}
-    </AlertDialog.Trigger>
+    <AlertDialog.Trigger render={<Button variant=Outline>{"Show Dialog"->React.string}</Button>} />
     <AlertDialog.Content>
       <AlertDialog.Header>
         <AlertDialog.Title> {"Are you absolutely sure?"->React.string} </AlertDialog.Title>

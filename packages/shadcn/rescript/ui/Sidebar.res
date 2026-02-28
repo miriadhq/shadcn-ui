@@ -4,6 +4,9 @@
 
 open BaseUi.Types
 
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 @unboxed
 type state =
   | @as("expanded") Expanded
@@ -104,7 +107,7 @@ type collapsible =
 
 @react.component
 let make = (
-  ~className="",
+  ~className=?,
   ~children=?,
   ~side=Left,
   ~variant=Sidebar,
@@ -136,7 +139,10 @@ let make = (
       ?onKeyDown
       ?children
       dataSlot="sidebar"
-      className={`bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col ${className}`}
+      className={cn(
+        "bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col",
+        className,
+      )}
     />
   } else if isMobile {
     let mobileStyle = ReactDOM.Style._dictToStyle(
@@ -204,7 +210,10 @@ let make = (
         ?onKeyDown
         dataSlot="sidebar-container"
         dataSide={(side :> string)}
-        className={`fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear data-[side=left]:left-0 data-[side=left]:group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)] data-[side=right]:right-0 data-[side=right]:group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)] md:flex ${desktopContainerClass} ${className}`}
+        className={cn(
+          `fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear data-[side=left]:left-0 data-[side=left]:group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)] data-[side=right]:right-0 data-[side=right]:group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)] md:flex ${desktopContainerClass}`,
+          className,
+        )}
       >
         <div
           dataSidebar="sidebar"
@@ -223,7 +232,7 @@ module Provider = {
     ~defaultOpen=true,
     ~open_: option<bool>=?,
     ~onOpenChange: option<bool => unit>=?,
-    ~className="",
+    ~className=?,
     ~children=?,
     ~props: option<BaseUi.Types.DomProps.t>=?,
     ~id=?,
@@ -332,7 +341,10 @@ module Provider = {
         ?children
         style={resolvedStyle}
         dataSlot="sidebar-wrapper"
-        className={`group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full ${className}`}
+        className={cn(
+          "group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full",
+          className,
+        )}
       />
     </ContextProvider>
   }
@@ -378,7 +390,7 @@ module Trigger = {
 
 module Rail = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
     let {toggleSidebar} = useSidebar()
     let resolvedOnClick = switch onClick {
     | Some(onClick) => onClick
@@ -394,7 +406,10 @@ module Rail = {
       tabIndex={-1}
       dataSidebar="rail"
       dataSlot="sidebar-rail"
-      className={`hover:after:bg-sidebar-border absolute inset-y-0 z-20 hidden w-4 transition-all ease-linear group-data-[side=left]:-right-4 group-data-[side=right]:left-0 after:absolute after:inset-y-0 after:start-1/2 after:w-[2px] sm:flex ltr:-translate-x-1/2 rtl:-translate-x-1/2 in-data-[side=left]:cursor-w-resize in-data-[side=right]:cursor-e-resize [[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize hover:group-data-[collapsible=offcanvas]:bg-sidebar group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full [[data-side=left][data-collapsible=offcanvas]_&]:-right-2 [[data-side=right][data-collapsible=offcanvas]_&]:-left-2 ${className}`}
+      className={cn(
+        "hover:after:bg-sidebar-border absolute inset-y-0 z-20 hidden w-4 transition-all ease-linear group-data-[side=left]:-right-4 group-data-[side=right]:left-0 after:absolute after:inset-y-0 after:start-1/2 after:w-[2px] sm:flex ltr:-translate-x-1/2 rtl:-translate-x-1/2 in-data-[side=left]:cursor-w-resize in-data-[side=right]:cursor-e-resize [[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize hover:group-data-[collapsible=offcanvas]:bg-sidebar group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full [[data-side=left][data-collapsible=offcanvas]_&]:-right-2 [[data-side=right][data-collapsible=offcanvas]_&]:-left-2",
+        className,
+      )}
       title="Toggle Sidebar"
     />
   }
@@ -402,7 +417,7 @@ module Rail = {
 
 module Inset = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <main
       ?id
       ?style
@@ -410,14 +425,17 @@ module Inset = {
       ?onKeyDown
       ?children
       dataSlot="sidebar-inset"
-      className={`bg-background relative flex w-full flex-1 flex-col md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2 ${className}`}
+      className={cn(
+        "bg-background relative flex w-full flex-1 flex-col md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2",
+        className,
+      )}
     />
 }
 
 module Input = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=?,
     ~id=?,
     ~style=?,
@@ -458,13 +476,13 @@ module Input = {
       ?children
       dataSlot="sidebar-input"
       dataSidebar="input"
-      className={`bg-background h-8 w-full shadow-none ${className}`}
+      className={cn("bg-background h-8 w-full shadow-none", className)}
     />
 }
 
 module Header = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -473,13 +491,13 @@ module Header = {
       ?children
       dataSlot="sidebar-header"
       dataSidebar="header"
-      className={`flex flex-col gap-2 p-2 ${className}`}
+      className={cn("flex flex-col gap-2 p-2", className)}
     />
 }
 
 module Footer = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -488,13 +506,13 @@ module Footer = {
       ?children
       dataSlot="sidebar-footer"
       dataSidebar="footer"
-      className={`flex flex-col gap-2 p-2 ${className}`}
+      className={cn("flex flex-col gap-2 p-2", className)}
     />
 }
 
 module Separator = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Separator
       ?id
       ?style
@@ -503,13 +521,13 @@ module Separator = {
       ?children
       dataSlot="sidebar-separator"
       dataSidebar="separator"
-      className={`bg-sidebar-border mx-2 w-auto ${className}`}
+      className={cn("bg-sidebar-border mx-2 w-auto", className)}
     />
 }
 
 module Content = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -518,13 +536,16 @@ module Content = {
       ?children
       dataSlot="sidebar-content"
       dataSidebar="content"
-      className={`no-scrollbar flex min-h-0 flex-1 flex-col gap-0 overflow-auto group-data-[collapsible=icon]:overflow-hidden ${className}`}
+      className={cn(
+        "no-scrollbar flex min-h-0 flex-1 flex-col gap-0 overflow-auto group-data-[collapsible=icon]:overflow-hidden",
+        className,
+      )}
     />
 }
 
 module Group = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -533,14 +554,14 @@ module Group = {
       ?children
       dataSlot="sidebar-group"
       dataSidebar="group"
-      className={`relative flex w-full min-w-0 flex-col p-2 ${className}`}
+      className={cn("relative flex w-full min-w-0 flex-col p-2", className)}
     />
 }
 
 module GroupLabel = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=React.null,
     ~id=?,
     ~style=?,
@@ -557,7 +578,10 @@ module GroupLabel = {
       children,
       dataSlot: "sidebar-group-label",
       dataSidebar: "group-label",
-      className: `text-sidebar-foreground/70 ring-sidebar-ring h-8 rounded-md px-2 text-xs font-medium transition-[margin,opacity] duration-200 ease-linear group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0 focus-visible:ring-2 [&>svg]:size-4 flex shrink-0 items-center outline-hidden [&>svg]:shrink-0 ${className}`,
+      className: cn(
+        "text-sidebar-foreground/70 ring-sidebar-ring h-8 rounded-md px-2 text-xs font-medium transition-[margin,opacity] duration-200 ease-linear group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0 focus-visible:ring-2 [&>svg]:size-4 flex shrink-0 items-center outline-hidden [&>svg]:shrink-0",
+        className,
+      ),
     }
     BaseUi.Render.use({defaultTagName: "div", props, ?render})
   }
@@ -566,7 +590,7 @@ module GroupLabel = {
 module GroupAction = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=React.null,
     ~id=?,
     ~style=?,
@@ -583,7 +607,10 @@ module GroupAction = {
       children,
       dataSlot: "sidebar-group-action",
       dataSidebar: "group-action",
-      className: `text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground absolute top-3.5 right-3 w-5 rounded-md p-0 focus-visible:ring-2 [&>svg]:size-4 flex aspect-square items-center justify-center outline-hidden transition-transform [&>svg]:shrink-0 after:absolute after:-inset-2 md:after:hidden group-data-[collapsible=icon]:hidden ${className}`,
+      className: cn(
+        "text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground absolute top-3.5 right-3 w-5 rounded-md p-0 focus-visible:ring-2 [&>svg]:size-4 flex aspect-square items-center justify-center outline-hidden transition-transform [&>svg]:shrink-0 after:absolute after:-inset-2 md:after:hidden group-data-[collapsible=icon]:hidden",
+        className,
+      ),
     }
     BaseUi.Render.use({defaultTagName: "button", props, ?render})
   }
@@ -591,7 +618,7 @@ module GroupAction = {
 
 module GroupContent = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -600,13 +627,13 @@ module GroupContent = {
       ?children
       dataSlot="sidebar-group-content"
       dataSidebar="group-content"
-      className={`w-full text-sm ${className}`}
+      className={cn("w-full text-sm", className)}
     />
 }
 
 module Menu = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <ul
       ?id
       ?style
@@ -615,13 +642,13 @@ module Menu = {
       ?children
       dataSlot="sidebar-menu"
       dataSidebar="menu"
-      className={`flex w-full min-w-0 flex-col gap-0 ${className}`}
+      className={cn("flex w-full min-w-0 flex-col gap-0", className)}
     />
 }
 
 module MenuItem = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <li
       ?id
       ?style
@@ -630,7 +657,7 @@ module MenuItem = {
       ?children
       dataSlot="sidebar-menu-item"
       dataSidebar="menu-item"
-      className={`group/menu-item relative ${className}`}
+      className={cn("group/menu-item relative", className)}
     />
 }
 
@@ -682,7 +709,7 @@ module MenuButton = {
 
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~variant=Variant.Default,
     ~size=Size.Default,
     ~isActive=false,
@@ -715,7 +742,7 @@ module MenuButton = {
       ariaHaspopup: ariaHaspopup->Option.getOr("menu"),
       ?ariaControls,
       tabIndex: tabIndex->Option.getOr(0),
-      className: `${sidebarMenuButtonVariants(~variant, ~size)} ${className}`,
+      className: cn(sidebarMenuButtonVariants(~variant, ~size), className),
     }
     let dataActiveOverlay: BaseUi.Types.props<string, bool> = isActive ? {dataActive: true} : {}
     let baseProps = mergeProps(baseWithoutDataActive, dataActiveOverlay)
@@ -807,7 +834,7 @@ module MenuButton = {
 module MenuAction = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=React.null,
     ~render=?,
     ~actionProps: option<BaseUi.Types.props<string, bool>>=?,
@@ -842,7 +869,10 @@ module MenuAction = {
       children,
       dataSlot: dataSlot->Option.getOr("sidebar-menu-action"),
       dataSidebar: "menu-action",
-      className: `text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground peer-hover/menu-button:text-sidebar-accent-foreground absolute top-1.5 right-1 aspect-square w-5 rounded-md p-0 peer-data-[size=default]/menu-button:top-1.5 peer-data-[size=lg]/menu-button:top-2.5 peer-data-[size=sm]/menu-button:top-1 focus-visible:ring-2 [&>svg]:size-4 flex items-center justify-center outline-hidden transition-transform group-data-[collapsible=icon]:hidden after:absolute after:-inset-2 md:after:hidden [&>svg]:shrink-0 ${showOnHoverClass} ${className}`,
+      className: cn(
+        `text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground peer-hover/menu-button:text-sidebar-accent-foreground absolute top-1.5 right-1 aspect-square w-5 rounded-md p-0 peer-data-[size=default]/menu-button:top-1.5 peer-data-[size=lg]/menu-button:top-2.5 peer-data-[size=sm]/menu-button:top-1 focus-visible:ring-2 [&>svg]:size-4 flex items-center justify-center outline-hidden transition-transform group-data-[collapsible=icon]:hidden after:absolute after:-inset-2 md:after:hidden [&>svg]:shrink-0 ${showOnHoverClass}`,
+        className,
+      ),
     }
     let mergedProps = switch actionProps {
     | Some(actionProps) => mergeProps(baseProps, actionProps)
@@ -863,7 +893,7 @@ module MenuAction = {
 
 module MenuBadge = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -872,14 +902,17 @@ module MenuBadge = {
       ?children
       dataSlot="sidebar-menu-badge"
       dataSidebar="menu-badge"
-      className={`text-sidebar-foreground peer-hover/menu-button:text-sidebar-accent-foreground peer-data-active/menu-button:text-sidebar-accent-foreground pointer-events-none absolute right-1 flex h-5 min-w-5 items-center justify-center rounded-md px-1 text-xs font-medium tabular-nums select-none group-data-[collapsible=icon]:hidden peer-data-[size=default]/menu-button:top-1.5 peer-data-[size=lg]/menu-button:top-2.5 peer-data-[size=sm]/menu-button:top-1 ${className}`}
+      className={cn(
+        "text-sidebar-foreground peer-hover/menu-button:text-sidebar-accent-foreground peer-data-active/menu-button:text-sidebar-accent-foreground pointer-events-none absolute right-1 flex h-5 min-w-5 items-center justify-center rounded-md px-1 text-xs font-medium tabular-nums select-none group-data-[collapsible=icon]:hidden peer-data-[size=default]/menu-button:top-1.5 peer-data-[size=lg]/menu-button:top-2.5 peer-data-[size=sm]/menu-button:top-1",
+        className,
+      )}
     />
 }
 
 module MenuSkeleton = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=React.null,
     ~showIcon=false,
     ~id=?,
@@ -900,7 +933,7 @@ module MenuSkeleton = {
       ?onKeyDown
       dataSlot="sidebar-menu-skeleton"
       dataSidebar="menu-skeleton"
-      className={`flex h-8 items-center gap-2 rounded-md px-2 ${className}`}
+      className={cn("flex h-8 items-center gap-2 rounded-md px-2", className)}
     >
       {showIcon
         ? <Skeleton className="size-4 rounded-md" dataSidebar="menu-skeleton-icon" />
@@ -917,7 +950,7 @@ module MenuSkeleton = {
 
 module MenuSub = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <ul
       ?id
       ?style
@@ -926,13 +959,16 @@ module MenuSub = {
       ?children
       dataSlot="sidebar-menu-sub"
       dataSidebar="menu-sub"
-      className={`border-sidebar-border mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l px-2.5 py-0.5 group-data-[collapsible=icon]:hidden ${className}`}
+      className={cn(
+        "border-sidebar-border mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l px-2.5 py-0.5 group-data-[collapsible=icon]:hidden",
+        className,
+      )}
     />
 }
 
 module MenuSubItem = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <li
       ?id
       ?style
@@ -941,7 +977,7 @@ module MenuSubItem = {
       ?children
       dataSlot="sidebar-menu-sub-item"
       dataSidebar="menu-sub-item"
-      className={`group/menu-sub-item relative ${className}`}
+      className={cn("group/menu-sub-item relative", className)}
     />
 }
 
@@ -955,7 +991,7 @@ module MenuSubButton = {
 
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=?,
     ~id=?,
     ~style=?,
@@ -986,7 +1022,10 @@ module MenuSubButton = {
       dataSlot: "sidebar-menu-sub-button",
       dataSidebar: "menu-sub-button",
       dataSize: (size :> string),
-      className: `text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground [&>svg]:text-sidebar-accent-foreground data-active:bg-sidebar-accent data-active:text-sidebar-accent-foreground h-7 gap-2 rounded-md px-2 focus-visible:ring-2 data-[size=md]:text-sm data-[size=sm]:text-xs [&>svg]:size-4 flex min-w-0 -translate-x-px items-center overflow-hidden outline-hidden group-data-[collapsible=icon]:hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:shrink-0 ${className}`,
+      className: cn(
+        "text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground [&>svg]:text-sidebar-accent-foreground data-active:bg-sidebar-accent data-active:text-sidebar-accent-foreground h-7 gap-2 rounded-md px-2 focus-visible:ring-2 data-[size=md]:text-sm data-[size=sm]:text-xs [&>svg]:size-4 flex min-w-0 -translate-x-px items-center overflow-hidden outline-hidden group-data-[collapsible=icon]:hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:shrink-0",
+        className,
+      ),
     }
     let dataActiveOverlay: BaseUi.Types.props<string, bool> = dataActive ? {dataActive: true} : {}
     let baseProps = mergeProps(baseWithoutDataActive, dataActiveOverlay)

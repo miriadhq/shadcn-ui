@@ -1,7 +1,7 @@
 @@directive("'use client'")
 
 @module("tailwind-merge")
-external twMerge: string => string = "twMerge"
+external cn: (string, option<string>) => string = "twMerge"
 
 module Variant = {
   @unboxed
@@ -66,7 +66,7 @@ let buttonVariants = (~variant=Variant.Default, ~size=Size.Default) => {
 
 @react.component
 let make = (
-  ~className="",
+  ~className=?,
   ~variant=Variant.Default,
   ~size=Size.Default,
   ~id=?,
@@ -100,10 +100,9 @@ let make = (
   ~dataEmpty=?,
   ~dir=?,
 ) => {
-  let resolvedClassName = twMerge(`${buttonVariants(~variant, ~size)} ${className}`)
   <BaseUi.Button
     dataSlot={dataSlot->Option.getOr("button")}
-    className=resolvedClassName
+    className={cn(buttonVariants(~variant, ~size), className)}
     ?id
     ?ariaControls
     ?ariaExpanded

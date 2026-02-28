@@ -2,12 +2,10 @@
 let make = () =>
   <AlertDialog>
     <AlertDialog.Trigger
-      className={Button.buttonVariants(~variant=Button.Variant.Outline)} type_="button"
-    >
-      {"Show Dialog"->React.string}
-    </AlertDialog.Trigger>
+      render={<Button variant=Outline> {"Show Dialog"->React.string} </Button>}
+    />
 
-    <AlertDialog.Content dataSize=AlertDialog.Size.Sm>
+    <AlertDialog.Content size=Sm>
       <AlertDialog.Header>
         <AlertDialog.Media>
           <Icons.Bluetooth />

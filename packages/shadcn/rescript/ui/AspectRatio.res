@@ -1,21 +1,25 @@
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 @react.component
-let make = (~className="", ~children=?, ~id=?, ~style=?, ~ratio=?, ~onClick=?, ~onKeyDown=?) => {
-  let style = switch style {
-  | Some(style) => Some(style)
-  | None =>
-    switch ratio {
-    | Some(ratio) => Some(ReactDOM.Style.unsafeAddStyle({}, {"--ratio": ratio}))
-    | None => None
-    }
-  }
-  let resolvedClassName = if className == "" {
-    "relative aspect-(--ratio)"
-  } else {
-    `relative aspect-(--ratio) ${className}`
-  }
+let make = (
+  ~ratio,
+  ~className=?,
+  ~children=?,
+  ~id=?,
+  ~style=ReactDOM.Style.unsafeAddStyle({}, {"--ratio": ratio}),
+  ~onClick=?,
+  ~onKeyDown=?,
+) => {
   <div
-    ?id ?style ?children ?onClick ?onKeyDown dataSlot="aspect-ratio" className={resolvedClassName}
+    ?id
+    style
+    ?children
+    ?onClick
+    ?onKeyDown
+    dataSlot="aspect-ratio"
+    className={cn("relative aspect-(--ratio)", className)}
   />
 }

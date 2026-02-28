@@ -1,5 +1,8 @@
 @@directive("'use client'")
 
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 module Variant = {
   @unboxed
   type t =
@@ -35,7 +38,7 @@ let toggleVariants = (~variant=Variant.Default, ~size=Size.Default) => {
 
 @react.component
 let make = (
-  ~className="",
+  ~className=?,
   ~children=?,
   ~id=?,
   ~name=?,
@@ -66,11 +69,6 @@ let make = (
   | (None, None) => Size.Default
   }
   let _ignoredOnCheckedChange = onCheckedChange
-  let resolvedClassName = if className == "" {
-    toggleVariants(~variant, ~size)
-  } else {
-    `${toggleVariants(~variant, ~size)} ${className}`
-  }
   <BaseUi.Toggle
     ?id
     ?name
@@ -86,6 +84,6 @@ let make = (
     ?render
     ?children
     dataSlot="toggle"
-    className={resolvedClassName}
+    className={cn(toggleVariants(~variant, ~size), className)}
   />
 }

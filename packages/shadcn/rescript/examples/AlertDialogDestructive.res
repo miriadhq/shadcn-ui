@@ -2,11 +2,9 @@
 let make = () =>
   <AlertDialog>
     <AlertDialog.Trigger
-      className={Button.buttonVariants(~variant=Button.Variant.Destructive)} type_="button"
-    >
-      {"Delete Chat"->React.string}
-    </AlertDialog.Trigger>
-    <AlertDialog.Content dataSize=AlertDialog.Size.Sm>
+      render={<Button variant=Destructive> {"Delete Chat"->React.string} </Button>}
+    />
+    <AlertDialog.Content size=Sm>
       <AlertDialog.Header>
         <AlertDialog.Media
           className="bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive"
@@ -21,9 +19,7 @@ let make = () =>
         </AlertDialog.Description>
       </AlertDialog.Header>
       <AlertDialog.Footer>
-        <AlertDialog.Cancel dataVariant=AlertDialog.Variant.Outline>
-          {"Cancel"->React.string}
-        </AlertDialog.Cancel>
+        <AlertDialog.Cancel variant=Outline> {"Cancel"->React.string} </AlertDialog.Cancel>
         <AlertDialog.Action variant=AlertDialog.Variant.Destructive>
           {"Delete"->React.string}
         </AlertDialog.Action>

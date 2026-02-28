@@ -2,6 +2,9 @@
 
 open BaseUi.Types
 
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 @val external isArray: 'a => bool = "Array.isArray"
 @get external unsafeArrayLength: 'a => int = "length"
 
@@ -14,7 +17,7 @@ let lengthIfArray = value =>
 
 @react.component
 let make = (
-  ~className="",
+  ~className=?,
   ~children=React.null,
   ~id=?,
   ~name=?,
@@ -69,7 +72,7 @@ let make = (
     ?orientation
     dataSlot="slider"
     thumbAlignment={ThumbAlignment.Edge}
-    className={`data-horizontal:w-full data-vertical:h-full ${className}`}
+    className={cn("data-horizontal:w-full data-vertical:h-full", className)}
   >
     <BaseUi.Slider.Control
       className="relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-vertical:h-full data-vertical:min-h-40 data-vertical:w-auto data-vertical:flex-col"

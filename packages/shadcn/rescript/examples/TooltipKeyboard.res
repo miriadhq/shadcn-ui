@@ -9,11 +9,8 @@ module LucideIcons = {
 
 @react.component
 let make = () => {
-  let triggerClassName =
-    Button.buttonVariants(~variant=Button.Variant.Outline, ~size=Button.Size.IconSm)->Button.twMerge
-
   <Tooltip>
-    <Tooltip.Trigger render={<button className=triggerClassName type_="button" tabIndex=0 />}>
+    <Tooltip.Trigger render={<Button variant=Outline size=IconSm />}>
       <LucideIcons.Save />
     </Tooltip.Trigger>
     <Tooltip.Content className="pr-1.5">

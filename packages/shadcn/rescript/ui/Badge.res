@@ -1,7 +1,7 @@
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
 @module("tailwind-merge")
-external twMerge: string => string = "twMerge"
+external cn: (string, option<string>) => string = "twMerge"
 
 module Variant = {
   @unboxed
@@ -31,7 +31,7 @@ let badgeVariants = (~variant=Variant.Default) => {
 
 @react.component
 let make = (
-  ~className="",
+  ~className=?,
   ~children=?,
   ~variant=Variant.Default,
   ~id=?,
@@ -40,7 +40,6 @@ let make = (
   ~style=?,
   ~render=?,
 ) => {
-  let resolvedClassName = twMerge(`${badgeVariants(~variant)} ${className}`)
   let props: BaseUi.Types.props<string, bool> = {
     ?id,
     ?style,
@@ -49,7 +48,7 @@ let make = (
     ?children,
     dataSlot: "badge",
     dataVariant: (variant :> string),
-    className: resolvedClassName,
+    className: cn(badgeVariants(~variant), className),
   }
   BaseUi.Render.use({defaultTagName: "span", props, ?render})
 }

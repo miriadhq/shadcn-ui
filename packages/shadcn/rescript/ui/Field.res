@@ -5,7 +5,7 @@
 open BaseUi.Types
 
 @module("tailwind-merge")
-external twMerge: string => string = "twMerge"
+external cn: (string, option<string>) => string = "twMerge"
 
 module DataOrientation = {
   @unboxed
@@ -36,7 +36,7 @@ let fieldVariants = (~orientation=DataOrientation.Vertical) => {
 
 module Set = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <fieldset
       ?id
       ?children
@@ -44,14 +44,17 @@ module Set = {
       ?onClick
       ?onKeyDown
       dataSlot="field-set"
-      className={`flex flex-col gap-4 has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3 ${className}`}
+      className={cn(
+        "flex flex-col gap-4 has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3",
+        className,
+      )}
     />
 }
 
 module Legend = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=?,
     ~id=?,
     ~style=?,
@@ -68,7 +71,10 @@ module Legend = {
       ?onKeyDown
       dataSlot="field-legend"
       dataVariant={(variant :> string)}
-      className={`mb-1.5 font-medium data-[variant=label]:text-sm data-[variant=legend]:text-base ${className}`}
+      className={cn(
+        "mb-1.5 font-medium data-[variant=label]:text-sm data-[variant=legend]:text-base",
+        className,
+      )}
     />
   }
 }
@@ -76,7 +82,7 @@ module Legend = {
 module Group = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=?,
     ~id=?,
     ~dir=?,
@@ -93,15 +99,16 @@ module Group = {
       ?onClick
       ?onKeyDown
       dataSlot
-      className={twMerge(
-        `group/field-group @container/field-group flex w-full flex-col gap-5 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4 ${className}`,
+      className={cn(
+        "group/field-group @container/field-group flex w-full flex-col gap-5 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4",
+        className,
       )}
     />
 }
 
 @react.component
 let make = (
-  ~className="",
+  ~className=?,
   ~children=?,
   ~id=?,
   ~style=?,
@@ -136,13 +143,13 @@ let make = (
     role="group"
     dataSlot="field"
     dataOrientation={(resolvedOrientation :> string)}
-    className={twMerge(`${fieldVariants(~orientation=resolvedOrientation)} ${className}`)}
+    className={cn(fieldVariants(~orientation=resolvedOrientation), className)}
   />
 }
 
 module Content = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?children
@@ -150,14 +157,14 @@ module Content = {
       ?onClick
       ?onKeyDown
       dataSlot="field-content"
-      className={`group/field-content flex flex-1 flex-col gap-0.5 leading-snug ${className}`}
+      className={cn("group/field-content flex flex-1 flex-col gap-0.5 leading-snug", className)}
     />
 }
 
 module Label = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=?,
     ~id=?,
     ~htmlFor=?,
@@ -174,14 +181,17 @@ module Label = {
       ?onKeyDown
       ?style
       dataSlot="field-label"
-      className={`has-data-checked:bg-primary/5 has-data-checked:border-primary/30 dark:has-data-checked:border-primary/20 dark:has-data-checked:bg-primary/10 group/field-label peer/field-label flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-lg has-[>[data-slot=field]]:border *:data-[slot=field]:p-2.5 has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col ${className}`}
+      className={cn(
+        "has-data-checked:bg-primary/5 has-data-checked:border-primary/30 dark:has-data-checked:border-primary/20 dark:has-data-checked:bg-primary/10 group/field-label peer/field-label flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-lg has-[>[data-slot=field]]:border *:data-[slot=field]:p-2.5 has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
+        className,
+      )}
       ?children
     />
 }
 
 module Title = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?children
@@ -189,13 +199,16 @@ module Title = {
       ?onClick
       ?onKeyDown
       dataSlot="field-label"
-      className={`flex w-fit items-center gap-2 text-sm leading-snug font-medium group-data-[disabled=true]/field:opacity-50 ${className}`}
+      className={cn(
+        "flex w-fit items-center gap-2 text-sm leading-snug font-medium group-data-[disabled=true]/field:opacity-50",
+        className,
+      )}
     />
 }
 
 module Description = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~dir=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~dir=?, ~onClick=?, ~onKeyDown=?) =>
     <p
       ?id
       ?children
@@ -204,13 +217,16 @@ module Description = {
       ?onClick
       ?onKeyDown
       dataSlot="field-description"
-      className={`text-muted-foreground text-left text-sm leading-normal font-normal group-has-data-horizontal/field:text-balance [[data-variant=legend]+&]:-mt-1.5 last:mt-0 nth-last-2:-mt-1 [&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4 ${className}`}
+      className={cn(
+        "text-muted-foreground text-left text-sm leading-normal font-normal group-has-data-horizontal/field:text-balance [[data-variant=legend]+&]:-mt-1.5 last:mt-0 nth-last-2:-mt-1 [&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
+        className,
+      )}
     />
 }
 
 module Separator = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
     let hasContent = children->Option.isSome
     <div
       ?id
@@ -219,7 +235,10 @@ module Separator = {
       ?onKeyDown
       dataSlot="field-separator"
       dataContent={hasContent}
-      className={`relative -my-2 h-5 text-sm group-data-[variant=outline]/field-group:-mb-2 ${className}`}
+      className={cn(
+        "relative -my-2 h-5 text-sm group-data-[variant=outline]/field-group:-mb-2",
+        className,
+      )}
     >
       <BaseUi.Separator
         orientation=Orientation.Horizontal
@@ -242,7 +261,7 @@ module Separator = {
 
 module Error = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?children
@@ -251,6 +270,6 @@ module Error = {
       ?onKeyDown
       role="alert"
       dataSlot="field-error"
-      className={`text-destructive text-sm font-normal ${className}`}
+      className={cn("text-destructive text-sm font-normal", className)}
     />
 }

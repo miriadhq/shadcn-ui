@@ -1,11 +1,7 @@
 @react.component
 let make = () =>
   <AlertDialog>
-    <AlertDialog.Trigger
-      className={Button.buttonVariants(~variant=Button.Variant.Outline)} type_="button"
-    >
-      {"Share Project"->React.string}
-    </AlertDialog.Trigger>
+    <AlertDialog.Trigger render={<Button variant=Outline>{"Share Project"->React.string}</Button>} />
     <AlertDialog.Content>
       <AlertDialog.Header>
         <AlertDialog.Media>

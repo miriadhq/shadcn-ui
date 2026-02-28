@@ -121,9 +121,7 @@ let make = () =>
           </Field.Description>
           <Field.Group>
             <Field orientation=BaseUi.Types.Orientation.Horizontal>
-              <Checkbox id="checkout-7j9-same-as-shipping-wgm" defaultChecked={true}>
-                {React.null}
-              </Checkbox>
+              <Checkbox id="checkout-7j9-same-as-shipping-wgm" defaultChecked={true} />
               <Field.Label htmlFor="checkout-7j9-same-as-shipping-wgm" className="font-normal">
                 {"Same as shipping address"->React.string}
               </Field.Label>

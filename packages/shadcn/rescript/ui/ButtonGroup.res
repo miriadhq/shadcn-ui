@@ -2,6 +2,9 @@
 
 open BaseUi.Types
 
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 module DataOrientation = {
   @unboxed
   type t =
@@ -20,7 +23,7 @@ let buttonGroupVariants = (~orientation=DataOrientation.Horizontal) => {
 
 @react.component
 let make = (
-  ~className="",
+  ~className=?,
   ~children=?,
   ~id=?,
   ~style=?,
@@ -36,11 +39,6 @@ let make = (
   | (None, None) => None
   }
   let resolvedOrientation = dataOrientation->Option.getOr(DataOrientation.Horizontal)
-  let resolvedClassName = if className == "" {
-    buttonGroupVariants(~orientation=resolvedOrientation)
-  } else {
-    `${buttonGroupVariants(~orientation=resolvedOrientation)} ${className}`
-  }
   let dataOrientation = dataOrientation->Option.map(value => (value :> string))
   <div
     ?id
@@ -52,13 +50,13 @@ let make = (
     role="group"
     ?dataOrientation
     dataSlot="button-group"
-    className={resolvedClassName}
+    className={cn(buttonGroupVariants(~orientation=resolvedOrientation), className)}
   />
 }
 
 module Text = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~render=?) => {
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~render=?) => {
     let props: BaseUi.Types.props<string, bool> = {
       ?id,
       ?style,
@@ -66,7 +64,10 @@ module Text = {
       ?onKeyDown,
       ?children,
       dataSlot: "button-group-text",
-      className: `bg-muted gap-2 rounded-lg border px-2.5 text-sm font-medium [&_svg:not([class*='size-'])]:size-4 flex items-center [&_svg]:pointer-events-none ${className}`,
+      className: cn(
+        "bg-muted gap-2 rounded-lg border px-2.5 text-sm font-medium [&_svg:not([class*='size-'])]:size-4 flex items-center [&_svg]:pointer-events-none",
+        className,
+      ),
     }
     BaseUi.Render.use({defaultTagName: "div", props, ?render})
   }
@@ -74,13 +75,16 @@ module Text = {
 
 module Separator = {
   @react.component
-  let make = (~className="", ~id=?, ~style=?, ~orientation=Orientation.Vertical, ~children=?) =>
+  let make = (~className=?, ~id=?, ~style=?, ~orientation=Orientation.Vertical, ~children=?) =>
     <BaseUi.Separator
       ?id
       ?style
       ?children
       dataSlot="button-group-separator"
       orientation
-      className={`bg-input relative self-stretch shrink-0 data-horizontal:mx-px data-horizontal:h-px data-horizontal:w-auto data-vertical:my-px data-vertical:h-auto data-vertical:w-px data-vertical:self-stretch ${className}`}
+      className={cn(
+        "bg-input relative self-stretch shrink-0 data-horizontal:mx-px data-horizontal:h-px data-horizontal:w-auto data-vertical:my-px data-vertical:h-auto data-vertical:w-px data-vertical:self-stretch",
+        className,
+      )}
     />
 }

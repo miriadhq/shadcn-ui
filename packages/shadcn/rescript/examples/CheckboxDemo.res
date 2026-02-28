@@ -8,9 +8,7 @@ let make = () =>
       <Label htmlFor="terms-checkbox"> {"Accept terms and conditions"->React.string} </Label>
     </Field>
     <Field orientation=BaseUi.Types.Orientation.Horizontal>
-      <Checkbox id="terms-checkbox-2" name="terms-checkbox-2" defaultChecked=true>
-        {React.null}
-      </Checkbox>
+      <Checkbox id="terms-checkbox-2" name="terms-checkbox-2" defaultChecked=true />
       <Field.Content>
         <Field.Label htmlFor="terms-checkbox-2">
           {"Accept terms and conditions"->React.string}

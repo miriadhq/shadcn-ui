@@ -3,7 +3,7 @@
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
 @module("tailwind-merge")
-external twMerge: string => string = "twMerge"
+external cn: (string, option<string>) => string = "twMerge"
 
 @send external focusElement: Dom.element => unit = "focus"
 
@@ -378,7 +378,7 @@ module DayPicker = {
 
 @react.component
 let make = (
-  ~className="",
+  ~className=?,
   ~showOutsideDays=true,
   ~captionLayout=CaptionLayout.Label,
   ~dir=?,
@@ -431,8 +431,9 @@ let make = (
 
   <DayPicker
     showOutsideDays
-    className={twMerge(
-      `bg-background group/calendar p-2 [--cell-radius:var(--radius-md)] [--cell-size:--spacing(7)] in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent rtl:**:[.rdp-button\\_next>svg]:rotate-180 rtl:**:[.rdp-button\\_previous>svg]:rotate-180 ${className}`,
+    className={cn(
+      "bg-background group/calendar p-2 [--cell-radius:var(--radius-md)] [--cell-size:--spacing(7)] in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent rtl:**:[.rdp-button\\_next>svg]:rotate-180 rtl:**:[.rdp-button\\_previous>svg]:rotate-180",
+      className,
     )}
     captionLayout
     ?dir
@@ -458,17 +459,19 @@ let make = (
         `flex items-center gap-1 w-full absolute top-0 inset-x-0 justify-between ${defaultClassNames.nav}`,
       ),
       button_previous: classNames.button_previous->Option.getOr(
-        twMerge(
+        cn(
           `${Button.buttonVariants(
               ~variant=buttonVariant,
-            )} size-(--cell-size) aria-disabled:opacity-50 p-0 select-none ${defaultClassNames.button_previous}`,
+            )} size-(--cell-size) aria-disabled:opacity-50 p-0 select-none`,
+          Some(defaultClassNames.button_previous),
         ),
       ),
       button_next: classNames.button_next->Option.getOr(
-        twMerge(
+        cn(
           `${Button.buttonVariants(
               ~variant=buttonVariant,
-            )} size-(--cell-size) aria-disabled:opacity-50 p-0 select-none ${defaultClassNames.button_next}`,
+            )} size-(--cell-size) aria-disabled:opacity-50 p-0 select-none`,
+          Some(defaultClassNames.button_next),
         ),
       ),
       month_caption: classNames.month_caption->Option.getOr(
@@ -504,14 +507,15 @@ let make = (
         `text-[0.8rem] select-none text-muted-foreground ${defaultClassNames.week_number}`,
       ),
       day: classNames.day->Option.getOr(
-        twMerge(
+        cn(
           `relative w-full rounded-(--cell-radius) h-full p-0 text-center [&:last-child[data-selected=true]_button]:rounded-r-(--cell-radius) group/day aspect-square select-none ${if (
               showWeekNumber
             ) {
               "[&:nth-child(2)[data-selected=true]_button]:rounded-l-(--cell-radius)"
             } else {
               "[&:first-child[data-selected=true]_button]:rounded-l-(--cell-radius)"
-            }} ${defaultClassNames.day}`,
+            }}`,
+          Some(defaultClassNames.day),
         ),
       ),
       range_start: classNames.range_start->Option.getOr(
@@ -607,11 +611,11 @@ let make = (
         let props = ({...props, orientation: ?None} :> Icons.props)
         switch orientation {
         | Some(Left) =>
-          <Icons.ChevronLeft {...props} className={`cn-rtl-flip size-4 ${className}`} />
+          <Icons.ChevronLeft {...props} className={cn("cn-rtl-flip size-4", Some(className))} />
         | Some(Right) =>
-          <Icons.ChevronRight {...props} className={`cn-rtl-flip size-4 ${className}`} />
+          <Icons.ChevronRight {...props} className={cn("cn-rtl-flip size-4", Some(className))} />
         | Some(Up | Down) | None =>
-          <Icons.ChevronDown {...props} className={`size-4 ${className}`} />
+          <Icons.ChevronDown {...props} className={cn("size-4", Some(className))} />
         }
       }),
       dayButton: components.dayButton->Option.getOr((props: DayButtonProps.t) =>

@@ -1,5 +1,8 @@
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 module Variant = {
   @unboxed
   type t =
@@ -19,7 +22,7 @@ let emptyMediaVariants = (~variant=Variant.Default) => {
 }
 
 @react.component
-let make = (~className="", ~children=?, ~id=?, ~dir=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
+let make = (~className=?, ~children=?, ~id=?, ~dir=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
   <div
     ?id
     ?children
@@ -28,13 +31,16 @@ let make = (~className="", ~children=?, ~id=?, ~dir=?, ~style=?, ~onClick=?, ~on
     ?onClick
     ?onKeyDown
     dataSlot="empty"
-    className={`flex w-full min-w-0 flex-1 flex-col items-center justify-center gap-4 rounded-xl border-dashed p-6 text-center text-balance ${className}`}
+    className={cn(
+      "flex w-full min-w-0 flex-1 flex-col items-center justify-center gap-4 rounded-xl border-dashed p-6 text-center text-balance",
+      className,
+    )}
   />
 }
 
 module Header = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?children
@@ -42,14 +48,14 @@ module Header = {
       ?onClick
       ?onKeyDown
       dataSlot="empty-header"
-      className={`flex max-w-sm flex-col items-center gap-2 ${className}`}
+      className={cn("flex max-w-sm flex-col items-center gap-2", className)}
     />
 }
 
 module Media = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~variant=Variant.Default,
     ~children=?,
     ~id=?,
@@ -65,14 +71,14 @@ module Media = {
       ?onKeyDown
       dataSlot="empty-icon"
       dataVariant={(variant :> string)}
-      className={`${emptyMediaVariants(~variant)} ${className}`}
+      className={cn(emptyMediaVariants(~variant), className)}
     />
   }
 }
 
 module Title = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?children
@@ -80,13 +86,13 @@ module Title = {
       ?onClick
       ?onKeyDown
       dataSlot="empty-title"
-      className={`text-sm font-medium tracking-tight ${className}`}
+      className={cn("text-sm font-medium tracking-tight", className)}
     />
 }
 
 module Description = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?children
@@ -94,13 +100,16 @@ module Description = {
       ?onClick
       ?onKeyDown
       dataSlot="empty-description"
-      className={`text-muted-foreground [&>a:hover]:text-primary text-sm/relaxed [&>a]:underline [&>a]:underline-offset-4 ${className}`}
+      className={cn(
+        "text-muted-foreground [&>a:hover]:text-primary text-sm/relaxed [&>a]:underline [&>a]:underline-offset-4",
+        className,
+      )}
     />
 }
 
 module Content = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?children
@@ -108,6 +117,9 @@ module Content = {
       ?onClick
       ?onKeyDown
       dataSlot="empty-content"
-      className={`flex w-full max-w-sm min-w-0 flex-col items-center gap-2.5 text-sm text-balance ${className}`}
+      className={cn(
+        "flex w-full max-w-sm min-w-0 flex-col items-center gap-2.5 text-sm text-balance",
+        className,
+      )}
     />
 }

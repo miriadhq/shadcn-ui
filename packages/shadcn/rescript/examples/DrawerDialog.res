@@ -12,6 +12,9 @@ external addMediaQueryListener: (mediaQueryList, string, unit => unit) => unit =
 external removeMediaQueryListener: (mediaQueryList, string, unit => unit) => unit =
   "removeEventListener"
 
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 let useMediaQuery = (query: string) => {
   let (matches, setMatches) = React.useState(() => false)
 
@@ -30,10 +33,8 @@ let useMediaQuery = (query: string) => {
 
 module ProfileForm = {
   @react.component
-  let make = (~className="") => {
-    let resolvedClassName = Button.twMerge(`grid items-start gap-6 ${className}`)
-
-    <form className=resolvedClassName>
+  let make = (~className=?) => {
+    <form className={cn("grid items-start gap-6", className)}>
       <div className="grid gap-3">
         <Label htmlFor="email"> {"Email"->React.string} </Label>
         <Input type_="email" id="email" defaultValue="shadcn@example.com" />

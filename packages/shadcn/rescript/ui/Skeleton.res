@@ -1,8 +1,11 @@
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 @react.component
 let make = (
-  ~className="",
+  ~className=?,
   ~children=?,
   ~id=?,
   ~style=?,
@@ -18,6 +21,6 @@ let make = (
     ?onKeyDown
     ?dataSidebar
     dataSlot="skeleton"
-    className={`bg-muted animate-pulse rounded-md ${className}`}
+    className={cn("bg-muted animate-pulse rounded-md", className)}
   />
 }

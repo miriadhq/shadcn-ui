@@ -2,8 +2,11 @@
 
 @@directive("'use client'")
 
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 @react.component
-let make = (~className="", ~children=?, ~id=?, ~style=?, ~dir=?, ~onClick=?, ~onKeyDown=?) => {
+let make = (~className=?, ~children=?, ~id=?, ~style=?, ~dir=?, ~onClick=?, ~onKeyDown=?) => {
   <div
     ?id
     ?style
@@ -20,14 +23,14 @@ let make = (~className="", ~children=?, ~id=?, ~style=?, ~dir=?, ~onClick=?, ~on
       ?onKeyDown
       ?children
       dataSlot="table"
-      className={`w-full caption-bottom text-sm ${className}`}
+      className={cn("w-full caption-bottom text-sm", className)}
     />
   </div>
 }
 
 module Header = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <thead
       ?id
       ?children
@@ -35,13 +38,13 @@ module Header = {
       ?onClick
       ?onKeyDown
       dataSlot="table-header"
-      className={`[&_tr]:border-b ${className}`}
+      className={cn("[&_tr]:border-b", className)}
     />
 }
 
 module Body = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <tbody
       ?id
       ?children
@@ -49,13 +52,13 @@ module Body = {
       ?onClick
       ?onKeyDown
       dataSlot="table-body"
-      className={`[&_tr:last-child]:border-0 ${className}`}
+      className={cn("[&_tr:last-child]:border-0", className)}
     />
 }
 
 module Footer = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <tfoot
       ?id
       ?children
@@ -63,14 +66,14 @@ module Footer = {
       ?onClick
       ?onKeyDown
       dataSlot="table-footer"
-      className={`bg-muted/50 border-t font-medium [&>tr]:last:border-b-0 ${className}`}
+      className={cn("bg-muted/50 border-t font-medium [&>tr]:last:border-b-0", className)}
     />
 }
 
 module Row = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=?,
     ~id=?,
     ~style=?,
@@ -86,13 +89,16 @@ module Row = {
       ?onKeyDown
       ?dataState
       dataSlot="table-row"
-      className={`hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors ${className}`}
+      className={cn(
+        "hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors",
+        className,
+      )}
     />
 }
 
 module Head = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~colSpan=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~colSpan=?, ~onClick=?, ~onKeyDown=?) =>
     <th
       ?id
       ?children
@@ -101,13 +107,16 @@ module Head = {
       ?onClick
       ?onKeyDown
       dataSlot="table-head"
-      className={`text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 ${className}`}
+      className={cn(
+        "text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0",
+        className,
+      )}
     />
 }
 
 module Cell = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~colSpan=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~colSpan=?, ~onClick=?, ~onKeyDown=?) =>
     <td
       ?id
       ?children
@@ -116,13 +125,16 @@ module Cell = {
       ?onClick
       ?onKeyDown
       dataSlot="table-cell"
-      className={`p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 ${className}`}
+      className={cn(
+        "p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0",
+        className,
+      )}
     />
 }
 
 module Caption = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <caption
       ?id
       ?children
@@ -130,6 +142,6 @@ module Caption = {
       ?onClick
       ?onKeyDown
       dataSlot="table-caption"
-      className={`text-muted-foreground mt-4 text-sm ${className}`}
+      className={cn("text-muted-foreground mt-4 text-sm", className)}
     />
 }

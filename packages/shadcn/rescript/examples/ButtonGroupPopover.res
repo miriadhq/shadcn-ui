@@ -1,17 +1,12 @@
 @react.component
 let make = () => {
-  let triggerClassName = Button.buttonVariants(
-    ~variant=Button.Variant.Outline,
-    ~size=Button.Size.Icon,
-  )
-
   <ButtonGroup>
     <Button variant=Button.Variant.Outline>
       <Icons.Bot />
       {"Copilot"->React.string}
     </Button>
     <Popover>
-      <Popover.Trigger className=triggerClassName type_="button" ariaLabel="Open Popover">
+      <Popover.Trigger render={<Button variant=Outline size=Icon ariaLabel="Open Popover" />}>
         <Icons.ChevronDown />
       </Popover.Trigger>
       <Popover.Content align=BaseUi.Types.Align.End className="rounded-xl text-sm">

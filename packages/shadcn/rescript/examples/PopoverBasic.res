@@ -1,9 +1,7 @@
 @react.component
 let make = () => {
-  let triggerClassName = `${Button.buttonVariants(~variant=Button.Variant.Outline)} w-fit`
-
   <Popover>
-    <Popover.Trigger className=triggerClassName type_="button">
+    <Popover.Trigger render={<Button variant=Outline className="w-fit" />}>
       {"Open Popover"->React.string}
     </Popover.Trigger>
     <Popover.Content align=BaseUi.Types.Align.Start>

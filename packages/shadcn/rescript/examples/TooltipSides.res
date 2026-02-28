@@ -7,15 +7,11 @@ let tooltipSides = [
 
 @react.component
 let make = () => {
-  let triggerClassName = Button.twMerge(
-    `${Button.buttonVariants(~variant=Button.Variant.Outline)} w-fit capitalize`,
-  )
-
   <div className="flex flex-wrap gap-2">
     {tooltipSides
     ->Array.map(((side, label)) =>
       <Tooltip key=label>
-        <Tooltip.Trigger render={<button className=triggerClassName type_="button" tabIndex=0 />}>
+        <Tooltip.Trigger render={<Button variant=Outline className="w-fit capitalize" />}>
           {label->React.string}
         </Tooltip.Trigger>
         <Tooltip.Content side>

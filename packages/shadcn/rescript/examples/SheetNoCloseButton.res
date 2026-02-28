@@ -1,10 +1,7 @@
 @react.component
 let make = () =>
   <Sheet>
-    <Sheet.Trigger
-      className={Button.twMerge(Button.buttonVariants(~variant=Button.Variant.Outline))}
-      type_="button"
-    >
+    <Sheet.Trigger render={<Button variant=Outline />}>
       {"Open Sheet"->React.string}
     </Sheet.Trigger>
     <Sheet.Content showCloseButton={false}>

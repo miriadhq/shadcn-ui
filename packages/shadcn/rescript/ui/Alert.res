@@ -1,7 +1,7 @@
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
 @module("tailwind-merge")
-external twMerge: string => string = "twMerge"
+external cn: (string, option<string>) => string = "twMerge"
 
 module Variant = {
   @unboxed
@@ -23,7 +23,7 @@ let alertVariants = (~variant=Variant.Default) => {
 
 @react.component
 let make = (
-  ~className="",
+  ~className=?,
   ~children=?,
   ~id=?,
   ~style=?,
@@ -37,7 +37,6 @@ let make = (
   | (None, Some(variant)) => variant
   | (None, None) => Variant.Default
   }
-  let resolvedClassName = twMerge(`${alertVariants(~variant)} ${className}`)
   <div
     ?id
     ?style
@@ -46,13 +45,13 @@ let make = (
     ?children
     role="alert"
     dataSlot="alert"
-    className={resolvedClassName}
+    className={cn(alertVariants(~variant), className)}
   />
 }
 
 module Title = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -60,13 +59,16 @@ module Title = {
       ?onKeyDown
       ?children
       dataSlot="alert-title"
-      className={`[&_a]:hover:text-foreground font-medium group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3 ${className}`}
+      className={cn(
+        "[&_a]:hover:text-foreground font-medium group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3",
+        className,
+      )}
     />
 }
 
 module Description = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -74,13 +76,16 @@ module Description = {
       ?onKeyDown
       ?children
       dataSlot="alert-description"
-      className={`text-muted-foreground [&_a]:hover:text-foreground text-sm text-balance md:text-pretty [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4 ${className}`}
+      className={cn(
+        "text-muted-foreground [&_a]:hover:text-foreground text-sm text-balance md:text-pretty [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4",
+        className,
+      )}
     />
 }
 
 module Action = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -88,6 +93,6 @@ module Action = {
       ?onKeyDown
       ?children
       dataSlot="alert-action"
-      className={`absolute top-2 right-2 ${className}`}
+      className={cn("absolute top-2 right-2", className)}
     />
 }

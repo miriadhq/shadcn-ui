@@ -3,12 +3,7 @@ let make = () =>
   <Card className="mx-auto w-full max-w-sm">
     <Card.Content>
       <Collapsible className="data-open:bg-muted rounded-md">
-        <Collapsible.Trigger
-          render={<button
-            className={`${Button.buttonVariants(~variant=Button.Variant.Ghost)} w-full`}
-            type_="button"
-          />}
-        >
+        <Collapsible.Trigger render={<Button variant=Ghost className="w-full" />}>
           {"Product details"->React.string}
           <Icons.ChevronDown className="ml-auto group-data-panel-open/button:rotate-180" />
         </Collapsible.Trigger>

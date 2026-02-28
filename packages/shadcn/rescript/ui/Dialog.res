@@ -4,6 +4,9 @@
 
 open BaseUi.Types
 
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 @react.component
 let make = (
   ~children=?,
@@ -87,7 +90,7 @@ module Close = {
 
 module Overlay = {
   @react.component
-  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~keepMounted=?) =>
+  let make = (~className=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~keepMounted=?) =>
     <BaseUi.Dialog.Backdrop
       ?id
       ?style
@@ -95,14 +98,17 @@ module Overlay = {
       ?onKeyDown
       ?keepMounted
       dataSlot="dialog-overlay"
-      className={`data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 fixed inset-0 isolate z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs ${className}`}
+      className={cn(
+        "data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 fixed inset-0 isolate z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs",
+        className,
+      )}
     />
 }
 
 module Content = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=React.null,
     ~id=?,
     ~dir=?,
@@ -124,7 +130,10 @@ module Content = {
         ?onKeyDown
         ?keepMounted
         dataSlot="dialog-content"
-        className={`bg-background data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-foreground/10 fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl p-4 text-sm ring-1 duration-100 outline-none sm:max-w-sm ${className}`}
+        className={cn(
+          "bg-background data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-foreground/10 fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl p-4 text-sm ring-1 duration-100 outline-none sm:max-w-sm",
+          className,
+        )}
       >
         {children}
         {showCloseButton
@@ -144,7 +153,7 @@ module Content = {
 
 module Header = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -152,13 +161,13 @@ module Header = {
       ?onClick
       ?onKeyDown
       dataSlot="dialog-header"
-      className={`flex flex-col gap-2 ${className}`}
+      className={cn("flex flex-col gap-2", className)}
     />
 }
 
 module Footer = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -166,13 +175,16 @@ module Footer = {
       ?onClick
       ?onKeyDown
       dataSlot="dialog-footer"
-      className={`bg-muted/50 -mx-4 -mb-4 flex flex-col-reverse gap-2 rounded-b-xl border-t p-4 sm:flex-row sm:justify-end ${className}`}
+      className={cn(
+        "bg-muted/50 -mx-4 -mb-4 flex flex-col-reverse gap-2 rounded-b-xl border-t p-4 sm:flex-row sm:justify-end",
+        className,
+      )}
     />
 }
 
 module Title = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Dialog.Title
       ?id
       ?style
@@ -180,13 +192,13 @@ module Title = {
       ?onKeyDown
       ?children
       dataSlot="dialog-title"
-      className={`text-base leading-none font-medium ${className}`}
+      className={cn("text-base leading-none font-medium", className)}
     />
 }
 
 module Description = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Dialog.Description
       ?id
       ?style
@@ -194,6 +206,9 @@ module Description = {
       ?onKeyDown
       ?children
       dataSlot="dialog-description"
-      className={`text-muted-foreground *:[a]:hover:text-foreground text-sm *:[a]:underline *:[a]:underline-offset-3 ${className}`}
+      className={cn(
+        "text-muted-foreground *:[a]:hover:text-foreground text-sm *:[a]:underline *:[a]:underline-offset-3",
+        className,
+      )}
     />
 }

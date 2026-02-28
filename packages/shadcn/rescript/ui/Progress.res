@@ -2,9 +2,12 @@
 
 open BaseUi.Types
 
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 @react.component
 let make = (
-  ~className="",
+  ~className=?,
   ~children=React.null,
   ~id=?,
   ~value=?,
@@ -25,7 +28,7 @@ let make = (
     ?onClick
     ?onKeyDown
     dataSlot="progress"
-    className={`flex flex-wrap gap-3 ${className}`}
+    className={cn("flex flex-wrap gap-3", className)}
   >
     {children}
     <BaseUi.Progress.Track
@@ -40,21 +43,24 @@ let make = (
 
 module Track = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Progress.Track
       ?id
       ?style
       ?onClick
       ?onKeyDown
       dataSlot="progress-track"
-      className={`bg-muted relative flex h-1 w-full items-center overflow-x-hidden rounded-full ${className}`}
+      className={cn(
+        "bg-muted relative flex h-1 w-full items-center overflow-x-hidden rounded-full",
+        className,
+      )}
       ?children
     />
 }
 
 module Indicator = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Progress.Indicator
       ?id
       ?style
@@ -62,13 +68,13 @@ module Indicator = {
       ?onKeyDown
       ?children
       dataSlot="progress-indicator"
-      className={`bg-primary h-full transition-all ${className}`}
+      className={cn("bg-primary h-full transition-all", className)}
     />
 }
 
 module Label = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Progress.Label
       ?id
       ?style
@@ -76,13 +82,13 @@ module Label = {
       ?onKeyDown
       ?children
       dataSlot="progress-label"
-      className={`text-sm font-medium ${className}`}
+      className={cn("text-sm font-medium", className)}
     />
 }
 
 module Value = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Progress.Value
       ?id
       ?style
@@ -90,6 +96,6 @@ module Value = {
       ?onKeyDown
       ?children
       dataSlot="progress-value"
-      className={`text-muted-foreground ml-auto text-sm tabular-nums ${className}`}
+      className={cn("text-muted-foreground ml-auto text-sm tabular-nums", className)}
     />
 }

@@ -4,6 +4,9 @@
 
 open BaseUi.Types
 
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 module InputOtpPrimitive = {
   @module("input-otp")
   external make: React.component<props<'value, 'checked>> = "OTPInput"
@@ -26,8 +29,8 @@ module InputOtpPrimitive = {
 
 @react.component
 let make = (
-  ~className="",
-  ~containerClassName="",
+  ~className=?,
+  ~containerClassName=?,
   ~children=?,
   ~id=?,
   ~name=?,
@@ -65,15 +68,15 @@ let make = (
     ?dir
     ?children
     dataSlot="input-otp"
-    containerClassName={`cn-input-otp flex items-center has-disabled:opacity-50 ${containerClassName}`}
+    containerClassName={cn("cn-input-otp flex items-center has-disabled:opacity-50", containerClassName)}
     spellCheck={false}
-    className={`disabled:cursor-not-allowed ${className}`}
+    className={cn("disabled:cursor-not-allowed", className)}
   />
 }
 
 module Group = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -81,7 +84,10 @@ module Group = {
       ?onKeyDown
       ?children
       dataSlot="input-otp-group"
-      className={`has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive flex items-center rounded-lg has-aria-invalid:ring-3 ${className}`}
+      className={cn(
+        "has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive flex items-center rounded-lg has-aria-invalid:ring-3",
+        className,
+      )}
     />
 }
 
@@ -89,7 +95,7 @@ module Slot = {
   @react.component
   let make = (
     ~index,
-    ~className="",
+    ~className=?,
     ~children=React.null,
     ~id=?,
     ~style=?,
@@ -114,7 +120,10 @@ module Slot = {
       ?ariaInvalid
       dataSlot="input-otp-slot"
       dataActive={isActive}
-      className={`dark:bg-input/30 border-input data-[active=true]:border-ring data-[active=true]:ring-ring/50 data-[active=true]:aria-invalid:ring-destructive/20 dark:data-[active=true]:aria-invalid:ring-destructive/40 aria-invalid:border-destructive data-[active=true]:aria-invalid:border-destructive relative flex size-8 items-center justify-center border-y border-r text-sm transition-all outline-none first:rounded-l-lg first:border-l last:rounded-r-lg data-[active=true]:z-10 data-[active=true]:ring-3 ${className}`}
+      className={cn(
+        "dark:bg-input/30 border-input data-[active=true]:border-ring data-[active=true]:ring-ring/50 data-[active=true]:aria-invalid:ring-destructive/20 dark:data-[active=true]:aria-invalid:ring-destructive/40 aria-invalid:border-destructive data-[active=true]:aria-invalid:border-destructive relative flex size-8 items-center justify-center border-y border-r text-sm transition-all outline-none first:rounded-l-lg first:border-l last:rounded-r-lg data-[active=true]:z-10 data-[active=true]:ring-3",
+        className,
+      )}
     >
       {char}
       {hasFakeCaret
@@ -129,7 +138,7 @@ module Slot = {
 
 module Separator = {
   @react.component
-  let make = (~className="", ~children=React.null, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=React.null, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -137,7 +146,10 @@ module Separator = {
       ?onKeyDown
       role="separator"
       dataSlot="input-otp-separator"
-      className={`flex items-center [&_svg:not([class*='size-'])]:size-4 ${className}`}
+      className={cn(
+        "flex items-center [&_svg:not([class*='size-'])]:size-4",
+        className,
+      )}
     >
       <Icons.Minus />
       {children}

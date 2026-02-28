@@ -1,7 +1,7 @@
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
 @module("tailwind-merge")
-external twMerge: string => string = "twMerge"
+external cn: (string, option<string>) => string = "twMerge"
 
 module Size = {
   @unboxed
@@ -11,7 +11,7 @@ module Size = {
 }
 
 @react.component
-let make = (~className="", ~children=?, ~id=?, ~dir=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
+let make = (~className=?, ~children=?, ~id=?, ~dir=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
   <nav
     dataSlot="pagination"
     ?id
@@ -21,21 +21,21 @@ let make = (~className="", ~children=?, ~id=?, ~dir=?, ~style=?, ~onClick=?, ~on
     ?onKeyDown
     role="navigation"
     ariaLabel="pagination"
-    className={twMerge(`mx-auto flex w-full justify-center ${className}`)}
+    className={cn("mx-auto flex w-full justify-center", className)}
     ?children
   />
 }
 
 module Content = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
     <ul
       dataSlot="pagination-content"
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      className={`flex items-center gap-0.5 ${className}`}
+      className={cn("flex items-center gap-0.5", className)}
       ?children
     />
   }
@@ -97,7 +97,7 @@ module Link = {
 module Previous = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~text="Previous",
     ~href=?,
     ~target=?,
@@ -110,7 +110,7 @@ module Previous = {
     <Link
       ariaLabel="Go to previous page"
       size={Size.Default}
-      className={`pl-1.5! ${className}`}
+      className={cn("pl-1.5!", className)}
       ?href
       ?target
       ?id
@@ -128,7 +128,7 @@ module Previous = {
 module Next = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~text="Next",
     ~href=?,
     ~target=?,
@@ -141,7 +141,7 @@ module Next = {
     <Link
       ariaLabel="Go to next page"
       size={Size.Default}
-      className={`pr-1.5! ${className}`}
+      className={cn("pr-1.5!", className)}
       ?href
       ?target
       ?id
@@ -158,13 +158,16 @@ module Next = {
 
 module Ellipsis = {
   @react.component
-  let make = (~className="", ~id=?, ~style=?) => {
+  let make = (~className=?, ~id=?, ~style=?) => {
     <span
       dataSlot="pagination-ellipsis"
       ?id
       ?style
       ariaHidden={true}
-      className={`flex size-8 items-center justify-center [&_svg:not([class*='size-'])]:size-4 ${className}`}
+      className={cn(
+        "flex size-8 items-center justify-center [&_svg:not([class*='size-'])]:size-4",
+        className,
+      )}
     >
       <Icons.MoreHorizontal />
       <span className="sr-only"> {"More pages"->React.string} </span>

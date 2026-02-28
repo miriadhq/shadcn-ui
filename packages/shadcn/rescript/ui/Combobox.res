@@ -4,6 +4,9 @@
 
 open BaseUi.Types
 
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 @react.component
 let make = (
   ~children=?,
@@ -59,7 +62,7 @@ module Value = {
 module Trigger = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=React.null,
     ~id=?,
     ~style=?,
@@ -84,7 +87,7 @@ module Trigger = {
       ?ariaLabel
       ?tabIndex
       dataSlot="combobox-trigger"
-      className={`[&_svg:not([class*='size-'])]:size-4 ${className}`}
+      className={cn("[&_svg:not([class*='size-'])]:size-4", className)}
     >
       {children}
       <Icons.ChevronDown className="text-muted-foreground pointer-events-none size-4" />
@@ -127,7 +130,7 @@ module Clear = {
 module Input = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=React.null,
     ~id=?,
     ~style=?,
@@ -153,7 +156,10 @@ module Input = {
     <div
       dataSlot="input-group"
       role="group"
-      className={`border-input dark:bg-input/30 has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[[data-slot][aria-invalid=true]]:border-destructive dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40 has-disabled:bg-input/50 dark:has-disabled:bg-input/80 group/input-group relative flex h-8 min-w-0 items-center rounded-lg border transition-colors outline-none in-data-[slot=combobox-content]:focus-within:border-inherit in-data-[slot=combobox-content]:focus-within:ring-0 has-disabled:opacity-50 has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot][aria-invalid=true]]:ring-3 has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>textarea]:h-auto has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pr-1.5 has-[>[data-align=inline-start]]:[&>input]:pl-1.5 w-auto ${className}`}
+      className={cn(
+        "border-input dark:bg-input/30 has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[[data-slot][aria-invalid=true]]:border-destructive dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40 has-disabled:bg-input/50 dark:has-disabled:bg-input/80 group/input-group relative flex h-8 min-w-0 items-center rounded-lg border transition-colors outline-none in-data-[slot=combobox-content]:focus-within:border-inherit in-data-[slot=combobox-content]:focus-within:ring-0 has-disabled:opacity-50 has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot][aria-invalid=true]]:ring-3 has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>textarea]:h-auto has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pr-1.5 has-[>[data-align=inline-start]]:[&>input]:pl-1.5 w-auto",
+        className,
+      )}
     >
       <BaseUi.Combobox.Input
         ?id
@@ -209,7 +215,7 @@ module Input = {
 module Content = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=?,
     ~id=?,
     ~style=?,
@@ -241,7 +247,10 @@ module Content = {
           ?dataLang
           dataSlot="combobox-content"
           dataChips=hasAnchor
-          className={`bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 *:data-[slot=input-group]:bg-input/30 *:data-[slot=input-group]:border-input/30 data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2 cn-menu-target group/combobox-content relative max-h-(--available-height) w-(--anchor-width) max-w-(--available-width) min-w-[calc(var(--anchor-width)+--spacing(7))] origin-(--transform-origin) overflow-hidden rounded-lg shadow-md ring-1 duration-100 data-[chips=true]:min-w-(--anchor-width) *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-8 *:data-[slot=input-group]:shadow-none ${className}`}
+          className={cn(
+            "bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 *:data-[slot=input-group]:bg-input/30 *:data-[slot=input-group]:border-input/30 data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2 cn-menu-target group/combobox-content relative max-h-(--available-height) w-(--anchor-width) max-w-(--available-width) min-w-[calc(var(--anchor-width)+--spacing(7))] origin-(--transform-origin) overflow-hidden rounded-lg shadow-md ring-1 duration-100 data-[chips=true]:min-w-(--anchor-width) *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-8 *:data-[slot=input-group]:shadow-none",
+            className,
+          )}
           ?children
         />
       </BaseUi.Combobox.Positioner>
@@ -251,7 +260,7 @@ module Content = {
 
 module List = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Combobox.List
       ?id
       ?style
@@ -259,14 +268,17 @@ module List = {
       ?onKeyDown
       ?children
       dataSlot="combobox-list"
-      className={`no-scrollbar max-h-[min(calc(--spacing(72)---spacing(9)),calc(var(--available-height)---spacing(9)))] scroll-py-1 overflow-y-auto overscroll-contain p-1 data-empty:p-0 ${className}`}
+      className={cn(
+        "no-scrollbar max-h-[min(calc(--spacing(72)---spacing(9)),calc(var(--available-height)---spacing(9)))] scroll-py-1 overflow-y-auto overscroll-contain p-1 data-empty:p-0",
+        className,
+      )}
     />
 }
 
 module Item = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=React.null,
     ~id=?,
     ~style=?,
@@ -285,7 +297,10 @@ module Item = {
       ?onClick
       ?onKeyDown
       dataSlot="combobox-item"
-      className={`data-highlighted:bg-accent data-highlighted:text-accent-foreground not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground relative flex w-full cursor-default items-center gap-2 rounded-md py-1 pr-8 pl-1.5 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 ${className}`}
+      className={cn(
+        "data-highlighted:bg-accent data-highlighted:text-accent-foreground not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground relative flex w-full cursor-default items-center gap-2 rounded-md py-1 pr-8 pl-1.5 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        className,
+      )}
     >
       {children}
       <BaseUi.Combobox.ItemIndicator
@@ -306,7 +321,7 @@ module Group = {
 
 module Label = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Combobox.GroupLabel
       ?id
       ?style
@@ -314,7 +329,7 @@ module Label = {
       ?onKeyDown
       ?children
       dataSlot="combobox-label"
-      className={`text-muted-foreground px-2 py-1.5 text-xs ${className}`}
+      className={cn("text-muted-foreground px-2 py-1.5 text-xs", className)}
     />
 }
 
@@ -326,31 +341,34 @@ module Collection = {
 
 module Empty = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?) =>
     <BaseUi.Combobox.Empty
       ?id
       ?style
       ?children
       dataSlot="combobox-empty"
-      className={`text-muted-foreground hidden w-full justify-center py-2 text-center text-sm group-data-empty/combobox-content:flex ${className}`}
+      className={cn(
+        "text-muted-foreground hidden w-full justify-center py-2 text-center text-sm group-data-empty/combobox-content:flex",
+        className,
+      )}
     />
 }
 
 module Separator = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?) =>
     <BaseUi.Combobox.Separator
       ?id
       ?style
       ?children
       dataSlot="combobox-separator"
-      className={`bg-border -mx-1 my-1 h-px ${className}`}
+      className={cn("bg-border -mx-1 my-1 h-px", className)}
     />
 }
 
 module Chips = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Combobox.Chips
       ?id
       ?style
@@ -358,14 +376,17 @@ module Chips = {
       ?onKeyDown
       ?children
       dataSlot="combobox-chips"
-      className={`dark:bg-input/30 border-input focus-within:border-ring focus-within:ring-ring/50 has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive dark:has-aria-invalid:border-destructive/50 flex min-h-8 flex-wrap items-center gap-1 rounded-lg border bg-transparent bg-clip-padding px-2.5 py-1 text-sm transition-colors focus-within:ring-3 has-aria-invalid:ring-3 has-data-[slot=combobox-chip]:px-1 ${className}`}
+      className={cn(
+        "dark:bg-input/30 border-input focus-within:border-ring focus-within:ring-ring/50 has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive dark:has-aria-invalid:border-destructive/50 flex min-h-8 flex-wrap items-center gap-1 rounded-lg border bg-transparent bg-clip-padding px-2.5 py-1 text-sm transition-colors focus-within:ring-3 has-aria-invalid:ring-3 has-data-[slot=combobox-chip]:px-1",
+        className,
+      )}
     />
 }
 
 module Chip = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=React.null,
     ~showRemove=true,
     ~id=?,
@@ -381,7 +402,10 @@ module Chip = {
       ?onKeyDown
       ?disabled
       dataSlot="combobox-chip"
-      className={`bg-muted text-foreground flex h-[calc(--spacing(5.25))] w-fit items-center justify-center gap-1 rounded-sm px-1.5 text-xs font-medium whitespace-nowrap has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-disabled:opacity-50 has-data-[slot=combobox-chip-remove]:pr-0 ${className}`}
+      className={cn(
+        "bg-muted text-foreground flex h-[calc(--spacing(5.25))] w-fit items-center justify-center gap-1 rounded-sm px-1.5 text-xs font-medium whitespace-nowrap has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-disabled:opacity-50 has-data-[slot=combobox-chip-remove]:pr-0",
+        className,
+      )}
     >
       {children}
       {showRemove
@@ -399,7 +423,7 @@ module Chip = {
 module ChipsInput = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=?,
     ~id=?,
     ~style=?,
@@ -439,7 +463,7 @@ module ChipsInput = {
       ?ariaRoledescription
       ?children
       dataSlot="combobox-chip-input"
-      className={`min-w-16 flex-1 outline-none ${className}`}
+      className={cn("min-w-16 flex-1 outline-none", className)}
     />
 }
 

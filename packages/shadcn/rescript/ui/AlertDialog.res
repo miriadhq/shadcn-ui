@@ -5,6 +5,9 @@
 module Variant = Button.Variant
 module Size = Button.Size
 
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 @react.component
 let make = (~children=?, ~open_=?, ~defaultOpen=?, ~onOpenChange=?, ~onOpenChangeComplete=?) =>
   <BaseUi.AlertDialog.Root
@@ -50,7 +53,7 @@ module Portal = {
 
 module Overlay = {
   @react.component
-  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~keepMounted=?) =>
+  let make = (~className=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~keepMounted=?) =>
     <BaseUi.AlertDialog.Backdrop
       ?id
       ?style
@@ -58,23 +61,31 @@ module Overlay = {
       ?onKeyDown
       ?keepMounted
       dataSlot="alert-dialog-overlay"
-      className={`data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 fixed inset-0 isolate z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs ${className}`}
+      className={cn(
+        "data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 fixed inset-0 isolate z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs",
+        className,
+      )}
     />
 }
 
 module Content = {
+  module Size = {
+    @unboxed
+    type t =
+      | @as("default") Default
+      | @as("sm") Sm
+  }
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
+    ~size=Size.Default,
     ~children=?,
     ~id=?,
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
     ~keepMounted=?,
-    ~dataSize=Size.Default,
   ) => {
-    let size = dataSize
     <Portal>
       <Overlay />
       <BaseUi.AlertDialog.Popup
@@ -86,7 +97,10 @@ module Content = {
         ?children
         dataSlot="alert-dialog-content"
         dataSize={(size :> string)}
-        className={`data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 bg-background ring-foreground/10 group/alert-dialog-content fixed top-1/2 left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl p-4 ring-1 duration-100 outline-none data-[size=default]:max-w-xs data-[size=sm]:max-w-xs data-[size=default]:sm:max-w-sm ${className}`}
+        className={cn(
+          "data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 bg-background ring-foreground/10 group/alert-dialog-content fixed top-1/2 left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl p-4 ring-1 duration-100 outline-none data-[size=default]:max-w-xs data-[size=sm]:max-w-xs data-[size=default]:sm:max-w-sm",
+          className,
+        )}
       />
     </Portal>
   }
@@ -94,7 +108,7 @@ module Content = {
 
 module Header = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -102,13 +116,16 @@ module Header = {
       ?onClick
       ?onKeyDown
       dataSlot="alert-dialog-header"
-      className={`grid grid-rows-[auto_1fr] place-items-center gap-1.5 text-center has-data-[slot=alert-dialog-media]:grid-rows-[auto_auto_1fr] has-data-[slot=alert-dialog-media]:gap-x-4 sm:group-data-[size=default]/alert-dialog-content:place-items-start sm:group-data-[size=default]/alert-dialog-content:text-left sm:group-data-[size=default]/alert-dialog-content:has-data-[slot=alert-dialog-media]:grid-rows-[auto_1fr] ${className}`}
+      className={cn(
+        "grid grid-rows-[auto_1fr] place-items-center gap-1.5 text-center has-data-[slot=alert-dialog-media]:grid-rows-[auto_auto_1fr] has-data-[slot=alert-dialog-media]:gap-x-4 sm:group-data-[size=default]/alert-dialog-content:place-items-start sm:group-data-[size=default]/alert-dialog-content:text-left sm:group-data-[size=default]/alert-dialog-content:has-data-[slot=alert-dialog-media]:grid-rows-[auto_1fr]",
+        className,
+      )}
     />
 }
 
 module Footer = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -116,13 +133,16 @@ module Footer = {
       ?onClick
       ?onKeyDown
       dataSlot="alert-dialog-footer"
-      className={`bg-muted/50 -mx-4 -mb-4 flex flex-col-reverse gap-2 rounded-b-xl border-t p-4 group-data-[size=sm]/alert-dialog-content:grid group-data-[size=sm]/alert-dialog-content:grid-cols-2 sm:flex-row sm:justify-end ${className}`}
+      className={cn(
+        "bg-muted/50 -mx-4 -mb-4 flex flex-col-reverse gap-2 rounded-b-xl border-t p-4 group-data-[size=sm]/alert-dialog-content:grid group-data-[size=sm]/alert-dialog-content:grid-cols-2 sm:flex-row sm:justify-end",
+        className,
+      )}
     />
 }
 
 module Media = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -130,13 +150,16 @@ module Media = {
       ?onClick
       ?onKeyDown
       dataSlot="alert-dialog-media"
-      className={`bg-muted mb-2 inline-flex size-10 items-center justify-center rounded-md sm:group-data-[size=default]/alert-dialog-content:row-span-2 *:[svg:not([class*='size-'])]:size-6 ${className}`}
+      className={cn(
+        "bg-muted mb-2 inline-flex size-10 items-center justify-center rounded-md sm:group-data-[size=default]/alert-dialog-content:row-span-2 *:[svg:not([class*='size-'])]:size-6",
+        className,
+      )}
     />
 }
 
 module Title = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.AlertDialog.Title
       ?id
       ?style
@@ -144,13 +167,16 @@ module Title = {
       ?onKeyDown
       ?children
       dataSlot="alert-dialog-title"
-      className={`text-base font-medium sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2 ${className}`}
+      className={cn(
+        "text-base font-medium sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2",
+        className,
+      )}
     />
 }
 
 module Description = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.AlertDialog.Description
       ?id
       ?style
@@ -158,7 +184,10 @@ module Description = {
       ?onKeyDown
       ?children
       dataSlot="alert-dialog-description"
-      className={`text-muted-foreground *:[a]:hover:text-foreground text-sm text-balance md:text-pretty *:[a]:underline *:[a]:underline-offset-3 ${className}`}
+      className={cn(
+        "text-muted-foreground *:[a]:hover:text-foreground text-sm text-balance md:text-pretty *:[a]:underline *:[a]:underline-offset-3",
+        className,
+      )}
     />
 }
 
@@ -195,21 +224,19 @@ module Cancel = {
   @react.component
   let make = (
     ~className="",
+    ~variant=Variant.Outline,
+    ~size=Size.Default,
     ~children=?,
     ~id=?,
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
     ~disabled=?,
-    ~render=?,
+    ~render=<Button variant size className />,
     ~nativeButton=?,
     ~type_=?,
     ~ariaLabel=?,
-    ~dataVariant=Variant.Outline,
-    ~dataSize=Size.Default,
   ) => {
-    let variant = dataVariant
-    let size = dataSize
     <BaseUi.AlertDialog.Close
       ?id
       ?style
@@ -221,10 +248,7 @@ module Cancel = {
       ?ariaLabel
       ?children
       dataSlot="alert-dialog-cancel"
-      render={switch render {
-      | Some(value) => value
-      | None => <Button variant size className />
-      }}
+      render
     />
   }
 }

@@ -55,14 +55,10 @@ let rec renderItem = (fileItem: fileTreeItem) =>
   | Folder({name, items}) =>
     <Collapsible key=name>
       <Collapsible.Trigger
-        render={<button
-          className={Button.twMerge(
-            `${Button.buttonVariants(
-                ~variant=Button.Variant.Ghost,
-                ~size=Button.Size.Sm,
-              )} group hover:bg-accent hover:text-accent-foreground w-full justify-start transition-none`,
-          )}
-          type_="button"
+        render={<Button
+          variant=Ghost
+          size=Sm
+          className="group hover:bg-accent hover:text-accent-foreground w-full justify-start transition-none"
         />}
       >
         <Icons.ChevronRight className="transition-transform group-data-[state=open]:rotate-90" />

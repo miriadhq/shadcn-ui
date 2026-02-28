@@ -1,3 +1,6 @@
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 let sheetSides = [
   (BaseUi.Types.Side.Top, "top"),
   (BaseUi.Types.Side.Right, "right"),
@@ -5,19 +8,13 @@ let sheetSides = [
   (BaseUi.Types.Side.Left, "left"),
 ]
 
-let loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-
-let triggerClassName = Button.twMerge(
-  `${Button.buttonVariants(~variant=Button.Variant.Outline)} capitalize`,
-)
-
 @react.component
 let make = () =>
   <div className="flex flex-wrap gap-2">
     {sheetSides
     ->Array.map(((side, label)) =>
       <Sheet key=label>
-        <Sheet.Trigger className=triggerClassName type_="button">
+        <Sheet.Trigger render={<Button variant=Outline className="capitalize" />}>
           {label->React.string}
         </Sheet.Trigger>
         <Sheet.Content
@@ -32,7 +29,14 @@ let make = () =>
           <div className="no-scrollbar overflow-y-auto px-4">
             {Array.fromInitializer(~length=10, index =>
               <p key={Int.toString(index)} className="mb-2 leading-relaxed">
-                {loremIpsum->React.string}
+                {"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed 
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+                irure dolor in reprehenderit in voluptate velit esse cillum 
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
+                cupidatat non proident, sunt in culpa qui officia deserunt 
+                mollit anim id est laborum."->React.string}
               </p>
             )->React.array}
           </div>

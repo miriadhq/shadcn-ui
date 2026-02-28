@@ -5,7 +5,7 @@
 open BaseUi.Types
 
 @module("tailwind-merge")
-external twMerge: string => string = "twMerge"
+external cn: (string, option<string>) => string = "twMerge"
 
 type carouselApi
 type carouselRef = ReactDOM.domRef
@@ -78,7 +78,7 @@ let useCarousel = () =>
 
 @react.component
 let make = (
-  ~className="",
+  ~className=?,
   ~children=?,
   ~id=?,
   ~dir=?,
@@ -175,7 +175,7 @@ let make = (
       ?onMouseLeave
       onKeyDownCapture={handleKeyDownCapture}
       dataSlot="carousel"
-      className={twMerge(`relative ${className}`)}
+      className={cn("relative", className)}
       role="region"
       ariaRoledescription="carousel"
       ?children
@@ -186,7 +186,7 @@ let make = (
 module Content = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=?,
     ~id=?,
     ~style=?,
@@ -207,10 +207,9 @@ module Content = {
         ?onClick
         ?onKeyDown
         ?children
-        className={twMerge(
-          `flex ${orientation == DataOrientation.Horizontal
-              ? "-ml-4"
-              : "-mt-4 flex-col"} ${className}`,
+        className={cn(
+          `flex ${orientation == DataOrientation.Horizontal ? "-ml-4" : "-mt-4 flex-col"}`,
+          className,
         )}
       />
     </div>
@@ -220,7 +219,7 @@ module Content = {
 module Item = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=?,
     ~id=?,
     ~style=?,
@@ -243,10 +242,11 @@ module Item = {
       role="group"
       ariaRoledescription="slide"
       dataSlot="carousel-item"
-      className={twMerge(
+      className={cn(
         `min-w-0 shrink-0 grow-0 basis-full ${orientation == DataOrientation.Horizontal
             ? "pl-4"
-            : "pt-4"} ${className}`,
+            : "pt-4"}`,
+        className,
       )}
     />
   }
@@ -255,7 +255,7 @@ module Item = {
 module Previous = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~style=?,
     ~variant=Button.Variant.Outline,
     ~size=Button.Size.IconSm,
@@ -270,10 +270,11 @@ module Previous = {
     | None => _ => scrollPrev()
     }
     <Button
-      className={twMerge(
+      className={cn(
         `absolute touch-manipulation rounded-full ${orientation == DataOrientation.Horizontal
             ? "top-1/2 -left-12 -translate-y-1/2"
-            : "-top-12 left-1/2 -translate-x-1/2 rotate-90"} ${className}`,
+            : "-top-12 left-1/2 -translate-x-1/2 rotate-90"}`,
+        className,
       )}
       variant
       size
@@ -294,7 +295,7 @@ module Previous = {
 module Next = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~style=?,
     ~variant=Button.Variant.Outline,
     ~size=Button.Size.IconSm,
@@ -309,10 +310,11 @@ module Next = {
     | None => _ => scrollNext()
     }
     <Button
-      className={twMerge(
+      className={cn(
         `absolute touch-manipulation rounded-full ${orientation == DataOrientation.Horizontal
             ? "top-1/2 -right-12 -translate-y-1/2"
-            : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90"} ${className}`,
+            : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90"}`,
+        className,
       )}
       variant
       size

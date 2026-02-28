@@ -34,12 +34,10 @@ module LocalIcons = {
 
 @react.component
 let make = () => {
-  let triggerClassName = `${Button.buttonVariants(~variant=Button.Variant.Outline)} !pl-2`
-
   <ButtonGroup>
     <Button variant=Button.Variant.Outline> {"Follow"->React.string} </Button>
     <DropdownMenu>
-      <DropdownMenu.Trigger className=triggerClassName type_="button">
+      <DropdownMenu.Trigger render={<Button variant=Outline className="!pl-2" />}>
         <Icons.ChevronDown />
       </DropdownMenu.Trigger>
       <DropdownMenu.Content align=BaseUi.Types.Align.End className="w-44">

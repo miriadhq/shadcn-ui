@@ -1,5 +1,8 @@
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 module Size = {
   @unboxed
   type t =
@@ -9,7 +12,7 @@ module Size = {
 
 @react.component
 let make = (
-  ~className="",
+  ~className=?,
   ~children=?,
   ~id=?,
   ~name=?,
@@ -35,7 +38,7 @@ let make = (
     ?onKeyDown
     dataSlot="native-select-wrapper"
     dataSize={(size :> string)}
-    className={`group/native-select relative w-fit has-[select:disabled]:opacity-50 ${className}`}
+    className={cn("group/native-select relative w-fit has-[select:disabled]:opacity-50", className)}
   >
     <select
       ?id

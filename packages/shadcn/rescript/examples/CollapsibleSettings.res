@@ -43,15 +43,7 @@ let make = () => {
             </Field>
           </Collapsible.Content>
         </Field.Group>
-        <Collapsible.Trigger
-          render={<button
-            className={Button.buttonVariants(
-              ~variant=Button.Variant.Outline,
-              ~size=Button.Size.Icon,
-            )}
-            type_="button"
-          />}
-        >
+        <Collapsible.Trigger render={<Button variant=Outline size=Icon />}>
           {if isOpen {
             <Icons.Minimize />
           } else {

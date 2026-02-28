@@ -2,6 +2,9 @@
 
 open BaseUi.Types
 
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 @react.component
 let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~dir=?) => {
   <nav
@@ -19,7 +22,7 @@ let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=
 
 module List = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <ol
       ?id
       ?style
@@ -27,13 +30,16 @@ module List = {
       ?onClick
       ?onKeyDown
       dataSlot="breadcrumb-list"
-      className={`text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm wrap-break-word ${className}`}
+      className={cn(
+        "text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm wrap-break-word",
+        className,
+      )}
     />
 }
 
 module Item = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <li
       ?id
       ?style
@@ -41,14 +47,14 @@ module Item = {
       ?onClick
       ?onKeyDown
       dataSlot="breadcrumb-item"
-      className={`inline-flex items-center gap-1 ${className}`}
+      className={cn("inline-flex items-center gap-1", className)}
     />
 }
 
 module Link = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=?,
     ~id=?,
     ~href=?,
@@ -71,7 +77,7 @@ module Link = {
         ?target,
         render: React.null,
         dataSlot: "breadcrumb-link",
-        className: `hover:text-foreground transition-colors ${className}`,
+        className: cn("hover:text-foreground transition-colors", className),
       },
     })
   }
@@ -79,7 +85,7 @@ module Link = {
 
 module Page = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <span
       ?id
       ?style
@@ -90,13 +96,13 @@ module Page = {
       ariaDisabled=true
       role="link"
       dataSlot="breadcrumb-page"
-      className={`text-foreground font-normal ${className}`}
+      className={cn("text-foreground font-normal", className)}
     />
 }
 
 module Separator = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
     let content = switch children {
     | Some(content) => content
     | None => <Icons.ChevronRight className="cn-rtl-flip" />
@@ -109,7 +115,7 @@ module Separator = {
       ariaHidden=true
       role="presentation"
       dataSlot="breadcrumb-separator"
-      className={`[&>svg]:size-3.5 ${className}`}
+      className={cn("[&>svg]:size-3.5", className)}
     >
       {content}
     </li>
@@ -118,7 +124,7 @@ module Separator = {
 
 module Ellipsis = {
   @react.component
-  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <span
       ?id
       ?style
@@ -127,7 +133,7 @@ module Ellipsis = {
       ariaHidden=true
       role="presentation"
       dataSlot="breadcrumb-ellipsis"
-      className={`flex size-5 items-center justify-center [&>svg]:size-4 ${className}`}
+      className={cn("flex size-5 items-center justify-center [&>svg]:size-4", className)}
     >
       <Icons.MoreHorizontal />
       <span className="sr-only"> {"More"->React.string} </span>

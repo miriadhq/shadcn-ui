@@ -4,6 +4,9 @@
 
 open BaseUi.Types
 
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
 module Variant = {
   @unboxed
   type t =
@@ -12,7 +15,7 @@ module Variant = {
 }
 
 @react.component
-let make = (~className="", ~children=?, ~id=?, ~dir=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+let make = (~className=?, ~children=?, ~id=?, ~dir=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
   <BaseUi.Menubar
     ?id
     ?dir
@@ -21,7 +24,7 @@ let make = (~className="", ~children=?, ~id=?, ~dir=?, ~style=?, ~onClick=?, ~on
     ?onKeyDown
     ?children
     dataSlot="menubar"
-    className={`bg-background flex h-8 items-center gap-0.5 rounded-lg border p-[3px] ${className}`}
+    className={cn("bg-background flex h-8 items-center gap-0.5 rounded-lg border p-[3px]", className)}
   />
 
 module Menu = {
@@ -60,7 +63,7 @@ module Portal = {
 module Trigger = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=?,
     ~id=?,
     ~style=?,
@@ -91,7 +94,10 @@ module Trigger = {
         ?ariaLabel
         ?children
         dataSlot="menubar-trigger"
-        className={`hover:bg-muted aria-expanded:bg-muted flex items-center rounded-sm px-1.5 py-[2px] text-sm font-medium outline-hidden select-none ${className}`}
+        className={cn(
+          "hover:bg-muted aria-expanded:bg-muted flex items-center rounded-sm px-1.5 py-[2px] text-sm font-medium outline-hidden select-none",
+          className,
+        )}
       />
     } else {
       <BaseUi.Menu.Trigger
@@ -106,7 +112,10 @@ module Trigger = {
         ?ariaLabel
         ?children
         dataSlot="menubar-trigger"
-        className={`hover:bg-muted aria-expanded:bg-muted flex items-center rounded-sm px-1.5 py-[2px] text-sm font-medium outline-hidden select-none ${className}`}
+        className={cn(
+          "hover:bg-muted aria-expanded:bg-muted flex items-center rounded-sm px-1.5 py-[2px] text-sm font-medium outline-hidden select-none",
+          className,
+        )}
       />
     }
   }
@@ -115,7 +124,7 @@ module Trigger = {
 module Content = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=?,
     ~id=?,
     ~dir=?,
@@ -141,7 +150,10 @@ module Content = {
           ?onKeyDown
           ?children
           dataSlot="menubar-content"
-          className={`bg-popover text-popover-foreground data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2 cn-menu-target min-w-36 rounded-lg p-1 shadow-md ring-1 duration-100 ${className}`}
+          className={cn(
+            "bg-popover text-popover-foreground data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2 cn-menu-target min-w-36 rounded-lg p-1 shadow-md ring-1 duration-100",
+            className,
+          )}
         />
       </BaseUi.Menu.Positioner>
     </BaseUi.Menu.Portal>
@@ -150,7 +162,7 @@ module Content = {
 module Item = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=?,
     ~id=?,
     ~style=?,
@@ -172,7 +184,10 @@ module Item = {
       ?children
       dataSlot="menubar-item"
       dataVariant={(variant :> string)}
-      className={`focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:text-destructive! not-data-[variant=destructive]:focus:**:text-accent-foreground group/menubar-item gap-1.5 rounded-md px-1.5 py-1 text-sm data-disabled:opacity-50 data-inset:pl-7 [&_svg:not([class*='size-'])]:size-4 ${className}`}
+      className={cn(
+        "focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:text-destructive! not-data-[variant=destructive]:focus:**:text-accent-foreground group/menubar-item gap-1.5 rounded-md px-1.5 py-1 text-sm data-disabled:opacity-50 data-inset:pl-7 [&_svg:not([class*='size-'])]:size-4",
+        className,
+      )}
     />
   }
 }
@@ -180,7 +195,7 @@ module Item = {
 module CheckboxItem = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=React.null,
     ~id=?,
     ~style=?,
@@ -205,7 +220,10 @@ module CheckboxItem = {
       ?onClick
       ?onKeyDown
       dataSlot="menubar-checkbox-item"
-      className={`focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-1.5 pl-7 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-7 [&_svg]:pointer-events-none [&_svg]:shrink-0 ${className}`}
+      className={cn(
+        "focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-1.5 pl-7 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-7 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        className,
+      )}
     >
       <span
         className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4"
@@ -229,7 +247,7 @@ module RadioGroup = {
 module RadioItem = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=React.null,
     ~id=?,
     ~style=?,
@@ -250,7 +268,10 @@ module RadioItem = {
       ?onClick
       ?onKeyDown
       dataSlot="menubar-radio-item"
-      className={`focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-1.5 pl-7 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-7 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 ${className}`}
+      className={cn(
+        "focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-1.5 pl-7 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-7 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        className,
+      )}
     >
       <span
         className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4"
@@ -266,7 +287,7 @@ module RadioItem = {
 module Label = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=?,
     ~id=?,
     ~style=?,
@@ -282,26 +303,26 @@ module Label = {
       ?dataInset
       ?children
       dataSlot="menubar-label"
-      className={`px-1.5 py-1 text-sm font-medium data-inset:pl-7 ${className}`}
+      className={cn("px-1.5 py-1 text-sm font-medium data-inset:pl-7", className)}
     />
 }
 
 module Separator = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?) =>
     <BaseUi.Menu.Separator
       ?id
       ?style
       ?children
       dataSlot="menubar-separator"
-      className={`bg-border -mx-1 my-1 h-px ${className}`}
+      className={cn("bg-border -mx-1 my-1 h-px", className)}
     />
 }
 
 module Shortcut = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=?,
     ~id=?,
     ~style=?,
@@ -315,7 +336,10 @@ module Shortcut = {
       ?onClick
       ?onKeyDown
       dataSlot
-      className={`text-muted-foreground group-focus/menubar-item:text-accent-foreground ml-auto text-xs tracking-widest ${className}`}
+      className={cn(
+        "text-muted-foreground group-focus/menubar-item:text-accent-foreground ml-auto text-xs tracking-widest",
+        className,
+      )}
       ?children
     />
 }
@@ -329,7 +353,7 @@ module Sub = {
 module SubTrigger = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=React.null,
     ~id=?,
     ~style=?,
@@ -346,7 +370,10 @@ module SubTrigger = {
       ?disabled
       ?dataInset
       dataSlot="menubar-sub-trigger"
-      className={`focus:bg-accent focus:text-accent-foreground data-open:bg-accent data-open:text-accent-foreground gap-1.5 rounded-md px-1.5 py-1 text-sm data-inset:pl-7 [&_svg:not([class*='size-'])]:size-4 ${className}`}
+      className={cn(
+        "focus:bg-accent focus:text-accent-foreground data-open:bg-accent data-open:text-accent-foreground gap-1.5 rounded-md px-1.5 py-1 text-sm data-inset:pl-7 [&_svg:not([class*='size-'])]:size-4",
+        className,
+      )}
     >
       {children}
       <Icons.ChevronRight className="cn-rtl-flip ml-auto" />
@@ -356,7 +383,7 @@ module SubTrigger = {
 module SubContent = {
   @react.component
   let make = (
-    ~className="",
+    ~className=?,
     ~children=?,
     ~id=?,
     ~dir=?,
@@ -382,7 +409,10 @@ module SubContent = {
           ?onKeyDown
           ?children
           dataSlot="menubar-sub-content"
-          className={`bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 min-w-32 rounded-lg p-1 shadow-lg ring-1 duration-100 ${className}`}
+          className={cn(
+            "bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 min-w-32 rounded-lg p-1 shadow-lg ring-1 duration-100",
+            className,
+          )}
         />
       </BaseUi.Menu.Positioner>
     </BaseUi.Menu.Portal>
