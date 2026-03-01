@@ -17,6 +17,10 @@ const tsxModules: Record<string, ModuleLoader> = {
     string,
     ModuleLoader
   >),
+  ...(import.meta.glob("../../../../../apps/v4/examples/base/ui-rtl/*.tsx") as Record<
+    string,
+    ModuleLoader
+  >),
 }
 
 const rescriptModules: Record<string, ModuleLoader> = {
@@ -24,6 +28,10 @@ const rescriptModules: Record<string, ModuleLoader> = {
     "../../../../../packages/shadcn/rescript/examples/*.res.mjs"
   ) as Record<string, ModuleLoader>),
   ...(import.meta.glob("../../../../../packages/shadcn/rescript/ui/*.res.mjs") as Record<
+    string,
+    ModuleLoader
+  >),
+  ...(import.meta.glob("../../../../../packages/shadcn/rescript/ui-rtl/*.res.mjs") as Record<
     string,
     ModuleLoader
   >),
@@ -54,6 +62,8 @@ function findModuleLoader(modules: Record<string, ModuleLoader>, fileName: strin
 function getTsxModuleLoader(component: string) {
   const fileName = component.startsWith("ui/")
     ? `${component.replace(/^ui\//, "")}.tsx`
+    : component.startsWith("ui-rtl/")
+    ? `${component.replace(/^ui-rtl\//, "")}.tsx`
     : `${component}.tsx`
   return findModuleLoader(tsxModules, fileName)
 }
@@ -61,11 +71,17 @@ function getTsxModuleLoader(component: string) {
 function getRescriptModuleLoader(component: string) {
   const moduleName = component.startsWith("ui/")
     ? toPascalCase(component.replace(/^ui\//, ""))
+    : component.startsWith("ui-rtl/")
+    ? `Rtl${toPascalCase(component.replace(/^ui-rtl\//, ""))}`
     : toPascalCase(component)
   return findModuleLoader(rescriptModules, `${moduleName}.res.mjs`)
 }
 
 function getExpectedRescriptPath(component: string) {
+  if (component.startsWith("ui-rtl/")) {
+    return `packages/shadcn/rescript/ui-rtl/Rtl${toPascalCase(component.replace(/^ui-rtl\//, ""))}.res`
+  }
+
   if (component.startsWith("ui/")) {
     return `packages/shadcn/rescript/ui/${toPascalCase(component.replace(/^ui\//, ""))}.res`
   }
@@ -78,12 +94,16 @@ function resolveTsxModule(moduleValue: AnyModule, id: string): React.ComponentTy
     return moduleValue.default as React.ComponentType
   }
 
-  if (id.startsWith("ui/")) {
-    if (id === "ui/resizable" && typeof moduleValue.ResizablePanelGroup === "function") {
+  if (id.startsWith("ui/") || id.startsWith("ui-rtl/")) {
+    if (
+      (id === "ui/resizable" || id === "ui-rtl/resizable") &&
+      typeof moduleValue.ResizablePanelGroup === "function"
+    ) {
       return moduleValue.ResizablePanelGroup as React.ComponentType
     }
 
-    const moduleName = toPascalCase(id.replace(/^ui\//, ""))
+    const prefix = id.startsWith("ui/") ? /^ui\// : /^ui-rtl\//
+    const moduleName = toPascalCase(id.replace(prefix, ""))
     const exactMatch = moduleValue[moduleName]
     if (typeof exactMatch === "function") {
       return exactMatch as React.ComponentType
@@ -152,11 +172,16 @@ function renderSpecialScenario(
   impl: Impl,
   state: LoadedState
 ): ScenarioResult | null {
-  if (component !== "ui/chart" && component !== "ui/sidebar") {
+  if (
+    component !== "ui/chart" &&
+    component !== "ui/sidebar" &&
+    component !== "ui-rtl/chart" &&
+    component !== "ui-rtl/sidebar"
+  ) {
     return null
   }
 
-  if (component === "ui/chart") {
+  if (component === "ui/chart" || component === "ui-rtl/chart") {
     const chartConfig = {
       series: {
         label: "Series",
@@ -201,7 +226,9 @@ function renderSpecialScenario(
 
   if (impl === "tsx") {
     const SidebarProvider = resolveModuleComponent(state.tsxModule, "SidebarProvider")
-    const Sidebar = resolveModuleComponent(state.tsxModule, "Sidebar")
+    const Sidebar =
+      resolveModuleComponent(state.tsxModule, "Sidebar") ??
+      resolveModuleComponent(state.tsxModule, "SidebarRoot")
     const SidebarContent = resolveModuleComponent(state.tsxModule, "SidebarContent")
     if (!SidebarProvider || !Sidebar || !SidebarContent) {
       return { node: null, error: "Unable to resolve TSX sidebar scenario components" }

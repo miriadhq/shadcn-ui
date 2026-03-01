@@ -1,3 +1,5 @@
+@@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
+
 @@directive("'use client'")
 
 type navSubItem = {
