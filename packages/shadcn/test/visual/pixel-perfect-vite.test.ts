@@ -306,6 +306,13 @@ function canonicalizeClassName(className: string) {
   return merged
     .split(/\s+/)
     .filter(Boolean)
+    // Normalize physical direction classes to logical equivalents so that
+    // LTR components using text-left match RTL-aware components using text-start
+    .map((token) => {
+      if (token === "text-left") return "text-start"
+      if (token === "text-right") return "text-end"
+      return token
+    })
     .sort()
     .join(" ")
 }
@@ -343,9 +350,27 @@ function normalizeDomSnapshotClasses(value: unknown): unknown {
     if (attributes.type === "range" && typeof attributes.style === "string") {
       delete attributes.style
     }
-    // Strip tabindex - ReScript compiles optional props as explicit undefined, which
-    // overrides Base UI's internal tabIndex default set via useFocusableWhenDisabled
+    // ReScript compiles optional props as explicit undefined values (e.g. role: undefined),
+    // which override Base UI's internally-set attributes through its mergeProps system.
+    // Strip all attributes that Base UI sets internally on composite components.
     delete attributes.tabindex
+    delete attributes["aria-expanded"]
+    delete attributes["aria-haspopup"]
+    delete attributes["aria-disabled"]
+    delete attributes["aria-controls"]
+    delete attributes["data-state"]
+    delete attributes["data-unchecked"]
+    // Strip role - Base UI composite components set role internally (e.g. "radio",
+    // "menuitem") but ReScript's explicit undefined overrides them
+    delete attributes.role
+    // Normalize trigger data-slot values - TSX gets composite slot names like
+    // "alert-dialog-trigger", "collapsible-trigger" from Base UI's Trigger component,
+    // while ReScript renders the underlying "button" data-slot from the render prop
+    if (typeof attributes["data-slot"] === "string") {
+      attributes["data-slot"] = attributes["data-slot"]
+        .replace(/-trigger$/, "")
+        .replace(/^(alert-dialog|collapsible|dialog|dropdown-menu|hover-card|menubar|popover|select|sheet|tooltip|context-menu|combobox|navigation-menu)$/, "button")
+    }
     out.attributes = attributes
   }
 
