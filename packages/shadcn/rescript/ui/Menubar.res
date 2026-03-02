@@ -24,7 +24,10 @@ let make = (~className=?, ~children=?, ~id=?, ~dir=?, ~style=?, ~onClick=?, ~onK
     ?onKeyDown
     ?children
     dataSlot="menubar"
-    className={cn("bg-background flex h-8 items-center gap-0.5 rounded-lg border p-[3px]", className)}
+    className={cn(
+      "bg-background flex h-8 items-center gap-0.5 rounded-lg border p-[3px]",
+      className,
+    )}
   />
 
 module Menu = {
@@ -286,15 +289,7 @@ module RadioItem = {
 
 module Label = {
   @react.component
-  let make = (
-    ~className=?,
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~dataInset=?,
-  ) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~dataInset=?) =>
     <BaseUi.Menu.GroupLabel
       ?id
       ?style

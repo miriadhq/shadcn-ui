@@ -72,15 +72,7 @@ module Footer = {
 
 module Row = {
   @react.component
-  let make = (
-    ~className=?,
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~dataState=?,
-  ) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~dataState=?) =>
     <tr
       ?id
       ?children
@@ -125,10 +117,7 @@ module Cell = {
       ?onClick
       ?onKeyDown
       dataSlot="table-cell"
-      className={cn(
-        "p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0",
-        className,
-      )}
+      className={cn("p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0", className)}
     />
 }
 

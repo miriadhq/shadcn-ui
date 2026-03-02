@@ -2,7 +2,6 @@
 
 @@directive("'use client'")
 
-
 type chartDatum = {
   date: string,
   desktop: int,

@@ -2,9 +2,7 @@
 let make = () =>
   <Field.Group>
     <Field.Set>
-      <Field.Legend variant=Field.Variant.Label>
-        {"Subscription Plan"->React.string}
-      </Field.Legend>
+      <Field.Legend variant=Field.Variant.Label> {"Subscription Plan"->React.string} </Field.Legend>
       <RadioGroup defaultValue="free">
         <Field orientation=BaseUi.Types.Orientation.Horizontal>
           <RadioGroup.Item value="free" id="radio-free" />

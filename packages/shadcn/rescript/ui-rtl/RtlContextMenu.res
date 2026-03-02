@@ -107,15 +107,7 @@ module Group = {
 
 module Label = {
   @react.component
-  let make = (
-    ~className=?,
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~dataInset=?,
-  ) =>
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~dataInset=?) =>
     <BaseUi.ContextMenu.GroupLabel
       ?id
       ?style

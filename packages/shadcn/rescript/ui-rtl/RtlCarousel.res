@@ -185,14 +185,7 @@ let make = (
 
 module Content = {
   @react.component
-  let make = (
-    ~className=?,
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) => {
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
     let {carouselRef, orientation} = useCarousel()
     <div dataSlot="carousel-content" ref={carouselRef} className="overflow-hidden">
       <div
@@ -212,14 +205,7 @@ module Content = {
 
 module Item = {
   @react.component
-  let make = (
-    ~className=?,
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) => {
+  let make = (~className=?, ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
     let {orientation} = useCarousel()
     <div
       ?id

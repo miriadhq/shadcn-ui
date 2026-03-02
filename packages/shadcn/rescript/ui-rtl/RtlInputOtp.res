@@ -68,7 +68,10 @@ let make = (
     ?dir
     ?children
     dataSlot="input-otp"
-    containerClassName={cn("cn-input-otp flex items-center has-disabled:opacity-50", containerClassName)}
+    containerClassName={cn(
+      "cn-input-otp flex items-center has-disabled:opacity-50",
+      containerClassName,
+    )}
     spellCheck={false}
     className={cn("disabled:cursor-not-allowed", className)}
   />
@@ -146,10 +149,7 @@ module Separator = {
       ?onKeyDown
       role="separator"
       dataSlot="input-otp-separator"
-      className={cn(
-        "flex items-center [&_svg:not([class*='size-'])]:size-4",
-        className,
-      )}
+      className={cn("flex items-center [&_svg:not([class*='size-'])]:size-4", className)}
     >
       <Icons.Minus />
       {children}

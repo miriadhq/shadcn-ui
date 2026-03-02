@@ -1,6 +1,5 @@
 @@directive("'use client'")
 
-
 type chartDatum = {month: string, desktop: int, mobile: int}
 
 module Recharts = {
@@ -84,7 +83,8 @@ let make = () =>
         tickLine={false}
         tickMargin={10}
         axisLine={false}
-        tickFormatter={value => monthsAr->Dict.get(value)->Option.getOr(value)->String.slice(~start=0, ~end=3)}
+        tickFormatter={value =>
+          monthsAr->Dict.get(value)->Option.getOr(value)->String.slice(~start=0, ~end=3)}
         reversed={true}
       />
       <Chart.Tooltip content={<Chart.TooltipContent />} />

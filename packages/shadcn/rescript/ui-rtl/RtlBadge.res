@@ -8,8 +8,7 @@ external twMerge: string => string = "twMerge"
 let badgeVariantClass = (~variant: Badge.Variant.t) =>
   switch variant {
   | Secondary => "bg-secondary text-secondary-foreground [a]:hover:bg-secondary/80"
-  | Destructive =>
-    "bg-destructive/10 [a]:hover:bg-destructive/20 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 text-destructive dark:bg-destructive/20"
+  | Destructive => "bg-destructive/10 [a]:hover:bg-destructive/20 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 text-destructive dark:bg-destructive/20"
   | Outline => "border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground"
   | Ghost => "hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50"
   | Link => "text-primary underline-offset-4 hover:underline"

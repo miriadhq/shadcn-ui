@@ -1,6 +1,5 @@
 @@directive("'use client'")
 
-
 type chartDatum = {month: string, desktop: int, mobile: int}
 
 module Recharts = {
