@@ -708,7 +708,7 @@ describe("tsx vs rescript parity (vite harness)", () => {
     const command = process.platform === "win32" ? "pnpm.cmd" : "pnpm"
 
     if (!SKIP_BUILD) {
-      await runCommand(command, ["--filter=shadcn", "build"], {
+      await runCommand(command, ["--filter=shadcn-rescript", "build"], {
         cwd: repoRoot,
       })
     }

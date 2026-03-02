@@ -114,6 +114,6 @@ jobs:
         run: pnpm install
 
       - name: Build packages
-        run: pnpm --filter=shadcn build
+        run: pnpm --filter=shadcn-rescript build
 
       - run: pnpm typecheck

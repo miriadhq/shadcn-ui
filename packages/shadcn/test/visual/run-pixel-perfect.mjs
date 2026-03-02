@@ -27,7 +27,7 @@ function printHelp() {
     "Run pixel parity tests with CLI parameters mapped to PARITY_* env vars.",
     "",
     "Usage:",
-    "  pnpm --filter=shadcn run test:pixel -- [options] [-- <extra vitest args>]",
+    "  pnpm --filter=shadcn-rescript run test:pixel -- [options] [-- <extra vitest args>]",
     "",
     "Options:",
     "  --components, -c <csv>           -> PARITY_COMPONENTS",
@@ -45,8 +45,8 @@ function printHelp() {
     "  -h, --help                       Show this help message",
     "",
     "Examples:",
-    "  pnpm --filter=shadcn run test:pixel -- --components ui/calendar,ui/carousel --skip-build",
-    "  pnpm --filter=shadcn run test:pixel -- --base-url http://127.0.0.1:4173 -- --maxConcurrency=4",
+    "  pnpm --filter=shadcn-rescript run test:pixel -- --components ui/calendar,ui/carousel --skip-build",
+    "  pnpm --filter=shadcn-rescript run test:pixel -- --base-url http://127.0.0.1:4173 -- --maxConcurrency=4",
   ]
 
   console.log(lines.join("\n"))
