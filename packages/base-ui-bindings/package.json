@@ -1,5 +1,5 @@
 {
-  "name": "@rescript-shadcn-ui/base-ui",
+  "name": "@rescript-shadcn/base-ui",
   "version": "3.8.4",
   "description": "Rescript bindings for Base UI",
   "publishConfig": {

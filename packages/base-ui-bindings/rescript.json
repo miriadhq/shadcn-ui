@@ -1,5 +1,5 @@
 {
-  "name": "@rescript-shadcn-ui/base-ui",
+  "name": "@rescript-shadcn/base-ui",
   "namespace": "base-ui",
   "sources": [
     {
@@ -15,5 +15,7 @@
     "in-source": true
   },
   "suffix": ".res.mjs",
-  "dependencies": ["@rescript/react"]
+  "dependencies": [
+    "@rescript/react"
+  ]
 }

@@ -18,6 +18,6 @@
   "suffix": ".res.mjs",
   "dependencies": [
     "@rescript/react",
-    "@rescript-shadcn-ui/base-ui"
+    "@rescript-shadcn/base-ui"
   ]
 }
