@@ -57,7 +57,10 @@ export async function ComponentSource({
         code = await fs.readFile(rescriptSourcePath, "utf-8")
         sourcePath = rescriptSourcePath
       } catch (error) {
-        console.error(`Error reading ReScript file ${rescriptSourcePath}:`, error)
+        console.error(
+          `Error reading ReScript file ${rescriptSourcePath}:`,
+          error
+        )
         // Only show ReScript code, don't fall back to TypeScript
         return null
       }
@@ -237,8 +240,8 @@ function ComponentCode({
   title: string | undefined
 }) {
   return (
-    <figure 
-      data-rehype-pretty-code-figure="" 
+    <figure
+      data-rehype-pretty-code-figure=""
       className="[&>pre]:max-h-96"
       suppressHydrationWarning
     >
@@ -253,10 +256,10 @@ function ComponentCode({
         </figcaption>
       )}
       <CopyButton value={code} />
-      <div 
-        className="[&_pre[data-theme='github-light']]:!hidden [&_pre[data-theme='github-dark']]:!block dark:[&_pre[data-theme='github-light']]:!hidden dark:[&_pre[data-theme='github-dark']]:!block [&_pre]:!bg-[var(--color-code)] [&_pre]:!text-[var(--color-code-foreground)]"
+      <div
+        className="[&_pre]:!bg-[var(--color-code)] [&_pre]:!text-[var(--color-code-foreground)] [&_pre[data-theme='github-dark']]:!block dark:[&_pre[data-theme='github-dark']]:!block [&_pre[data-theme='github-light']]:!hidden dark:[&_pre[data-theme='github-light']]:!hidden"
         suppressHydrationWarning
-        dangerouslySetInnerHTML={{ __html: highlightedCode }} 
+        dangerouslySetInnerHTML={{ __html: highlightedCode }}
       />
     </figure>
   )
