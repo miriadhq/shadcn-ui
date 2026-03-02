@@ -15,7 +15,10 @@
       "Bash(do:*)",
       "Bash(perl:*)",
       "Bash(xargs sed:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(lsof:*)",
+      "Bash(kill 90908:*)",
+      "Bash(find:*)"
     ],
     "deny": []
   }

@@ -343,6 +343,9 @@ function normalizeDomSnapshotClasses(value: unknown): unknown {
     if (attributes.type === "range" && typeof attributes.style === "string") {
       delete attributes.style
     }
+    // Strip tabindex - ReScript compiles optional props as explicit undefined, which
+    // overrides Base UI's internal tabIndex default set via useFocusableWhenDisabled
+    delete attributes.tabindex
     out.attributes = attributes
   }
 

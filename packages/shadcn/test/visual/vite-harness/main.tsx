@@ -61,9 +61,9 @@ function findModuleLoader(modules: Record<string, ModuleLoader>, fileName: strin
 
 function getTsxModuleLoader(component: string) {
   const fileName = component.startsWith("ui/")
-    ? `${component.replace(/^ui\//, "")}.tsx`
+    ? `ui/${component.replace(/^ui\//, "")}.tsx`
     : component.startsWith("ui-rtl/")
-    ? `${component.replace(/^ui-rtl\//, "")}.tsx`
+    ? `ui-rtl/${component.replace(/^ui-rtl\//, "")}.tsx`
     : `${component}.tsx`
   return findModuleLoader(tsxModules, fileName)
 }
