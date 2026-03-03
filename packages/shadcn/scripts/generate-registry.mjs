@@ -137,84 +137,9 @@ function buildItem(mod, dir, type) {
   return item
 }
 
-// Hardcoded metadata-only items
-const METADATA_ITEMS = [
-  {
-    name: "index",
-    type: "registry:style",
-    dependencies: ["class-variance-authority", "lucide-react"],
-    devDependencies: ["tw-animate-css"],
-    registryDependencies: ["utils"],
-    files: [],
-    cssVars: {},
-  },
-  {
-    name: "style",
-    type: "registry:style",
-    dependencies: ["class-variance-authority", "lucide-react"],
-    devDependencies: ["tw-animate-css"],
-    registryDependencies: ["utils"],
-    files: [],
-    cssVars: {},
-  },
-]
-
-// Sidebar-specific extra fields
-const SIDEBAR_EXTRA = {
-  tailwind: {
-    config: {
-      theme: {
-        extend: {
-          colors: {
-            sidebar: {
-              DEFAULT: "hsl(var(--sidebar-background))",
-              foreground: "hsl(var(--sidebar-foreground))",
-              primary: "hsl(var(--sidebar-primary))",
-              "primary-foreground":
-                "hsl(var(--sidebar-primary-foreground))",
-              accent: "hsl(var(--sidebar-accent))",
-              "accent-foreground":
-                "hsl(var(--sidebar-accent-foreground))",
-              border: "hsl(var(--sidebar-border))",
-              ring: "hsl(var(--sidebar-ring))",
-            },
-          },
-        },
-      },
-    },
-  },
-  cssVars: {
-    light: {
-      "sidebar-background": "0 0% 98%",
-      "sidebar-foreground": "240 5.3% 26.1%",
-      "sidebar-primary": "240 5.9% 10%",
-      "sidebar-primary-foreground": "0 0% 98%",
-      "sidebar-accent": "240 4.8% 95.9%",
-      "sidebar-accent-foreground": "240 5.9% 10%",
-      "sidebar-border": "220 13% 91%",
-      "sidebar-ring": "217.2 91.2% 59.8%",
-    },
-    dark: {
-      "sidebar-background": "240 5.9% 10%",
-      "sidebar-foreground": "240 4.8% 95.9%",
-      "sidebar-primary": "224.3 76.3% 48%",
-      "sidebar-primary-foreground": "0 0% 100%",
-      "sidebar-accent": "240 3.7% 15.9%",
-      "sidebar-accent-foreground": "240 4.8% 95.9%",
-      "sidebar-border": "240 3.7% 15.9%",
-      "sidebar-ring": "217.2 91.2% 59.8%",
-    },
-  },
-}
-
 // Build all items
 const items = [
-  ...METADATA_ITEMS,
-  ...uiModules.map((mod) => {
-    const item = buildItem(mod, "ui", "registry:ui")
-    if (item.name === "sidebar") Object.assign(item, SIDEBAR_EXTRA)
-    return item
-  }),
+  ...uiModules.map((mod) => buildItem(mod, "ui", "registry:ui")),
   ...rtlModules.map((mod) => buildItem(mod, "ui-rtl", "registry:ui")),
   ...exampleModules.map((mod) =>
     buildItem(mod, "examples", "registry:example")
