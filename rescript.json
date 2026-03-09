@@ -1,0 +1,17 @@
+{
+  "name": "ui",
+  "namespace": true,
+  "sources": [],
+  "jsx": {
+    "version": 4
+  },
+  "package-specs": {
+    "module": "esmodule",
+    "in-source": true
+  },
+  "suffix": ".res.mjs",
+  "dependencies": [
+    "@rescript-shadcn/base-ui",
+    "shadcn-rescript"
+  ]
+}

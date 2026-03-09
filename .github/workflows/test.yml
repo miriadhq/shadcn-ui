@@ -43,6 +43,6 @@ jobs:
         run: pnpm install
 
       - name: Build packages
-        run: pnpm build --filter=shadcn
+        run: pnpm build --filter=shadcn-rescript
 
       - run: pnpm test

@@ -1,8 +1,3 @@
-import {
-  iconLibraries,
-  type IconLibrary,
-  type IconLibraryName,
-} from "shadcn/icons"
 import { z } from "zod"
 
 import { BASE_COLORS, type BaseColor } from "@/registry/base-colors"
@@ -10,6 +5,12 @@ import { BASES, type Base } from "@/registry/bases"
 import { fonts } from "@/registry/fonts"
 import { STYLES, type Style } from "@/registry/styles"
 import { THEMES, type Theme } from "@/registry/themes"
+
+import {
+  iconLibraries,
+  type IconLibrary,
+  type IconLibraryName,
+} from "../../../packages/shadcn/src/icons"
 
 const SHADCN_VERSION = "latest"
 
